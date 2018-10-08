@@ -37,6 +37,51 @@
   background-size: cover;
 }
 
+#imgPrev1 {
+  background-image: image-url('rawpixel-683571-unsplash.jpg');
+}
+
+#imgPrev2 {
+  background-image: image-url('mimi-thian-737657-unsplash.jpg');
+}
+
+.btn-primary {
+  background-color: #1976d2!important;
+  color: white!important;
+}
+
+.preview-btn {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.description-preview-landing {
+  position: relative;
+}
+
+.white-fade-right {
+  width: 100%;
+  height: 100%;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 98%);
+}
+
+.white-fade-left {
+  width: 100%;
+  height: 100%;
+  background: rgb(255,255,255);
+  background: linear-gradient(270deg, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 98%);
+}
+
+.img-preview-landing {
+  height: 50vh;
+  width: 50vw;
+  background-position: center;
+  background-size: cover;
+}
+
 .jobs-landing img {
   height: 180px;
 }
