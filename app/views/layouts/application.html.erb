@@ -4,12 +4,20 @@
     <title>Jobcrop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <% if content_for?(:navbar_landing) %>
+      <%= yield(:navbar_landing) %>
+    <% elsif content_for?(:navbar_special)%>
+      <%= yield(:navbar_special) %>
+    <% elsif content_for?(:navbar) %>
+      <%= yield(:navbar) %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
