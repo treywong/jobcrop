@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_10_08_163752) do
 
   create_table "bookings", force: :cascade do |t|
@@ -49,11 +50,13 @@ ActiveRecord::Schema.define(version: 2018_10_08_163752) do
     t.string "checklist"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    
     t.string "encrypted_password", limit: 128
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
+
   end
 
 end
