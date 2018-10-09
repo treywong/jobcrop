@@ -17,7 +17,11 @@
     <% elsif content_for?(:navbar) %>
       <%= yield(:navbar) %>
     <% end %>
-
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
     <%= yield %>
     <%= render partial: 'footer/footer' %>
   </body>
