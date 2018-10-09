@@ -16,6 +16,7 @@
 
 @import "bootstrap";
 @import "landing";
+@import "home";
 
 body {
   background-color: #fafafa;
@@ -23,4 +24,17 @@ body {
 
 .small-font {
   font-size: 12px;
+}
+
+.btn {
+  border-radius: 0!important;
+}
+
+.bg-searchbar {
+  background-color: #ddd;
+}
+
+.btn-primary {
+  background-color: #1976d2!important;
+  color: white!important;
 }
