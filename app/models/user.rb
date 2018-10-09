@@ -3,4 +3,6 @@ class User < ApplicationRecord
 
 	has_many :jobs
 	has_many :bookings
+	has_many :experiences
+	has_many :educations
 end
