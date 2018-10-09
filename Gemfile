@@ -7,6 +7,10 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
+# # Use postgresql as the database for Active Record
+# gem 'pg', '>= 0.18', '< 2.0'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -60,3 +64,18 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+
+# Added gems by Sheng
+# Use Faker for listing
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
+# Use Kaminari for pagination
+gem 'kaminari'
+
+# Use  Carrierwave to upload image
+gem 'carrierwave'
+
+# Use Mini Magick to make image smaller
+gem 'mini_magick'
