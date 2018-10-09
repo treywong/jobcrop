@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2018_10_08_163752) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bookings", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "job_id"
+    t.bigint "user_id"
+    t.bigint "job_id"
     t.datetime "booked_at"
-    t.string "files"
+    t.string "files", array: true
     t.string "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,37 +28,39 @@ ActiveRecord::Schema.define(version: 2018_10_08_163752) do
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "name"
     t.string "description"
     t.string "requirement"
     t.integer "salary"
     t.string "image"
-    t.datetime "session"
+    t.datetime "session", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "fullname"
-    t.string "role"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "role", default: "jobhunter"
     t.string "email"
+    t.string "phone"
+    t.date "birthday"
     t.string "password"
-    t.string "password_digest"
     t.string "detail"
     t.string "image"
-    t.string "checklist"
+    t.string "checklist", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    
     t.string "encrypted_password", limit: 128
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
-
   end
 
+  add_foreign_key "bookings", "jobs"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "jobs", "users"
 end
