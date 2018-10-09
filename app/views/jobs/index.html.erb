@@ -1,0 +1,124 @@
+<% content_for :navbar_user do %>
+  <% if signed_in? %>
+    <%= render partial: "navbar/user_navbar" %>
+  <% else %>
+    <%= render partial: "navbar/visitor_navbar" %>
+  <% end %>
+<% end %>
+
+<div class="container mt-3">
+  <div class="searchbox-container-jobs my-3">
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control w-100 border-0 bg-searchbar py-4" type="search" placeholder="Search" aria-label="Search">
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-4" >
+      <div class="card my-2">
+        <div class="card-body">
+          <select class="custom-select my-2 bg-light border-0" id="job_type">
+            <option selected>Job Type</option>
+            <option value="3">All Types</option>
+            <option value="1">Jobs</option>
+            <option value="2">Freelance</option>
+          </select>
+          <select class="custom-select my-2 bg-light border-0" id="date_posted">
+            <option selected>Date Posted</option>
+            <option value="1">Last Day</option>
+            <option value="2">Last Week</option>
+            <option value="3">Last Month</option>
+            <option value="3">All Time</option>
+          </select>
+        </div>
+      </div>
+      <div class="basket card my-2 p-3 d-flex flex-col align-item-middle">
+        <p class="text-black-50 text-center m-0">This is your basket</p>
+      </div>
+    </div>
+    <div class="col-8" >
+      <ul class="list-unstyled">
+        <li>
+          <div class="card my-2">
+            <div class="row">
+              <div class="col-2">
+                <div class="card-body">
+                  <img src="https://www.facebook.com/images/fb_icon_325x325.png" class="d-block mx-auto" style="width:55px;height:55px;"/>
+                  <p class="my-2 border p-1 font-weight-bold reviews text-center small-font">120 <i class="far fa-smile"></i></p>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="card-body pl-0">
+                  <h5 class="text-primary card-title mb-1"><strong>Janitor</strong></h5>
+                  <p class="my-1 small-font">Facebook Inc</p>
+                  <p class="my-1 text-muted small-font">Menlo Park, CA</p>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="card-body">
+                  <button class="btn btn-primary">Apply Now</button>
+                  <br/>
+                  <br/>
+                  <p class=" m-0 mt-2 text-center text-muted">3 days ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="card my-2">
+            <div class="row">
+              <div class="col-2">
+                <div class="card-body">
+                  <img src="https://www.facebook.com/images/fb_icon_325x325.png" class="d-block mx-auto" style="width:55px;height:55px;"/>
+                  <p class="my-2 border p-1 font-weight-bold reviews text-center small-font">120 <i class="far fa-smile"></i></p>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="card-body pl-0">
+                  <h5 class="text-primary card-title mb-1"><strong>Software Developer</strong></h5>
+                  <p class="my-1 small-font">Facebook Inc</p>
+                  <p class="my-1 text-muted small-font">Menlo Park, CA</p>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="card-body">
+                  <button class="btn btn-primary">Apply Now</button>
+                  <br/>
+                  <br/>
+                  <p class=" m-0 mt-2 text-center text-muted">3 days ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="card my-2">
+            <div class="row">
+              <div class="col-2">
+                <div class="card-body">
+                  <img src="https://www.facebook.com/images/fb_icon_325x325.png" class="d-block mx-auto" style="width:55px;height:55px;"/>
+                  <p class="my-2 border p-1 font-weight-bold reviews text-center small-font">120 <i class="far fa-smile"></i></p>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="card-body pl-0">
+                  <h5 class="text-primary card-title mb-1"><strong>Product Designer</strong></h5>
+                  <p class="my-1 small-font">Facebook Inc</p>
+                  <p class="my-1 text-muted small-font">Menlo Park, CA</p>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="card-body">
+                  <button class="btn btn-primary">Apply Now</button>
+                  <br/>
+                  <br/>
+                  <p class=" m-0 mt-2 text-center text-muted">3 days ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

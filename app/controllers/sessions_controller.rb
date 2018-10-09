@@ -25,6 +25,6 @@ class SessionsController < Clearance::SessionsController
   end
 
   def url_after_create
-    home_index_url
+    home_url
   end
 end
