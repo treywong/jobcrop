@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   root 'landing#index'
 
   resources :passwords, controller: "passwords", only: [:create, :new]
