@@ -1,0 +1,11 @@
+<%= form_with scope: :user, url: user_path(@user.id), method: 'PATCH' do |form| %>
+<div class="d-flex flex-row form-group justify-content-center">
+  <div class="mx-1">
+    <%= form.text_field :first_name, class: 'form-control bg-light border-0', placeholder: 'First Name' %>
+  </div>
+  <div class="mx-1">
+    <%= form.text_field :last_name, class: 'form-control bg-light border-0', placeholder: 'Last Name' %>
+  </div>
+</div>
+<%= form.submit "Apply Changes" %>
+<% end %>

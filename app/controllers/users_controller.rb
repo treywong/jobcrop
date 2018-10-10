@@ -14,6 +14,17 @@ class UsersController < Clearance::UsersController
 		@user = User.find(params[:id])
 	end
 
+	def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile successfully updated!"
+      redirect_back(fallback_location: users_path)
+    else
+      flash[:danger] = @user.errors.full_messages.to_sentence
+      redirect_back(fallback_location: users_path)
+    end
+  end
+
 	def education
 		@user = User.find(params[:user_id])
 		respond_to do |format|
@@ -29,6 +40,13 @@ class UsersController < Clearance::UsersController
 	end
 
 	def about_me
+		@user = User.find(params[:user_id])
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def edit_name
 		@user = User.find(params[:user_id])
 		respond_to do |format|
 			format.js

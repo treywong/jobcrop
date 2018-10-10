@@ -2,8 +2,11 @@
   <div class="card">
     <div class="card-body">
       <img class="rounded-circle d-block mx-auto mb-3" style="width:150px;height:150px;" src="/assets/default.png"/>
-      <h5 class="font-weight-bold text-center">
+      <h5 class="user-name font-weight-bold text-center">
         <%=@user.name%>
+        <%=link_to user_edit_name_path(@user.id), id: "editName", remote:true do%>
+          <i class="edit fas fa-pen"></i>
+        <% end %>
       </h5>
     </div>
     <hr class="my-1"/>
@@ -20,3 +23,12 @@
     </ul>
   </div>
 </div>
+
+<script>
+  $('.user-name').children('#editName').hide();
+  $('.user-name').on('mouseover', function(){
+    $(this).children('#editName').show();
+  }).on('mouseleave', function(){
+    $(this).children('#editName').hide();
+  });
+</script>

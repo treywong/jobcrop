@@ -5,10 +5,11 @@ Rails.application.routes.draw do
 
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
-  resources :users, controller: "users", only: [:create, :show] do
+  resources :users, controller: "users", only: [:update, :create, :show] do
     get "/education" => 'users#education'
     get "/experiences" => 'users#experiences'
     get "/about_me" => 'users#about_me'
+    get "/edit_name" => 'users#edit_name'
     resource :password,
       controller: "passwords",
       only: [:create, :edit, :update]
