@@ -53,6 +53,13 @@ class UsersController < Clearance::UsersController
 		end
 	end
 
+	def edit_detail
+		@user = User.find(params[:user_id])
+		respond_to do |format|
+			format.js
+		end
+	end
+
 
 	private
 

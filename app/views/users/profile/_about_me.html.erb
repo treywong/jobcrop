@@ -6,15 +6,25 @@
   </div>
 
   <div class="card my-2">
-    <div class="card-body">
+    <div class="card-body about-me">
       <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-        in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-        id est laborum.
+        <%if @user.detail%>
+          <%= @user.detail %>
+        <% else %>
+          <p class="text-muted">Write something about yourself.</p>
+        <% end %>
+        <%=link_to user_edit_detail_path(@user.id), id: "editDetail", remote:true do%>
+          <i class="edit fas fa-pen"></i>
+        <% end %>
       </p>
     </div>
   </div>
+
+  <script>
+    $('.about-me').children().children('#editDetail').hide();
+    $('.about-me').on('mouseover', function(){
+      $(this).children().children('#editDetail').show();
+    }).on('mouseleave', function(){
+      $(this).children().children('#editDetail').hide();
+    });
+  </script>

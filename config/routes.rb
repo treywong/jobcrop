@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get "/experiences" => 'users#experiences'
     get "/about_me" => 'users#about_me'
     get "/edit_name" => 'users#edit_name'
+    get "/edit_detail" => 'users#edit_detail'
     resource :password,
       controller: "passwords",
       only: [:create, :edit, :update]
