@@ -8,8 +8,18 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
+  # homepage
   get "users/home"
   root "users#home"
+
+  # userprofile route
+  get "users/profile"
+
+  resources :users, only: [:profile] do
+  	resources :educations
+    resources :experiences
+    resources :skills
+  end
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"

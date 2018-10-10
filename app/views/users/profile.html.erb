@@ -1,0 +1,109 @@
+<!-- show page for user profile -->
+
+<%= link_to 'Home', users_home_path %>
+
+<div class="container-fluid">
+
+<h1>User Profile</h1>
+<!-- profile picture -->
+
+
+
+<!-- education section -->
+<table>
+	<tr>
+		<th><h3>Education</h3></th>
+		<th></th>
+	</tr>
+
+			<!-- new -->
+	<td><%= link_to 'Add education', new_user_education_path(@user.id) %></td>
+	
+		<tr>
+			<th>Institute name</th>
+			<th>Qualification</th>
+		</tr>
+			<% @education.each do |education| %>
+	
+			<!-- show -->
+	<tr>
+		<td><%= education.institute_name %></td>
+		<td><%= education.qualification %></td>
+		<td><%= link_to 'show', user_education_path(@user.id, education.id) %></td>
+			<!-- edit -->
+		<td><%= link_to 'Edit', edit_user_education_path( @user.id, education.id) %></td>
+			<!-- delete -->
+		<td><%= link_to 'Delete', user_education_path(@user.id, education.id), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+
+	</tr>
+
+			<% end %>
+</table>
+
+
+<!-- experience section -->
+<table>
+	<tr>
+		<th><h3>Experience</h3></th>
+		<th></th>
+	</tr>
+
+	<!-- new -->
+	
+	<td><%= link_to 'Add experience', new_user_experience_path(@user.id) %></td>
+	<tr>
+		<th>Job Title</th>
+		<th>Job description</th>
+	</tr>
+
+		<% @experience.each do |experience| %>
+	
+		
+	<tr>
+		<!-- show -->
+		<td><%= experience.job_title %></td>
+		<td><%= experience.job_description %></td>
+		<td><%= link_to 'Show', user_experience_path(@user.id, experience.id) %></td>
+		<!-- edit -->
+		<td><%= link_to 'Edit', edit_user_experience_path(@user.id, experience.id) %></td>
+
+		<!-- delete -->
+		<td><%= link_to 'Delete', user_experience_path(@user.id, experience.id) %></td>
+	</tr>
+		<% end %>
+</table>
+
+
+	<!-- skills -->
+
+	<table>
+		<tr>
+			<th><h3>Skills</h3></th>
+			<th></th>
+		</tr>
+		<!-- add skills -->
+		<td><%= link_to 'Add skills', new_user_skill_path(@user.id) %></td>
+		<!-- show -->
+		<tr>
+			<th>Skills</th>
+			<th>Proficiency</th>
+		</tr>
+
+			<% @skill.each do |skill| %>
+		<tr>
+			<td><%= skill.skill_name %></td>
+			<td><%= skill.proficiency %></td>
+			<td><%= link_to 'Show', user_skill_path(@user.id, skill.id) %></td>
+			<td><%= link_to 'Edit', edit_user_skill_path(@user.id, skill.id) %></td>
+
+		</tr>
+		<% end %>
+
+	</table>
+
+
+
+
+
+
+</div>
