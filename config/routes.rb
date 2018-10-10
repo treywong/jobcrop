@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, controller: "users"
   resources :jobs, controller: "jobs"
+  get 'home' => 'home#index'
+  root 'landing#index'
+
+  resources :passwords, controller: "passwords", only: [:create, :new]
+  resource :session, controller: "sessions", only: [:create]
+  resources :users, controller: "users", only: [:create] do
+    resource :password,
+      controller: "passwords",
+      only: [:create, :edit, :update]
+  end
+  get "users/home"
+  # get "/sign_in" => "sessions#new", as: "sign_in"
+  delete "/sign_out" => "sessions#destroy", as: "sign_out"
+  get "/sign_up" => "users#new", as: "sign_up"
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_083950) do
+ActiveRecord::Schema.define(version: 2018_10_08_163752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,17 +60,24 @@ ActiveRecord::Schema.define(version: 2018_10_08_083950) do
 
   create_table "users", force: :cascade do |t|
     t.bigint "company_id"
-    t.string "fullname"
-    t.string "role"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "role", default: "jobhunter"
     t.string "email"
+    t.string "phone"
+    t.date "birthday"
     t.string "password"
-    t.string "password_digest"
     t.string "detail"
     t.string "image"
     t.string "checklist", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", limit: 128
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128
     t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
   add_foreign_key "bookings", "jobs"

@@ -9,7 +9,7 @@
 company = {}
 ActiveRecord::Base.transaction do
 	10.times do
-		company['name'] = Faker::Name.name
+		company['name'] = Faker::Company.name
 		company['location'] = Faker::Address.full_address
 		company['website'] = Faker::Internet.url
 		company['telephone'] = Faker::PhoneNumber.phone_number
@@ -30,10 +30,12 @@ user = {}
 user['password'] = 'asdf'
 ActiveRecord::Base.transaction do
 	50.times do
-		user['fullname'] = Faker::Name.name
-		user['role'] = ['job_hunter','employer'].sample
+		user['first_name'] = Faker::Name.first_name
+		user['last_name'] = Faker::Name.last_name
+		user['role'] = ['jobhunter','employer'].sample
 		user['email'] = Faker::Internet.email
 		user['detail'] = Faker::Hipster.paragraph
+		user['birthday'] = Faker::Date.birthday(18, 65)
 
 		if user['role'] == 'employer'
 			user['company_id'] = cids.sample

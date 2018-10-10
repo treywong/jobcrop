@@ -1,6 +1,8 @@
+
 <h1>Jobs available</h1>
 <% @job.each_with_index do |j, index| %>
-	<a href="/jobs/<%= j.id %>"> <h2><%= index + 1 %>. <%= j.name %></h2></a>
+	<a href="<%= job_path(j.id) %>"> <h2><%= index + 1 %>. <%= j.name %></h2></a>
 	<p><%= j.description %></p>
 	<br>
 <% end %>
+

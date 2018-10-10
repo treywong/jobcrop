@@ -1,0 +1,134 @@
+// Place all the styles related to the Landing controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cover-landing {
+  background-image: url('annie-spratt-608001-unsplash.jpg');
+  height: 70vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.searchbox-landing {
+  background: rgba(0,0,0,0.5);
+  display:block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.5em;
+  border-radius: 25px;
+}
+
+.jobs-landing {
+  height: auto;
+}
+
+.landing-title {
+  color: #1976d2;
+}
+
+.img-container-card {
+  height: 180px;
+  width: auto;
+  background-position: center;
+  background-size: cover;
+}
+
+#imgPrev1 {
+  background-image: image-url('rawpixel-683571-unsplash.jpg');
+}
+
+#imgPrev2 {
+  background-image: image-url('mimi-thian-737657-unsplash.jpg');
+}
+
+
+
+.preview-btn {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.description-preview-landing {
+  position: relative;
+}
+
+.white-fade-right {
+  width: 100%;
+  height: 100%;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 98%);
+}
+
+.white-fade-left {
+  width: 100%;
+  height: 100%;
+  background: rgb(255,255,255);
+  background: linear-gradient(270deg, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 98%);
+}
+
+.img-preview-landing {
+  height: 50vh;
+  width: 50vw;
+  background-position: center;
+  background-size: cover;
+}
+
+.jobs-landing img {
+  height: 180px;
+}
+
+.jobs-landing .card {
+  position: relative;
+  border-style: none;
+}
+
+footer {
+  width: 100%;
+  height: 30vh;
+}
+
+@media (max-width: 1198px) {
+  .jobs-landing img {
+    height: 150px;
+  }
+  .jobs-landing .card {
+    // height: 400px;
+  }
+  .company-description-card {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .searchbox-landing h1 {
+    font-size: 30px;
+  }
+
+  .searchbox-landing {
+    width: 70%;
+  }
+
+}
+@media (max-width: 768px) {
+  .company-description-card {
+    display: block;
+  }
+
+  .jobs-landing-card {
+    margin-bottom: 1em;
+  }
+}
+@media (max-width: 425px) {
+  .searchbox-landing h1 {
+    font-size: 25px;
+  }
+  .searchbox-landing {
+    width: 80%;
+  }
+}
