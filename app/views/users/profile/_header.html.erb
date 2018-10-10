@@ -1,7 +1,12 @@
 <div class="user-header">
   <div class="card">
     <div class="card-body">
-      <img class="rounded-circle d-block mx-auto mb-3" style="width:150px;height:150px;" src="/assets/default.png"/>
+      <div class="edit-photo-container">
+        <%=image_tag(@user.image_url, class:'rounded-circle d-block mx-auto mb-3', style: "width:150px;height:150px;")%>
+        <% if current_user.own_profile?(@user) %>
+        <a href="#" data-toggle="modal" data-target="#uploadAvatar" class="edit-photo nav-link font-weight-bold text-light bg-dark px-1">Edit Photo</a>
+        <% end %>
+      </div>
       <h5 class="user-name font-weight-bold text-center">
         <%=@user.name%>
         <% if current_user.own_profile?(@user) %>
@@ -26,11 +31,20 @@
   </div>
 </div>
 
+<%= render partial: 'users/edit/edit_photo' %>
+
 <script>
   $('.user-name').children('#editName').hide();
   $('.user-name').on('mouseover', function(){
     $(this).children('#editName').show();
   }).on('mouseleave', function(){
     $(this).children('#editName').hide();
+  });
+
+  $('.edit-photo').hide();
+  $('.edit-photo-container').children().on('mouseover', function(){
+    $('.edit-photo').show();
+  }).on('mouseleave', function(){
+    $('.edit-photo').hide();
   });
 </script>

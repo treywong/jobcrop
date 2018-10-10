@@ -2,10 +2,11 @@ class UsersController < Clearance::UsersController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			flash[:success] = 'Welcome!'
-			redirect_to root_path
+			flash[:success] = "Welcome #{@user.name}!"
+			sign_in @user
+			redirect_to home_path
 		else
-			flash[:danger] = 'Something is wrong'
+			flash[:danger] = "Something is wrong. #{@user.errors.full_messages.to_sentence}"
 			redirect_back(fallback_location: root_path)
 		end
 	end
@@ -88,7 +89,8 @@ class UsersController < Clearance::UsersController
 			:password,
 			:detail,
 			:image,
-			:checklist
+			:checklist,
+			:remote_image_url
 		)
 	end
 end
