@@ -1,0 +1,31 @@
+<div class="d-flex flex-row">
+  <h5 class="card-title font-weight-bold m-0 mr-auto"><%=experience.position%></h5>
+  <%=link_to edit_user_experience_path(@user.id, experience.id), id: "editExperience-#{experience.id}", remote:true do%>
+    <i class="edit fas fa-pen"></i>
+  <% end %>
+  <%=link_to user_experience_path(@user.id, experience.id), id: "removeExperience-#{experience.id}", method: 'DELETE', remote:true, data: {confirm: "Are you sure about removing this experience?"} do%>
+    <i class="edit fas fa-trash-alt"></i>
+  <% end %>
+</div>
+<a class="font-weight-bold" href="#"><%=experience.company%></a>
+<div class="d-flex flex-row">
+  <p class="text-muted mr-auto"><%=experience.location%></p>
+  <% if experience.currently_working == 1 %>
+    <p class="text-muted ml-auto small-font"><%=experience.start_date.strftime('%b %Y')%> - Present</p>
+  <% else %>
+    <p class="text-muted ml-auto small-font"><%=experience.start_date.strftime('%b %Y')%> - <%=experience.end_date.strftime('%b %Y')%></p>
+  <% end %>
+</div>
+<p class="text-muted"><%=experience.description%></p>
+
+<script>
+$('#editExperience-<%=experience.id%>').hide();
+$('#removeExperience-<%=experience.id%>').hide();
+$('#experience-card-<%=experience.id%>').on('mouseover', function(){
+  $('#editExperience-<%=experience.id%>').show();
+  $('#removeExperience-<%=experience.id%>').show();
+}).on('mouseleave', function(){
+  $('#editExperience-<%=experience.id%>').hide();
+  $('#removeExperience-<%=experience.id%>').hide();
+})
+</script>

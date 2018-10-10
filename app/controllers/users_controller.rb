@@ -11,26 +11,9 @@ class UsersController < Clearance::UsersController
 		end
 	end
 
-	def profile
-		@user = User.find_by_id(current_user.id)
-
-		@education = Education.find_by(user_id: current_user.id)
-		@education = Education.all
-
-		@experience = Experience.find_by(user_id: current_user.id)
-		@experience = Experience.all
-
-		@skill = Skill.find_by(user_id: current_user.id)
-		@skill = Skill.all
-
-		@project = Project.find_by(user_id: current_user.id)
-		@project = Project.all
-
-	end
-
-
 	def show
 		@user = User.find(params[:id])
+		@experiences = Experience.where(user_id: @user.id)
 	end
 
 	def update
@@ -43,20 +26,6 @@ class UsersController < Clearance::UsersController
       redirect_back(fallback_location: users_path)
     end
   end
-
-	def education
-		@user = User.find(params[:user_id])
-		respond_to do |format|
-		  format.js
-		end
-	end
-
-	def experiences
-		@user = User.find(params[:user_id])
-		respond_to do |format|
-		  format.js
-		end
-	end
 
 	def about_me
 		@user = User.find(params[:user_id])

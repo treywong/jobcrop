@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_090454) do
+ActiveRecord::Schema.define(version: 2018_10_10_163000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,20 +43,18 @@ ActiveRecord::Schema.define(version: 2018_10_10_090454) do
   end
 
   create_table "experiences", force: :cascade do |t|
-    t.string "job_title"
-    t.string "company_name"
+    t.string "position"
+    t.string "company"
     t.string "location"
-    t.string "specialization"
-    t.string "role"
     t.string "country"
-    t.integer "monthly_salary"
-    t.string "position_level"
-    t.date "started_at"
-    t.date "ended_at"
-    t.text "job_description"
+    t.integer "salary"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "currently_working", default: 0
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 

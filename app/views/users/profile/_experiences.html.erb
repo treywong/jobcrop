@@ -1,40 +1,45 @@
 <div class="experience-section">
-  <div class="card">
+  <div class="card header-card">
     <div class="card-body">
-      <h5 class="font-weight-bold m-0">Experiences</h5>
-    </div>
-  </div>
-
-  <div class="card my-2">
-    <div class="card-body">
-      <h5 class="card-title font-weight-bold">Position</h5>
-      <a class="font-weight-bold" href="#">Company</a>
       <div class="d-flex flex-row">
-        <p class="text-muted mr-auto">Location</p>
-        <p class="text-muted ml-auto">From - To</p>
+        <h5 class="font-weight-bold m-0 mr-auto">Experiences</h5>
+        <i class="text-primary fas fa-plus add-experience" style="font-size:23px;"></i>
       </div>
     </div>
   </div>
 
-  <div class="card my-2">
-    <div class="card-body">
-      <h5 class="card-title font-weight-bold">Position</h5>
-      <a class="font-weight-bold" href="#">Company</a>
-      <div class="d-flex flex-row">
-        <p class="text-muted mr-auto">Location</p>
-        <p class="text-muted ml-auto">From - To</p>
-      </div>
-    </div>
-  </div>
+  <%=render partial: 'users/profile/create_experience.html.erb'%>
 
-  <div class="card my-2">
-    <div class="card-body">
-      <h5 class="card-title font-weight-bold">Position</h5>
-      <a class="font-weight-bold" href="#">Company</a>
-      <div class="d-flex flex-row">
-        <p class="text-muted mr-auto">Location</p>
-        <p class="text-muted ml-auto">From - To</p>
+  <% if @experiences %>
+    <% @experiences.order(start_date: :desc).each do |experience| %>
+    <div class="card my-2">
+      <div class="card-body" id="experience-card-<%=experience.id%>">
+        <%= render partial: 'experiences/experience_card', locals: {experience: experience} %>
       </div>
     </div>
+    <% end %>
+  <% else %>
+  <div class="card my-2">
+    <div class="card-body">
+      <p class="text-black-50 m-0">
+        Uh Oh! There is nothing here but dust.<br/> Add your working experiences for
+        a better chance on landing the career of your dreams.
+      </p>
+    </div>
   </div>
+  <% end %>
 </div>
+
+<script>
+$('.add-experience').hide();
+$('.header-card').on('mouseover', function(){
+  $('.add-experience').show();
+}).on('mouseleave', function(){
+  $('.add-experience').hide();
+})
+
+$('#create-experience').hide();
+$('.add-experience').on('click', function(){
+  $('#create-experience').show();
+})
+</script>

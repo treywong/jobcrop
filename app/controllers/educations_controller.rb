@@ -1,7 +1,10 @@
 class EducationsController < ApplicationController
 
-	def new
-		@education = Education.new
+	def index
+		@user = User.find(params[:user_id])
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	def show
@@ -51,5 +54,3 @@ class EducationsController < ApplicationController
 	end
 
 end
-
-

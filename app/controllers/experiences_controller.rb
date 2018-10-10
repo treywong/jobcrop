@@ -1,50 +1,66 @@
 class ExperiencesController < ApplicationController
-
-	def new
-		@experience = Experience.new
-	end
-
-	def show
-		@experience = Experience.find(params[:id])
+	def index
+		@user = User.find(params[:user_id])
+		@experiences = Experience.where(user_id: @user.id)
+		respond_to do |format|
+		  format.js
+		end
 	end
 
 	def create
-		@experience = Experience.new(experience_params)
-		@experience.user_id = current_user.id
+		@user = current_user
+		@experience = @user.experiences.build(experience_params)
 
 		if @experience.save
-			flash[:success] = "Added experience"
-			redirect_to users_profile_path
+			flash[:success] = "Experience added!"
+			redirect_back(fallback_location: @user)
 		else
-			flash[:error] = "Can't save, try again"
-			render 'new'
+			flash[:error] = "Something wrong. #{@experience.errors.full_messages.to_sentence}"
+			redirect_back(fallback_location: @user)
 		end
 	end
 
 	def edit
+		@user = User.find(params[:user_id])
 		@experience = Experience.find(params[:id])
+		respond_to do |format|
+		  format.js
+		end
 	end
 
 	def update
+		@user = User.find(params[:user_id])
 		@experience = Experience.find(params[:id])
-
 		if @experience.update(experience_params)
-			flash[:success] = "updated experience"
+			flash[:success] = "Experience Updated"
+			respond_to do |format|
+			  format.js
+			end
 		else
-			flash[:error] = "Experience not updated, try again."
-			render 'edit'
+			flash[:error] = "Something wrong. #{@experience.errors.full_messages.to_sentence}"
 		end
 	end
 
 	def destroy
 		@experience = Experience.find(params[:id])
 		@experience.destroy
-
-		redirect_to users_profile_path
+		respond_to do |format|
+			format.js
+		end
 	end
 
-	private 
+	private
 	def experience_params
-		params.require(:experience).permit(:job_title, :company_name, :location, :specialization, :role, :country, :monthly_salary, :position_level, :started_at, :ended_at, :job_description)
+		params.require(:experience).permit(
+			:position,
+			:company,
+			:location,
+			:country,
+			:salary,
+			:start_date,
+			:end_date,
+			:description,
+			:currently_working
+		)
 	end
 end

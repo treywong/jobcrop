@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
   resources :users, controller: "users", only: [:update, :create, :show] do
-    get "/education" => 'users#education'
-    get "/experiences" => 'users#experiences'
+      resources :educations
+      resources :experiences
+      resources :skills
+      resources :projects
     get "/about_me" => 'users#about_me'
     get "/edit_name" => 'users#edit_name'
     get "/edit_detail" => 'users#edit_detail'
@@ -18,19 +20,15 @@ Rails.application.routes.draw do
       controller: "passwords",
       only: [:create, :edit, :update]
   end
-
-  # homepage
-  get "users/home"
-  root "users#home"
-
-  # userprofile route
-  get "users/profile"
+  # 
+  # # homepage
+  # get "users/home"
+  # root "users#home"
+  #
+  # # userprofile route
+  # get "users/profile"
 
   resources :users, only: [:profile] do
-  	resources :educations
-    resources :experiences
-    resources :skills
-    resources :projects
   end
 
   get "users/home"
