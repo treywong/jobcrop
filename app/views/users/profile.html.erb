@@ -68,7 +68,7 @@
 		<td><%= link_to 'Edit', edit_user_experience_path(@user.id, experience.id) %></td>
 
 		<!-- delete -->
-		<td><%= link_to 'Delete', user_experience_path(@user.id, experience.id) %></td>
+		<td><%= link_to 'Delete', user_experience_path(@user.id, experience.id), method: :delete, data: { confirm: 'Are you sure?'}  %></td>
 	</tr>
 		<% end %>
 </table>
@@ -95,10 +95,9 @@
 			<td><%= skill.proficiency %></td>
 			<td><%= link_to 'Show', user_skill_path(@user.id, skill.id) %></td>
 			<td><%= link_to 'Edit', edit_user_skill_path(@user.id, skill.id) %></td>
-
+			<td><%= link_to 'Delete', user_skill_path(@user.id, skill.id), method: :delete, data: { confirm: 'Are you sure?'}  %></td>
 		</tr>
-		<% end %>
-
+			<% end %>
 	</table>
 
 
