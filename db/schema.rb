@@ -15,9 +15,6 @@ ActiveRecord::Schema.define(version: 2018_10_10_090454) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "job_id"
