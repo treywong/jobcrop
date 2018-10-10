@@ -1,0 +1,24 @@
+<% content_for :navbar_user do %>
+  <% if signed_in? %>
+    <%= render partial: "navbar/user_navbar" %>
+  <% else %>
+    <%= render partial: "navbar/visitor_navbar" %>
+  <% end %>
+<% end %>
+
+<div class="container mt-4">
+  <%= render partial: 'jobs/searchbar' %>
+  <%= render partial: 'users/profile/header' %>
+  <div class="user-profile">
+    <div class="row mt-3">
+      <div class="col-8">
+        <%=render partial: 'users/profile/experiences'%>
+      </div>
+      <div class="col-4">
+        <%= render partial: "users/profile/contact" %>
+        <%= render partial: "users/profile/skills" %>
+        <%= render partial: "users/profile/projects" %>
+      </div>
+    </div>
+  </div>
+</div>

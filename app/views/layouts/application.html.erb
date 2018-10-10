@@ -19,8 +19,8 @@
       <%= yield(:navbar_user) %>
     <% end %>
     <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
+      <% flash.each do |key, value| -%>
+      <div class="alert alert-<%= key %> text-middle"><%=h value %></div>
       <% end %>
     </div>
     <%= yield %>
