@@ -1,0 +1,6 @@
+<%= form_with scope: :user, url: user_path(@user.id), method: 'PATCH' do |form| %>
+<div class="form-inline">
+  <%= form.text_field :phone, class: 'form-control bg-light border-0 mr-2', placeholder: 'Phone' %>
+  <%= form.submit "Apply", class: 'btn btn-sm btn-outline-primary' %>
+</div>
+<% end %>

@@ -15,6 +15,9 @@ ActiveRecord::Schema.define(version: 2018_10_10_090454) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "job_id"
@@ -93,12 +96,13 @@ ActiveRecord::Schema.define(version: 2018_10_10_090454) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "fullname"
-    t.string "role"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "role", default: "jobhunter"
     t.string "email"
+    t.string "phone"
+    t.date "birthday"
     t.string "password"
-    t.string "password_digest"
     t.string "detail"
     t.string "image"
     t.string "checklist", array: true
