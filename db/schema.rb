@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_020403) do
+ActiveRecord::Schema.define(version: 2018_10_08_083950) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "job_id"
+    t.bigint "user_id"
+    t.bigint "job_id"
     t.datetime "booked_at"
-    t.string "files"
+    t.string "files", array: true
     t.string "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,22 +27,39 @@ ActiveRecord::Schema.define(version: 2018_10_09_020403) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "jobs", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.string "description"
-    t.string "requirement"
-    t.integer "salary"
-    t.string "image"
-    t.datetime "session"
+    t.string "logo"
+    t.string "location"
+    t.string "website"
+    t.integer "telephone"
+    t.integer "company_size"
+    t.string "industry"
+    t.string "overview"
+    t.string "join_us"
+    t.string "photos", array: true
+    t.datetime "session", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "location"
-    t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.bigint "company_id"
+    t.string "name"
+    t.string "work_location"
+    t.string "description"
+    t.string "responsibility"
+    t.integer "work_hour_start"
+    t.integer "work_hour_end"
+    t.integer "salary"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.bigint "company_id"
     t.string "fullname"
     t.string "role"
     t.string "email"
@@ -47,9 +67,14 @@ ActiveRecord::Schema.define(version: 2018_10_09_020403) do
     t.string "password_digest"
     t.string "detail"
     t.string "image"
-    t.string "checklist"
+    t.string "checklist", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_users_on_company_id"
   end
 
+  add_foreign_key "bookings", "jobs"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "jobs", "companies"
+  add_foreign_key "users", "companies"
 end

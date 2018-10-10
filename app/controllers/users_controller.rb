@@ -3,5 +3,3 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 end
-
-#database: 'db/development.sqlite3'

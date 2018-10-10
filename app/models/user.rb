@@ -1,4 +1,5 @@
 class User < ApplicationRecord
-	has_many :jobs
+	
+	belongs_to :company
 	has_many :bookings
 end

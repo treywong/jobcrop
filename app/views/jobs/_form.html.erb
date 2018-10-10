@@ -1,0 +1,35 @@
+<div class="text-field">
+  <p>Job title</p>
+  <%= form.text_field :name %>
+</div>
+
+<div class="text-field">
+  <p>Work location</p>
+  <%= form.text_field :work_location %>
+</div>
+
+<div class="text-field">
+  <p>Description</p>
+  <%= form.trix_editor :description %>
+</div>
+
+<div class="text-field">
+  <p>Responsibility</p>
+  <%= form.trix_editor :responsibility %>
+</div>
+
+<div class="time-field">
+  <p>Work hour</p>
+  <%= form.time_field :work_hour_start %>
+  <%= form.time_field :work_hour_end %>
+</div>
+
+<div class="number-field">
+  <p>Salary</p>
+  <%= form.number_field :salary %>
+</div>
+
+<div class="file-field">
+  <p>Image</p>
+  <%= form.file_field :image %>
+</div>

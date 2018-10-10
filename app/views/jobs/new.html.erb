@@ -1,0 +1,11 @@
+
+<!-- Employer can only create job -->
+
+<h1>Post your job application</h1>
+<%= form_for @job, url: {controller: "jobs", action: "create", method: "post" } do |form| %>
+	<%= render partial: '/jobs/form', object: form %>
+
+	<div class="submit-field">
+		<%= form.submit %>
+	</div>
+<% end %>
