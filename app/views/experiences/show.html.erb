@@ -1,0 +1,55 @@
+<!-- shows experience info -->
+
+<h2>Experience</h2>
+
+<%= link_to 'Back', users_profile_path %>
+
+<table>
+	
+		<tr>
+		<%= @experience.job_title %>
+		</tr>
+
+		<tr>
+		<%= @experience.company_name %>
+		</tr> 
+
+		<tr>
+		<%= @experience.location %>
+		</tr> 
+
+		<tr>
+		<%= @experience.specialization %>
+		</tr>
+
+		<tr>
+		<%= @experience.role %>
+		</tr>
+
+		<tr>
+		<%= @experience.country %>
+		</tr>
+
+		<tr>
+		<%= @experience.monthly_salary %>
+		</tr>
+
+		<tr>
+		<%= @experience.position_level %>
+		</tr>
+
+		<tr>
+		<%= @experience.started_at %>
+		</tr>
+
+		<tr>
+		<%= @experience.ended_at %>	
+		</tr>
+		
+		<tr>
+		<%= @experience.job_description %>
+		</tr>
+	
+
+
+</table>

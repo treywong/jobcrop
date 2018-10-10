@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_163752) do
+ActiveRecord::Schema.define(version: 2018_10_10_090454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,39 @@ ActiveRecord::Schema.define(version: 2018_10_08_163752) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "educations", force: :cascade do |t|
+    t.string "institute_name"
+    t.string "qualification"
+    t.date "graduation_date"
+    t.string "location"
+    t.string "education_field"
+    t.string "major"
+    t.string "grade"
+    t.text "more_information"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_educations_on_user_id"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string "job_title"
+    t.string "company_name"
+    t.string "location"
+    t.string "specialization"
+    t.string "role"
+    t.string "country"
+    t.integer "monthly_salary"
+    t.string "position_level"
+    t.date "started_at"
+    t.date "ended_at"
+    t.text "job_description"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_experiences_on_user_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"
@@ -38,6 +71,25 @@ ActiveRecord::Schema.define(version: 2018_10_08_163752) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "project_name"
+    t.string "image"
+    t.string "project_details"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "skill_name"
+    t.string "proficiency"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_skills_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,6 +108,12 @@ ActiveRecord::Schema.define(version: 2018_10_08_163752) do
     t.string "encrypted_password", limit: 128
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128
+    t.string "nationality"
+    t.string "country"
+    t.string "state"
+    t.string "experience_level"
+    t.integer "expected_salary"
+    t.string "specialization"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

@@ -1,0 +1,30 @@
+
+<!-- form for users educations -->
+
+<%= form_for [current_user, @education] do |f| %>
+	
+	<%= f.label :institute_name %>
+	<%= f.text_field :institute_name %>
+
+	<%= f.label :qualification %>
+	<%= f.text_field :qualification %>
+
+	<%= f.label :graduation_date %>
+	<%= f.date_field :graduation_date %>
+
+	<%= f.label :location %>
+	<%= f.text_field :location %>
+
+	<%= f.label :major %>
+	<%= f.text_field :major %>
+
+	<%= f.label :grade %>
+	<%= f.text_field :grade %>
+
+	<%= f.label :more_information %>
+	<%= f.text_field :more_information %>
+
+	<%= f.submit %>
+	
+
+<% end %>

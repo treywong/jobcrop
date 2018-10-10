@@ -1,0 +1,17 @@
+<!-- show for skill (id) -->
+
+<h2>Skills</h2>
+
+<%= link_to 'Profile', users_profile_path %>
+
+<table>
+		<th>Skills</th>
+		<th>Proficiency</th>
+		
+	<% @skill.each do |skill| %>
+		<tr>
+			<td><%= skill.skill_name %></td>
+			<td><%= skill.proficiency %></td>
+		</tr>	
+	<% end %>
+</table>
