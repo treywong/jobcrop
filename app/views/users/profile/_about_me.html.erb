@@ -1,0 +1,32 @@
+<div class="about-me-section">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="font-weight-bold m-0">About Me</h5>
+    </div>
+  </div>
+
+  <div class="card my-2">
+    <div class="card-body about-me">
+      <p class="card-text">
+        <%if @user.detail%>
+          <%= @user.detail %>
+        <% else %>
+          <p class="text-muted">Write something about yourself.</p>
+        <% end %>
+        <% if current_user.own_profile?(@user) %>
+          <%=link_to user_edit_detail_path(@user.id), id: "editDetail", remote:true do%>
+            <i class="edit fas fa-pen"></i>
+          <% end %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    $('.about-me').children().children('#editDetail').hide();
+    $('.about-me').on('mouseover', function(){
+      $(this).children().children('#editDetail').show();
+    }).on('mouseleave', function(){
+      $(this).children().children('#editDetail').hide();
+    });
+  </script>

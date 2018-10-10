@@ -1,0 +1,23 @@
+<%= form_with(scope: :experience, url: user_experience_path(@user.id, @experience.id), method: 'PATCH' ) do |f| %>
+  <%= f.text_field :position, placeholder: "Title", class: 'form-control bg-light border-0 my-2' %>
+  <%= f.text_field :company, placeholder: "Company Name", class: 'form-control bg-light border-0 my-2' %>
+  <%= f.text_field :location, placeholder: "Location", class: 'form-control bg-light border-0 my-2' %>
+  <%= f.text_field :country, placeholder: "Country", class: 'form-control bg-light border-0 my-2' %>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <div class="input-group-text my-2 border-0">RM</div>
+    </div>
+    <%= f.text_field :salary, placeholder: "Salary per month", class: 'form-control bg-light border-0 my-2' %>
+  </div>
+  <div class="form-inline">
+    <p class="m-0 mx-2 text-muted">From</p>
+    <%= f.date_field :start_date, order: [:day, :month, :year], class: 'form-control bg-light border-0 my-2' %>
+    <p class="m-0 mx-2 text-muted">to</p>
+    <%= f.date_field :end_date, order: [:day, :month, :year], class: 'form-control bg-light border-0 my-2' %>
+    <p class="m-0 mx-2 text-muted">Currently working?</p>
+    <%= f.check_box :currently_working %>
+  </div>
+  <%= f.text_area :description, placeholder: "Description", class: 'form-control bg-light border-0 my-2' %>
+  <%= f.submit "Apply", class: 'btn btn-outline-secondary my-2' %>
+  <%= link_to "Cancel", user_path(@user), class: 'mx-2' %>
+<% end %>

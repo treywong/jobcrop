@@ -1,12 +1,13 @@
 class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
-    	t.string :username
-    	t.string :fullname
-    	t.string :role
+    	t.string :first_name
+    	t.string :last_name
+    	t.string :role, default: "jobhunter"
     	t.string :email
+      t.string :phone
+      t.date :birthday
     	t.string :password
-    	t.string :password_digest
     	t.string :detail
     	t.string :image
     	t.string :checklist, array: true

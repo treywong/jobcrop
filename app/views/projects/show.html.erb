@@ -1,0 +1,17 @@
+<h2>Project</h2>
+
+<%= link_to 'Profile', users_profile_path %>
+
+<table>
+		<th>Project name</th>
+		<th>Project details</th>
+		<th>Image</th>
+		
+	
+		<tr>
+			<td><%= @project.project_name %></td>
+			<td><%= @project.project_details %></td>
+			<td><%= @project.image %></td>
+		</tr>	
+	
+</table>

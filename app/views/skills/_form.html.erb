@@ -1,0 +1,15 @@
+
+<!-- for for users skills -->
+
+<%= form_for [current_user, @skill] do |f| %>
+	
+	<%= f.label :skill_name %>
+	<%= f.text_field :skill_name %>
+
+	<%= f.label :proficiency %>
+	<%= f.text_field :proficiency %>
+
+	<%= f.submit %>
+	
+
+<% end %>

@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2018_10_10_163000) do
 
-ActiveRecord::Schema.define(version: 2018_10_08_163752) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "job_id"
+    t.bigint "user_id"
+    t.bigint "job_id"
     t.datetime "booked_at"
-    t.string "files"
+    t.string "files", array: true
     t.string "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,38 +27,96 @@ ActiveRecord::Schema.define(version: 2018_10_08_163752) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "educations", force: :cascade do |t|
+    t.string "institute_name"
+    t.string "qualification"
+    t.date "graduation_date"
+    t.string "location"
+    t.string "education_field"
+    t.string "major"
+    t.string "grade"
+    t.text "more_information"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_educations_on_user_id"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string "position"
+    t.string "company"
+    t.string "location"
+    t.string "country"
+    t.integer "salary"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "currently_working", default: 0
+    t.index ["user_id"], name: "index_experiences_on_user_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "name"
     t.string "description"
     t.string "requirement"
     t.integer "salary"
     t.string "image"
-    t.datetime "session"
+    t.datetime "session", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "fullname"
-    t.string "role"
-    t.string "email"
-    t.string "password"
-    t.string "password_digest"
-    t.string "detail"
+  create_table "projects", force: :cascade do |t|
+    t.string "project_name"
     t.string "image"
-    t.string "checklist"
+    t.string "project_details"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "skill_name"
+    t.string "proficiency"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_skills_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "role", default: "jobhunter"
+    t.string "email"
+    t.string "phone"
+    t.date "birthday"
+    t.string "password"
+    t.string "detail"
+    t.string "image"
+    t.string "checklist", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "encrypted_password", limit: 128
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128
+    t.string "nationality"
+    t.string "country"
+    t.string "state"
+    t.string "experience_level"
+    t.integer "expected_salary"
+    t.string "specialization"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
-
   end
 
+  add_foreign_key "bookings", "jobs"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "jobs", "users"
 end

@@ -1,0 +1,56 @@
+<div class="card contact">
+  <div class="card-body">
+    <p class="card-title m-0 font-weight-bold">Contact Information</p>
+    <hr/>
+    <ul class="contact-details list-unstyled">
+      <li>
+        <div id="email-<%=@user.id%>" class="my-4">
+          <p class="">
+            <% if @user.email %>
+              <%=@user.email%>
+            <% else %>
+              <span class="text-muted">No email.</span>
+            <% end %>
+            <% if current_user.own_profile?(@user) %>
+              <%=link_to user_edit_email_path(@user.id), id: "editEmail", remote:true do%>
+                <i class="edit fas fa-pen"></i>
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+      </li>
+      <li>
+        <div id="phone-<%=@user.id%>">
+          <p class="">
+          <% if @user.phone %>
+            <%=@user.phone%>
+          <% else %>
+            <span class="text-muted">No phone number.</span>
+          <% end %>
+          <% if current_user.own_profile?(@user) %>
+            <%=link_to user_edit_phone_path(@user.id), id: "editPhone", remote:true do%>
+              <i class="edit fas fa-pen"></i>
+            <% end %>
+          <% end %>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('#email-<%=@user.id%>').children().children('#editEmail').hide();
+  $('#email-<%=@user.id%>').on('mouseover', function(){
+    $(this).children().children('#editEmail').show();
+  }).on('mouseleave', function(){
+    $(this).children().children('#editEmail').hide();
+  });
+
+  $('#phone-<%=@user.id%>').children().children('#editPhone').hide();
+  $('#phone-<%=@user.id%>').on('mouseover', function(){
+    $(this).children().children('#editPhone').show();
+  }).on('mouseleave', function(){
+    $(this).children().children('#editPhone').hide();
+  });
+</script>
