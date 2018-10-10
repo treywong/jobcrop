@@ -9,19 +9,13 @@
     <hr class="my-1"/>
     <ul class="nav mx-auto">
       <li class="nav-item mx-4">
-        <a class="nav-link active" href="#">
-          Experiences
-        </a>
+        <%= link_to "Experiences", user_experiences_path(@user.id), class: 'nav-link', remote:true %>
       </li>
       <li class="nav-item mx-4">
-        <a class="nav-link" href="#">
-          Education
-        </a>
+        <%= link_to "Education", user_education_path(@user.id), class: 'nav-link', remote:true %>
       </li>
       <li class="nav-item mx-4">
-        <a class="nav-link" href="#">
-          Personal
-        </a>
+        <%= link_to "About Me", user_about_me_path(@user.id), class: 'nav-link', remote:true %>
       </li>
     </ul>
   </div>

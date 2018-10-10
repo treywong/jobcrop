@@ -14,6 +14,27 @@ class UsersController < Clearance::UsersController
 		@user = User.find(params[:id])
 	end
 
+	def education
+		@user = User.find(params[:user_id])
+		respond_to do |format|
+		  format.js
+		end
+	end
+
+	def experiences
+		@user = User.find(params[:user_id])
+		respond_to do |format|
+		  format.js
+		end
+	end
+
+	def about_me
+		@user = User.find(params[:user_id])
+		respond_to do |format|
+			format.js
+		end
+	end
+
 
 	private
 

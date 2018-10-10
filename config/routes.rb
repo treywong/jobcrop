@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
   resources :users, controller: "users", only: [:create, :show] do
+    get "/education" => 'users#education'
+    get "/experiences" => 'users#experiences'
+    get "/about_me" => 'users#about_me'
     resource :password,
       controller: "passwords",
       only: [:create, :edit, :update]
