@@ -100,8 +100,34 @@
 			<% end %>
 	</table>
 
+		<!-- Projects -->
 
+		<table>
+			<tr>
+				<th><h3>Projects</h3></th>
+				<th></th>
+			</tr>
 
+			<!-- add project -->
+			<td><%= link_to 'Add project', new_user_project_path(@user.id) %></td>
+			<!-- show -->
+			<tr>
+				<th>Project name</th>
+				<th>Project details</th>
+			</tr>
+
+				<% @project.each do |project| %>
+			<tr>
+				<td><%= project.project_name %></td>
+				<td><%= project.project_details %></td>
+				<td><%= link_to 'show', user_project_path(@user.id, project.id) %></td>
+
+				<td><%= link_to 'edit', edit_user_project_path(@user.id, project.id) %></td>
+				<td><%= link_to 'delete', user_project_path(@user.id, project.id), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+			</tr>
+				<% end %>
+
+		</table>
 
 
 

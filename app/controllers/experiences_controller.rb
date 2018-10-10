@@ -21,7 +21,6 @@ class ExperiencesController < ApplicationController
 		end
 	end
 
-
 	def edit
 		@experience = Experience.find(params[:id])
 	end

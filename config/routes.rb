@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   	resources :educations
     resources :experiences
     resources :skills
+    resources :projects
   end
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"

@@ -14,6 +14,10 @@ class UsersController < Clearance::UsersController
 
 		@skill = Skill.find_by(user_id: current_user.id)
 		@skill = Skill.all
+
+		@project = Project.find_by(user_id: current_user.id)
+		@project = Project.all
+
 	end
 
 	
