@@ -10,6 +10,10 @@ class UsersController < Clearance::UsersController
 		end
 	end
 
+	def show
+		@user = User.find(params[:id])
+	end
+
 
 	private
 
