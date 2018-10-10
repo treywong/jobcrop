@@ -7,4 +7,8 @@ class User < ApplicationRecord
   def name
     "#{self.first_name} #{self.last_name}"
   end
+
+  def own_profile?(user)
+    self.id == user.id
+  end
 end

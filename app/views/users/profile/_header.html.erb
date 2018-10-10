@@ -4,8 +4,10 @@
       <img class="rounded-circle d-block mx-auto mb-3" style="width:150px;height:150px;" src="/assets/default.png"/>
       <h5 class="user-name font-weight-bold text-center">
         <%=@user.name%>
-        <%=link_to user_edit_name_path(@user.id), id: "editName", remote:true do%>
-          <i class="edit fas fa-pen"></i>
+        <% if current_user.own_profile?(@user) %>
+          <%=link_to user_edit_name_path(@user.id), id: "editName", remote:true do%>
+            <i class="edit fas fa-pen"></i>
+          <% end %>
         <% end %>
       </h5>
     </div>

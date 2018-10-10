@@ -11,8 +11,10 @@
             <% else %>
               <span class="text-muted">No email.</span>
             <% end %>
-            <%=link_to user_edit_email_path(@user.id), id: "editEmail", remote:true do%>
-              <i class="edit fas fa-pen"></i>
+            <% if current_user.own_profile?(@user) %>
+              <%=link_to user_edit_email_path(@user.id), id: "editEmail", remote:true do%>
+                <i class="edit fas fa-pen"></i>
+              <% end %>
             <% end %>
           </p>
         </div>
@@ -20,14 +22,16 @@
       <li>
         <div id="phone-<%=@user.id%>">
           <p class="">
-            <% if @user.phone %>
-              <%=@user.phone%>
-            <% else %>
-             <span class="text-muted">No phone number.</span>
-           <% end %>
+          <% if @user.phone %>
+            <%=@user.phone%>
+          <% else %>
+            <span class="text-muted">No phone number.</span>
+          <% end %>
+          <% if current_user.own_profile?(@user) %>
             <%=link_to user_edit_phone_path(@user.id), id: "editPhone", remote:true do%>
               <i class="edit fas fa-pen"></i>
             <% end %>
+          <% end %>
           </p>
         </div>
       </li>
