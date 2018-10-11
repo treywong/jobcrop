@@ -36,11 +36,11 @@
 <%= render partial: 'users/edit/edit_photo' %>
 
 <script>
-  $('.user-name').children('#editName').hide();
+  $('.user-name').children().children('#editName').hide();
   $('.user-name').on('mouseover', function(){
-    $(this).children('#editName').show();
+    $(this).children().children('#editName').show();
   }).on('mouseleave', function(){
-    $(this).children('#editName').hide();
+    $(this).children().children('#editName').hide();
   });
 
   $('.edit-photo').hide();
