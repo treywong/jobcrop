@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body">
       <div class="edit-photo-container">
-        <%=image_tag(@user.avatar_url, class:'rounded-circle d-block mx-auto mb-3', style: "width:150px;height:150px;")%>
+        <%=image_tag(@user.avatar_url(:thumb_profile), class:'rounded-circle d-block mx-auto mb-3', style: "width:150px;height:150px;")%>
         <% if current_user.own_profile?(@user) %>
         <a href="#" data-toggle="modal" data-target="#uploadAvatar" class="edit-photo nav-link font-weight-bold text-light bg-dark px-1">Edit Photo</a>
         <% end %>
