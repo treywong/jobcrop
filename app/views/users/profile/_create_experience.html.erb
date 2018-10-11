@@ -2,10 +2,9 @@
   <div class="card-body">
     <p class="card-title font-weight-bold">New Experience</p>
     <%= form_with(scope: :experience, url: user_experiences_path(@user.id), method: 'POST' ) do |f| %>
-      <%= f.text_field :position, placeholder: "Title", class: 'form-control bg-light border-0 my-2' %>
+      <%= f.text_field :title, placeholder: "Title", class: 'form-control bg-light border-0 my-2' %>
       <%= f.text_field :company, placeholder: "Company Name", class: 'form-control bg-light border-0 my-2' %>
       <%= f.text_field :location, placeholder: "Location", class: 'form-control bg-light border-0 my-2' %>
-      <%= f.text_field :country, placeholder: "Country", class: 'form-control bg-light border-0 my-2' %>
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text my-2 border-0">RM</div>

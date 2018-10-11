@@ -1,5 +1,5 @@
 <div class="d-flex flex-row">
-  <h5 class="card-title font-weight-bold m-0 mr-auto"><%=experience.position%></h5>
+  <h5 class="card-title font-weight-bold m-0 mr-auto"><%=experience.title%></h5>
   <%=link_to edit_user_experience_path(@user.id, experience.id), id: "editExperience-#{experience.id}", remote:true do%>
     <i class="edit fas fa-pen"></i>
   <% end %>

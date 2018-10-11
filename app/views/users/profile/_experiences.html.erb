@@ -10,7 +10,7 @@
 
   <%=render partial: 'users/profile/create_experience.html.erb'%>
 
-  <% if @experiences %>
+  <% if @experiences.any? %>
     <% @experiences.order(start_date: :desc).each do |experience| %>
     <div class="card my-2">
       <div class="card-body" id="experience-card-<%=experience.id%>">

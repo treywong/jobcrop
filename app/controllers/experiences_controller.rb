@@ -42,11 +42,10 @@ class ExperiencesController < ApplicationController
 	end
 
 	def destroy
+		@user = User.find(params[:user_id])
 		@experience = Experience.find(params[:id])
 		@experience.destroy
-		respond_to do |format|
-			format.js
-		end
+		redirect_back(fallback_location: @user)
 	end
 
 	private
