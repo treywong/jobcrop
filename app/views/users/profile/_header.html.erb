@@ -7,14 +7,16 @@
         <a href="#" data-toggle="modal" data-target="#uploadAvatar" class="edit-photo nav-link font-weight-bold text-light bg-dark px-1">Edit Photo</a>
         <% end %>
       </div>
-      <h5 class="user-name font-weight-bold text-center">
-        <%=@user.name%>
-        <% if current_user.own_profile?(@user) %>
-          <%=link_to user_edit_name_path(@user.id), id: "editName", remote:true do%>
+      <div class="user-name">
+        <h5 class="font-weight-bold text-center">
+          <%=@user.name%>
+          <% if current_user.own_profile?(@user) %>
+            <%=link_to user_edit_name_path(@user.id), id: "editName", remote:true do%>
             <i class="edit fas fa-pen"></i>
+            <% end %>
           <% end %>
-        <% end %>
-      </h5>
+        </h5>
+      </div>
     </div>
     <hr class="my-1"/>
     <ul class="nav mx-auto">
