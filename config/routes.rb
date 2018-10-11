@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :projects
     get "/about_me" => 'users#about_me'
     get "/edit_name" => 'users#edit_name'
-    get "/edit_detail" => 'users#edit_detail'
+    get "/edit_about_me" => 'users#edit_about_me'
     get "/edit_email" => 'users#edit_email'
     get "/edit_phone" => 'users#edit_phone'
     patch "/add_skill" => 'users#add_skill'

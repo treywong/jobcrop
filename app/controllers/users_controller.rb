@@ -20,10 +20,14 @@ class UsersController < Clearance::UsersController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile successfully updated!"
-      redirect_back(fallback_location: users_path)
+      respond_to do |format|
+        format.js
+      end
     else
       flash[:danger] = @user.errors.full_messages.to_sentence
-      redirect_back(fallback_location: users_path)
+			respond_to do |format|
+        format.js
+      end
     end
   end
 
@@ -41,7 +45,7 @@ class UsersController < Clearance::UsersController
 		end
 	end
 
-	def edit_detail
+	def edit_about_me
 		@user = User.find(params[:user_id])
 		respond_to do |format|
 			format.js
