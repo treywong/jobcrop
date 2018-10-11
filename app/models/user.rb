@@ -1,15 +1,15 @@
 class User < ApplicationRecord
   include Clearance::User
-
-  include Clearance::User
   mount_uploader :image, AvatarUploader
 
-	has_many :jobs
-	has_many :bookings
-	has_many :experiences
-	has_many :educations
-	has_many :skills
-	has_many :projects
+	has_many :languages, dependent: :destroy
+	has_many :experiences, dependent: :destroy
+	has_many :educations, dependent: :destroy
+	has_many :skills, dependent: :destroy
+	has_many :projects, dependent: :destroy
+
+  has_one :employer, dependent: :destroy
+  has_one :jobhunter, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
