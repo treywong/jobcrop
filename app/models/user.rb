@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
+
+  include Clearance::User
   mount_uploader :image, AvatarUploader
 
 	has_many :jobs
