@@ -1,20 +1,31 @@
 <div class="card skills my-2">
   <div class="card-body">
-    <p class="card-title m-0 font-weight-bold">Skills</p>
+    <div id="skillsTitle" class="d-flex flex-row">
+      <p class="card-title m-0 font-weight-bold mr-auto">Skills</p>
+      <i class="text-primary fas fa-plus add-skills" style="font-size:18px;" id="addSkill" data-toggle='dropdown'></i>
+      <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby='#addSkill'>
+          <%= render 'users/add/add_skills' %>
+      </div>
+    </div>
     <hr/>
-    <div class="d-flex flex-wrap flex-row">
-      <div class="skills-tag">
-        <p class="m-0">HTML</p>
+    <div id="skillsTrain" class="d-flex flex-wrap flex-row">
+      <% @user.skill_list.each_with_index do |skill, index| %>
+      <div class="skills-tag d-flex flex-row">
+        <p class="m-0 mx-1"><%=skill%></p>
+        <%=link_to user_remove_skill_path(@user.id, index), method: "delete", class: 'd-block my-auto text-white' do %>
+          <i class="mx-1 small-font fas fa-times my-auto d-block"></i>
+        <% end %>
       </div>
-      <div class="skills-tag">
-        <p class="m-0">Javascript</p>
-      </div>
-      <div class="skills-tag">
-        <p class="m-0">RoR</p>
-      </div>
-      <div class="skills-tag">
-        <p class="m-0">React</p>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
+
+<script>
+$('.add-skills').hide();
+$('#skillsTitle').on('mouseover', function(){
+  $('.add-skills').show();
+}).on('mouseleave', function(){
+  $('.add-skills').hide();
+})
+</script>
