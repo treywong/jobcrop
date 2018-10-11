@@ -69,15 +69,17 @@ class UsersController < Clearance::UsersController
 		params.require(:user).permit(
 			:first_name,
 			:last_name,
-			:role,
+			:birthday,
 			:email,
 			:phone,
-			:birthday,
+			:avatar,
 			:password,
-			:detail,
-			:image,
-			:checklist,
-			:remote_image_url
+			:about_me,
+			:address,
+			:state,
+			:zipcode,
+			:country,
+			:remote_avatar_url
 		)
 	end
 end

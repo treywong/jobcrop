@@ -52,10 +52,9 @@ class ExperiencesController < ApplicationController
 	private
 	def experience_params
 		params.require(:experience).permit(
-			:position,
+			:title,
 			:company,
 			:location,
-			:country,
 			:salary,
 			:start_date,
 			:end_date,

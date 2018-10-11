@@ -50,7 +50,15 @@ class EducationsController < ApplicationController
 
 	private
 	def education_params
-		params.require(:education).permit(:institute_name,:qualification, :graduation_date, :location, :education_field, :major, :grade, :more_information)
+		params.require(:education).permit(
+			:institute,
+			:qualification,
+			:location,
+			:major,
+			:description,
+			:graduation_year,
+			:currently_studying
+		)
 	end
 
 end

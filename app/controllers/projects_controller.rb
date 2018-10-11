@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
 		end
 	end
 
-	def edit 
+	def edit
 		@project = Project.find(params[:id])
 	end
 
@@ -46,7 +46,10 @@ class ProjectsController < ApplicationController
 
 	private
 	def project_params
-		params.require(:project).permit(:project_name, :image, :project_details)
+		params.require(:project).permit(
+			:name,
+			:description
+		)
 	end
 
 
