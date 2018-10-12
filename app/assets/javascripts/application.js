@@ -45,11 +45,11 @@ $(document).on("turbolinks:load", function(){
 document.addEventListener('ajax:beforeSend', function(event) {
   $(".spinner").show();
   $(".job-list").hide();
-  console.log('start')
+  $(".search-intro").hide();
+  $(".no-result-card").hide();
 })
 
 document.addEventListener('ajax:success', function(event) {
   $(".spinner").hide();
   $(".job-list").show();
-  console.log('end')
 })

@@ -1,62 +1,72 @@
-<%@resultjs.each do |result|%>
-  <li>
-    <div class="job-list card my-2">
-      <div class="row">
-        <div class="col-2">
-          <div class="card-body">
-            <img src="<%=result[:image]%>" class="d-block mx-auto" style="width:55px;height:55px;"/>
-            <p class="my-2 border p-1 font-weight-bold reviews text-center small-font">120 <i class="far fa-smile"></i></p>
+<% if @resultjs.any? && @resultgd.any? %>
+  <%@resultjs.each do |result|%>
+    <li>
+      <div class="job-list card my-2">
+        <div class="row">
+          <div class="col-2">
+            <div class="card-body">
+              <img src="<%=result[:image]%>" class="d-block mx-auto" style="width:55px;height:55px;"/>
+              <p class="my-2 border p-1 font-weight-bold reviews text-center small-font">120 <i class="far fa-smile"></i></p>
+            </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="card-body pl-0">
-            <a href="<%=result[:link]%>" target="_blank">
-              <h5 class="text-primary card-title mb-1"><strong><%=result[:title]%></strong></h5>
-            </a>
-            <p class="my-1 small-font"><%=result[:company]%></p>
-            <p class="my-1 text-muted small-font"><%=result[:location]%></p>
+          <div class="col-6">
+            <div class="card-body pl-0">
+              <a href="<%=result[:link]%>" target="_blank">
+                <h5 class="text-primary card-title mb-1"><strong><%=result[:title]%></strong></h5>
+              </a>
+              <p class="my-1 small-font"><%=result[:company]%></p>
+              <p class="my-1 text-muted small-font"><%=result[:location]%></p>
+            </div>
           </div>
-        </div>
-        <div class="col-4">
-          <div class="card-body">
-            <a href="<%=result[:link]%>" target="_blank" class="btn btn-jobstreet text-white">Apply at Jobstreet.com</a>
-            <br/>
-            <br/>
-            <p class=" m-0 mt-2 text-center text-muted"><%=result[:created_at]%></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </li>
-<% end %>
-<%@resultgd.each do |result|%>
-  <li>
-    <div class="job-list card my-2">
-      <div class="row">
-        <div class="col-2">
-          <div class="card-body">
-            <img src="<%=result[:image]%>" class="d-block mx-auto" style="width:55px;height:55px;"/>
-            <p class="my-2 border p-1 font-weight-bold reviews text-center small-font">120 <i class="far fa-smile"></i></p>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="card-body pl-0">
-            <a href="<%=result[:link]%>" target="_blank">
-              <h5 class="text-primary card-title mb-1"><strong><%=result[:title]%></strong></h5>
-            </a>
-            <p class="my-1 small-font"><%=result[:company]%></p>
-            <p class="my-1 text-muted small-font"><%=result[:location]%></p>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card-body">
-            <a href="<%=result[:link]%>" target="_blank" class="btn btn-glassdoor text-white">Apply at Glassdoor.com</a>
-            <br/>
-            <br/>
-            <p class=" m-0 mt-2 text-center text-muted"><%=result[:created_at]%></p>
+          <div class="col-4">
+            <div class="card-body">
+              <a href="<%=result[:link]%>" target="_blank" class="d-block ml-auto btn btn-jobstreet text-white font-weight-bold">Apply at Jobstreet.com</a>
+              <br/>
+              <br/>
+              <p class=" m-0 mt-2 text-center text-muted"><%=result[:created_at]%></p>
+            </div>
           </div>
         </div>
       </div>
+    </li>
+  <% end %>
+  <%@resultgd.each do |result|%>
+    <li>
+      <div class="job-list card my-2">
+        <div class="row">
+          <div class="col-2">
+            <div class="card-body">
+              <img src="<%=result[:image]%>" class="d-block mx-auto" style="width:55px;height:55px;"/>
+              <p class="my-2 border p-1 font-weight-bold reviews text-center small-font">120 <i class="far fa-smile"></i></p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card-body pl-0">
+              <a href="<%=result[:link]%>" target="_blank">
+                <h5 class="text-primary card-title mb-1"><strong><%=result[:title]%></strong></h5>
+              </a>
+              <p class="my-1 small-font"><%=result[:company]%></p>
+              <p class="my-1 text-muted small-font"><%=result[:location]%></p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card-body">
+              <a href="<%=result[:link]%>" target="_blank" class="btn d-block ml-auto btn-glassdoor text-white font-weight-bold">Apply at Glassdoor.com</a>
+              <br/>
+              <br/>
+              <p class=" m-0 mt-2 text-center text-muted"><%=result[:created_at]%></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+<% else %>
+<li>
+  <div class="no-result-card card">
+    <div class="card-body">
+      <p class="m-0 text-secondary">“Life is too short for us to dwell on sadness. Cheer up and live life to the fullest.” (No Result Found)</p>
     </div>
-  </li>
+  </div>
+</li>
 <% end %>
