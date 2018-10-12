@@ -23,3 +23,41 @@
 $(document).on("turbolinks:load", function(){
   $('#flash').fadeOut(5000)
 })
+
+// $( document ).ready(function() {
+//
+//   // hide spinner
+//   $(".spinner").hide();
+//
+//
+//   // show spinner on AJAX start
+//   $(document).ajaxStart(function(){
+//     $(".spinner").show();
+//   });
+//
+//   // hide spinner on AJAX stop
+//   $(document).ajaxStop(function(){
+//     $(".spinner").hide();
+//   });
+//
+// });
+
+// $(document).on("page:fetch", function(){
+//   $(".spinner").show();
+// });
+//
+// $(document).on("page:receive", function(){
+//   $(".spinner").hide();
+// });
+
+document.addEventListener('ajax:beforeSend', function(event) {
+  $(".spinner").show();
+  $(".job-list").hide();
+  console.log('start')
+})
+
+document.addEventListener('ajax:success', function(event) {
+  $(".spinner").hide();
+  $(".job-list").show();
+  console.log('end')
+})
