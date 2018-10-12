@@ -71,7 +71,5 @@ body {
 }
 
 .results-tab {
-  position: relative;
-  height: 95%;
-  overflow-y: auto;
+  overflow-y: auto!important;
 }
