@@ -12,6 +12,8 @@
 //
 //= require rails-ujs
 //= require jquery3
+//= require jquery.waypoints.min
+//= require inview.min
 //= require popper
 //= require bootstrap
 //= require moment
@@ -22,33 +24,23 @@
 
 $(document).on("turbolinks:load", function(){
   $('#flash').fadeOut(5000)
+
+  $('.features-landing-row').hide();
+
+  $("div.searchbox-landing a").one('click',function(){
+		$('html, body').animate({
+			scrollTop: $(".features-landing").offset().top
+		}, 1000);
+    var inview = new Waypoint.Inview({
+      element: $('.features-landing')[0],
+      exit: function() {
+        $('.features-landing').hide();
+        $('.features-landing-row').fadeIn();
+      }
+    })
+	});
+
 })
-
-// $( document ).ready(function() {
-//
-//   // hide spinner
-//   $(".spinner").hide();
-//
-//
-//   // show spinner on AJAX start
-//   $(document).ajaxStart(function(){
-//     $(".spinner").show();
-//   });
-//
-//   // hide spinner on AJAX stop
-//   $(document).ajaxStop(function(){
-//     $(".spinner").hide();
-//   });
-//
-// });
-
-// $(document).on("page:fetch", function(){
-//   $(".spinner").show();
-// });
-//
-// $(document).on("page:receive", function(){
-//   $(".spinner").hide();
-// });
 
 document.addEventListener('ajax:beforeSend', function(event) {
   $(".spinner").show();
