@@ -20,6 +20,7 @@
 @import "jobs";
 @import "users";
 @import "search";
+@import "spinner";
 
 body {
   background-color: #fafafa;
@@ -44,4 +45,10 @@ body {
 
 .card {
   border-radius: 0;
+}
+
+.results-tab {
+  position: relative;
+  height: 85vh;
+  overflow-y: auto;
 }

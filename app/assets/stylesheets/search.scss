@@ -9,3 +9,41 @@
   color: white;
   font-family: 'Lato', sans-serif;
 }
+
+.search-window {
+  position: absolute;
+  right: 20px;
+  left: 20px;
+  top: 60px;
+  bottom: 20px;
+  background-color: white;
+  z-index: 100;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+.search-window:after, .search-window:before {
+	bottom: 100%;
+	left: 40%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.search-window:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #ffffff;
+	border-width: 10px;
+	margin-left: -30px;
+}
+.search-window:before {
+	border-color: rgba(0, 0, 0, 0);
+	border-bottom-color: rgba(0, 0, 0, 0.125);
+	border-width: 11px;
+	margin-left: -31px;
+}
