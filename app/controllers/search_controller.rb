@@ -3,8 +3,13 @@ class SearchController < ApplicationController
   end
 
   def create
-    @resultjs = Search.parsejs(params[:search][:result])
-    @resultgd = Search.parsegd(params[:search][:result])
+    @results = Array.new
+    resultjs = Search.parsejs(params[:search][:result])
+    @results << resultjs
+    resultgd = Search.parsegd(params[:search][:result])
+    @results << resultgd
+
+    @a = @results.map {|r| r.any?}
     respond_to do |format|
       format.js
     end

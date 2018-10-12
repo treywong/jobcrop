@@ -1,1 +1,5 @@
+<%if @a.include?(true)%>
 $('.results-index').html("<%= j render 'jobs/search_results'%>");
+<%else%>
+$('.results-index').html("<%= j render 'search/no_result'%>");
+<%end%>
