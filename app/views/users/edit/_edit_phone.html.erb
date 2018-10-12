@@ -2,5 +2,6 @@
 <div class="form-inline">
   <%= form.text_field :phone, class: 'form-control bg-light border-0 mr-2', placeholder: 'Phone' %>
   <%= form.submit "Apply", class: 'btn btn-sm btn-outline-primary' %>
+  <%= link_to "Cancel", user_path(@user), class: 'mx-2 small-font' %>
 </div>
 <% end %>

@@ -15,9 +15,15 @@
         <%=render partial: 'users/profile/experiences'%>
       </div>
       <div class="col-4">
-        <%= render partial: "users/profile/contact" %>
-        <%= render partial: "users/profile/skills" %>
-        <%= render partial: "users/profile/projects" %>
+        <div id="contact-<%=@user.id%>">
+          <%= render partial: "users/profile/contact" %>
+        </div>
+        <div id="skills-<%=@user.id%>">
+          <%= render partial: "users/profile/skills" %>
+        </div>
+        <div id="projects-<%=@user.id%>">
+          <%= render partial: "users/profile/projects" %>
+        </div>
       </div>
     </div>
   </div>

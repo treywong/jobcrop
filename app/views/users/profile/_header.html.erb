@@ -2,19 +2,21 @@
   <div class="card">
     <div class="card-body">
       <div class="edit-photo-container">
-        <%=image_tag(@user.image_url, class:'rounded-circle d-block mx-auto mb-3', style: "width:150px;height:150px;")%>
+        <%=image_tag(@user.avatar_url(:thumb_profile), class:'rounded-circle d-block mx-auto mb-3', style: "width:150px;height:150px;")%>
         <% if current_user.own_profile?(@user) %>
         <a href="#" data-toggle="modal" data-target="#uploadAvatar" class="edit-photo nav-link font-weight-bold text-light bg-dark px-1">Edit Photo</a>
         <% end %>
       </div>
-      <h5 class="user-name font-weight-bold text-center">
-        <%=@user.name%>
-        <% if current_user.own_profile?(@user) %>
-          <%=link_to user_edit_name_path(@user.id), id: "editName", remote:true do%>
+      <div class="user-name">
+        <h5 class="font-weight-bold text-center">
+          <%=@user.name%>
+          <% if current_user.own_profile?(@user) %>
+            <%=link_to user_edit_name_path(@user.id), id: "editName", remote:true do%>
             <i class="edit fas fa-pen"></i>
+            <% end %>
           <% end %>
-        <% end %>
-      </h5>
+        </h5>
+      </div>
     </div>
     <hr class="my-1"/>
     <ul class="nav mx-auto">
@@ -34,11 +36,11 @@
 <%= render partial: 'users/edit/edit_photo' %>
 
 <script>
-  $('.user-name').children('#editName').hide();
+  $('.user-name').children().children('#editName').hide();
   $('.user-name').on('mouseover', function(){
-    $(this).children('#editName').show();
+    $(this).children().children('#editName').show();
   }).on('mouseleave', function(){
-    $(this).children('#editName').hide();
+    $(this).children().children('#editName').hide();
   });
 
   $('.edit-photo').hide();

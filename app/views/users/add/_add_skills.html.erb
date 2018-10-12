@@ -1,0 +1,6 @@
+<%= form_with(scope: :user, url: user_add_skill_path(@user.id), method: 'PATCH', class: "w-100 my-2") do |f| %>
+  <%= f.label "Add your skills, separated by comma.", class: 'text-muted small-font' %>
+  <%= f.text_field :skill_list, value: '', class: 'bg-light form-control' %>
+  <%= f.submit "Apply", class: 'btn btn-outline-primary btn-sm my-2' %>
+  <%= link_to "Cancel", user_path(@user), class: 'mx-2 small-font my-2' %>
+<% end %>

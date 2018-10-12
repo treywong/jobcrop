@@ -1,0 +1,28 @@
+<div class="d-flex flex-row">
+  <h5 class="card-title font-weight-bold mr-auto"><%=education.institute%></h5>
+  <%=link_to edit_user_education_path(@user.id, education.id), id: "editEducation-#{education.id}", remote:true do%>
+    <i class="edit fas fa-pen"></i>
+  <% end %>
+  <%=link_to user_education_path(@user.id, education.id), id: "removeEducation-#{education.id}", method: 'DELETE', remote:true, data: {confirm: "Are you sure about removing this education?"} do%>
+    <i class="edit fas fa-trash-alt"></i>
+  <% end %>
+</div>
+<p class="card-text m-0"><%=education.major%></p>
+<p class="card-text"><%=education.qualification%></p>
+<div class="d-flex flex-row">
+  <p class="text-muted mr-auto"><%=education.location%></p>
+  <p class="text-muted ml-auto">Graduation: <%=education.graduation_year%></p>
+</div>
+<p class="card-text"><%=education.description%></p>
+
+<script>
+$('#editEducation-<%=education.id%>').hide();
+$('#removeEducation-<%=education.id%>').hide();
+$('#education-card-<%=education.id%>').on('mouseover', function(){
+  $('#editEducation-<%=education.id%>').show();
+  $('#removeEducation-<%=education.id%>').show();
+}).on('mouseleave', function(){
+  $('#editEducation-<%=education.id%>').hide();
+  $('#removeEducation-<%=education.id%>').hide();
+})
+</script>

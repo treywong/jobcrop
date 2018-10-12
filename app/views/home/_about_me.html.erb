@@ -1,12 +1,12 @@
 <div class="card">
   <div class="card-body">
     <div class="avatar-container-home">
-      <%=image_tag(current_user.image_url, class: "rounded-circle d-block mx-auto", style: "width:200px;height:200px;")%>
+      <%=image_tag(current_user.avatar_url(:thumb_home), class: "rounded-circle d-block mx-auto", style: "width:200px;height:200px;")%>
     </div>
     <div class="user-about-me-home my-2">
       <h5><strong>About Me</strong></h5>
       <p><%=current_user.email%></p>
-      <button class="btn btn-primary font-weight-bold">Update Profile</button>
+      <%= link_to "Update Profile", user_path(current_user.id), method: :get, class: 'btn btn-primary font-weight-bold' %>
       <p class="small-font my-2 text-muted">Last Updated: <%=current_user.updated_at.strftime("%b %e")%></p>
     </div>
   </div>

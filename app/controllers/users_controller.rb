@@ -20,10 +20,14 @@ class UsersController < Clearance::UsersController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile successfully updated!"
-      redirect_back(fallback_location: users_path)
+      respond_to do |format|
+        format.js
+      end
     else
       flash[:danger] = @user.errors.full_messages.to_sentence
-      redirect_back(fallback_location: users_path)
+			respond_to do |format|
+        format.js
+      end
     end
   end
 
@@ -41,7 +45,7 @@ class UsersController < Clearance::UsersController
 		end
 	end
 
-	def edit_detail
+	def edit_about_me
 		@user = User.find(params[:user_id])
 		respond_to do |format|
 			format.js
@@ -62,6 +66,26 @@ class UsersController < Clearance::UsersController
 		end
 	end
 
+	def add_skill
+		@user = User.find(params[:user_id])
+		skills = (params[:user][:skill_list]).split(',').collect{|x| x.strip || x}
+		@user.skill_list.add(skills)
+		if @user.save
+			@user.reload
+			redirect_to @user
+		end
+	end
+
+	def remove_skill
+		@user = User.find(params[:user_id])
+		skill = @user.skill_list[params[:id].to_i]
+		@user.skill_list.remove(skill)
+		if @user.save
+			@user.reload
+			redirect_to @user
+		end
+	end
+
 
 	private
 
@@ -79,6 +103,7 @@ class UsersController < Clearance::UsersController
 			:state,
 			:zipcode,
 			:country,
+			:skill_list,
 			:remote_avatar_url
 		)
 	end

@@ -1,8 +1,0 @@
-<%= form_with scope: :user, url: user_path(@user.id), method: 'PATCH' do |form| %>
-<div class="form-group">
-  <div class="mx-1">
-    <%= form.text_area :detail, class: 'form-control bg-light border-0', placeholder: 'Tell us about yourself.' %>
-  </div>
-</div>
-<%= form.submit "Apply Changes" %>
-<% end %>

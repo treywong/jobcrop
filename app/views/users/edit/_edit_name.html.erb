@@ -7,5 +7,8 @@
     <%= form.text_field :last_name, class: 'form-control bg-light border-0', placeholder: 'Last Name' %>
   </div>
 </div>
-<%= form.submit "Apply Changes" %>
+<div class="d-flex flex-row justify-content-center form-inline">
+  <%= form.submit "Apply", class: 'btn btn-outline-secondary' %>
+  <%= link_to "Cancel", user_path(@user), class: 'mx-2' %>
+</div>
 <% end %>

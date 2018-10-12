@@ -1,5 +1,5 @@
 <%= form_with(scope: :experience, url: user_experience_path(@user.id, @experience.id), method: 'PATCH' ) do |f| %>
-  <%= f.text_field :position, placeholder: "Title", class: 'form-control bg-light border-0 my-2' %>
+  <%= f.text_field :title, placeholder: "Title", class: 'form-control bg-light border-0 my-2' %>
   <%= f.text_field :company, placeholder: "Company Name", class: 'form-control bg-light border-0 my-2' %>
   <%= f.text_field :location, placeholder: "Location", class: 'form-control bg-light border-0 my-2' %>
   <%= f.text_field :country, placeholder: "Country", class: 'form-control bg-light border-0 my-2' %>
