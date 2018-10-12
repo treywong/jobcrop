@@ -1,0 +1,13 @@
+<% content_for :navbar_user do %>
+  <% if signed_in? %>
+    <%= render partial: "navbar/user_navbar" %>
+  <% else %>
+    <%= render partial: "navbar/visitor_navbar" %>
+  <% end %>
+<% end %>
+<div class="container my-3">
+  <%=form_with(scope: :search, url: search_index_path, class: 'form-inline-my-2 my-lg-0') do |f| %>
+    <%=f.text_field :result, class:'form-control border-0 w-100 bg-searchbar py-4', placeholder: 'Super Searchbar'%>
+  <% end %>
+  <div class="search-result"></div>
+</div>
