@@ -1,3 +1,8 @@
-<%=form_with(scope: :search, url: search_index_path, class: 'form-inline w-50') do |f| %>
-  <%=f.text_field :result, class:'form-control border-0 w-100 bg-searchbar', placeholder: 'Super Searchbar'%>
+<%=form_with(scope: :search, url: search_index_path, class: 'col-8 form-inline') do |f| %>
+  <div class="input-group w-100">
+    <div class="input-group-prepend">
+      <span class="input-group-text border-0 bg-searchbar"><i class="text-secondary fas fa-search"></i></span>
+    </div>
+    <%=f.text_field :result, class:' border-0 bg-searchbar', placeholder: 'Go Hunt!'%>
+  </div>
 <% end %>

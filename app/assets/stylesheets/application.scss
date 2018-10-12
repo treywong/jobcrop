@@ -36,7 +36,21 @@ body {
 }
 
 .bg-searchbar {
-  background-color: #ddd;
+  background-color: #eee;
+  padding: 5px 10px 5px 10px;
+  border-radius: 0;
+}
+
+#search_result {
+  width: 90%;
+}
+
+.bg-searchbar:focus {
+  background-color: #eee;
+  outline-style: none!important;
+}
+
+.form-control {
 }
 
 .btn-primary {
