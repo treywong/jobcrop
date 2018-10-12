@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'jobs' => 'jobs#index'
   root 'landing#index'
 
+  resources :search, controller: 'search', only: [:create]
+
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
   resources :users, controller: "users", only: [:update, :create, :show] do
