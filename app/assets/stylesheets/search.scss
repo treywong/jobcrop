@@ -14,7 +14,7 @@
   position: absolute;
   right: 20px;
   left: 20px;
-  top: 60px;
+  top: 70px;
   bottom: 20px;
   background-color: white;
   z-index: 100;
@@ -38,12 +38,12 @@
 .search-window:after {
 	border-color: rgba(255, 255, 255, 0);
 	border-bottom-color: #ffffff;
-	border-width: 10px;
+	border-width: 20px;
 	margin-left: -30px;
 }
 .search-window:before {
 	border-color: rgba(0, 0, 0, 0);
 	border-bottom-color: rgba(0, 0, 0, 0.125);
-	border-width: 11px;
+	border-width: 21px;
 	margin-left: -31px;
 }
