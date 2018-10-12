@@ -1,0 +1,7 @@
+<h1><%= current_company.name %> Job Vacancy</h1>
+<% @job.each do |j| %>
+	<a href="<%= job_detail_path(j.id) %>"><%= j.name %></h2></a>
+	<p><%= j.location %></p>
+	<br>
+<% end %>
+

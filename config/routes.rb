@@ -37,4 +37,12 @@ Rails.application.routes.draw do
   # get "/sign_in" => "sessions#new", as: "sign_in"
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
   get "/sign_up" => "users#new", as: "sign_up"
+
+  # For companies controller
+  get "/employer/company_page" => "companies#company_page", as: "company_page"
+  resources :employer_jobs, controller: "employer_jobs"
+  
+  get "/employer/review_page" => "companies#review_page", as: "review_page"
+  get "/employer/analysis_page" => "companies#analysis_page", as: "analysis_page"
+
 end

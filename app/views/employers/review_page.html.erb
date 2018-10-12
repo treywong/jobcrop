@@ -1,0 +1,8 @@
+<h1><%= current_company.name %> Reviews</h1>
+<% @review.each do |r| %>
+	<%= r.title %></h2> <!-- will need to add title -->
+	<p>by <%= r.jobhunter.user.first_name %> <%= r.jobhunter.user.last_name %></p> <!-- probably need to change jobhunter id to user id -->
+	<p><strong>Rating: <%= r.rating %></strong></p>
+	<p><%= r.description %></p>
+	<br>
+<% end %>
