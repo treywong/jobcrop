@@ -15,6 +15,10 @@
         <%= label_tag "Glassdoor" %>
       </div>
       <div class="form-check">
+        <%= radio_button("search", "filter", "i", {class: 'form-check-input'}) %>
+        <%= label_tag "Indeed" %>
+      </div>
+      <div class="form-check">
         <%= radio_button("search", "filter", "js", {class: 'form-check-input'}) %>
         <%= label_tag "Jobstreet" %>
       </div>
@@ -28,21 +32,31 @@ $('input[name="search[filter]"]').on('change', function(){
     $('div.jc').fadeIn();
     $('div.gd').fadeIn();
     $('div.js').fadeIn();
+    $('div.i').fadeIn();
   }
   else if (this.value == 'jc') {
     $('div.jc').fadeIn();
     $('div.gd').fadeOut();
     $('div.js').fadeOut();
+    $('div.i').fadeOut();
   }
   else if (this.value == 'gd') {
     $('div.gd').fadeIn();
     $('div.js').fadeOut();
     $('div.jc').fadeOut();
+    $('div.i').fadeOut();
+  }
+  else if (this.value == 'i') {
+    $('div.i').fadeIn();
+    $('div.jc').fadeOut();
+    $('div.gd').fadeOut();
+    $('div.js').fadeOut();
   }
   else if (this.value == 'js') {
     $('div.js').fadeIn();
     $('div.jc').fadeOut();
     $('div.gd').fadeOut();
+    $('div.i').fadeOut();
   }
 })
 </script>

@@ -55,4 +55,33 @@ class Search < ApplicationRecord
     end
     return jobs
   end
+
+  def self.parsei(params)
+    documents = Array.new
+    document = open("https://www.indeed.com.my/jobs?q=" + "#{params}" + "&l=Malaysia&sort=date")
+    document_2 = open("https://www.indeed.com.my/jobs?q=" + "#{params}" + "&l=Malaysia&sort=date&start=10")
+    document_3 = open("https://www.indeed.com.my/jobs?q=" + "#{params}" + "&l=Malaysia&sort=date&start=20")
+    documents += [document, document_2, document_3]
+
+    jobs = Array.new
+    documents.each do |document|
+      content = document.read
+      parsed_doc = Nokogiri::HTML(content)
+      parsed_doc.css('td#resultsCol > div.row.result').each do |result|
+        job = {
+          id: 'i',
+          site: 'Indeed.com.my',
+          class: 'btn-indeed',
+          title: result.css('h2.jobtitle').css('a').text,
+          company: result.css('span.company').text,
+          location: result.css('div.location').text,
+          created_at: result.css('span.date').text,
+          image: 'https://pbs.twimg.com/profile_images/539816754722004993/6IS4WIhR_400x400.jpeg',
+          link: "https://www.indeed.com.my" + result.css('a.turnstileLink').attribute('href').value
+        }
+        jobs << job
+      end
+    end
+    return jobs
+  end
 end
