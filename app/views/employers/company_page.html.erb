@@ -19,10 +19,12 @@
 <hr>
 
 <h2>Latest Update</h2>
-<h3><%= @timeline.title %></h3>
-<% if @timeline.photo != nil %>
-	<%= image_tag(@timeline.photo) %>
+<% if @timeline %>
+	<h3><%= @timeline.title %></h3>
+	<% if @timeline.photo != nil %>
+		<%= image_tag(@timeline.photo) %>
+	<% end %>
+	<p><%= sanitize @timeline.description %></p>
 <% end %>
-<p><%= sanitize @timeline.description %></p>
 
-<%= link_to 'Edit your company profile', edit_employer_path(@company.id) %>
+<%= link_to 'Edit your company profile', edit_user_employer_path(@company.id) %>

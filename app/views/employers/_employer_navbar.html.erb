@@ -1,6 +1,6 @@
 
 <% if @company.logo != nil %>
-	<%= image_tag(@company.logo) %><br>
+	<%= image_tag(@company.logo_url) %><br>
 <% end %>
 <%= link_to 'Company Page', company_page_path(@company.id) %> |
 <%= link_to 'Job Page', job_page_path(@company.id) %> |

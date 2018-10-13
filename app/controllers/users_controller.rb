@@ -11,6 +11,25 @@ class UsersController < Clearance::UsersController
 		end
 	end
 
+	def create_pre_employer
+		@user = User.new(user_params)
+		if @user.save
+			flash[:success] = "Welcome #{@user.name}!"
+			sign_in @user
+			redirect_to
+		else
+			flash[:danger] = "Something is wrong. #{@user.errors.full_messages.to_sentence}"
+			redirect_back(fallback_location: root_path)
+		end
+	end
+
+	# For Pre Employer Sign Up
+	def new
+		respond_to do |format|
+		  format.js
+		end
+	end
+
 	def show
 		@user = User.find(params[:id])
 		@experiences = Experience.where(user_id: @user.id)

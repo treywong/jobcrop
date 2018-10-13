@@ -2,6 +2,27 @@ class EmployersController < ApplicationController
 	def index
 	end
 
+	def new
+		@user = current_user
+		@employer = current_user.employer
+		if signed_out?
+			redirect_to root_path
+		end
+	end
+
+	def create
+		@user = User.find(params[:user_id])
+		@employer = @user.build_employer(employer_params)
+
+		if @employer.save
+			respond_to do |format|
+			  format.js
+			end
+		else
+			redirect_back(fallback_location: new_user_employer_path)
+		end
+	end
+
 
 	def company_page
 
@@ -141,6 +162,13 @@ class EmployersController < ApplicationController
 	end
 
 	private
+	def employer_params
+		params.require(:employer).permit(
+			:title,
+			:preferences
+		)
+	end
+
 	def company_params
 		params.require(:company).permit(:name, :website, :telephone, :background, :location, :size, :logo)
 	end

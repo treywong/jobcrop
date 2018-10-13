@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
-  resources :users, controller: "users", only: [:update, :create, :show] do
+  resources :users, controller: "users", only: [:update, :create, :show, :new] do
       resources :educations
       resources :experiences
       resources :skills
@@ -24,9 +24,8 @@ Rails.application.routes.draw do
     resource :password,
       controller: "passwords",
       only: [:create, :edit, :update]
-  end
 
-  resources :users, only: [:profile] do
+    resources :employer, controller: "employers", only: [:edit, :update, :create]
   end
 
   get "users/home"
@@ -39,12 +38,15 @@ Rails.application.routes.draw do
   get "/employer/company/:id/timeline_page" => "employer_timelines#index", as: "timeline_page"
   get "/employer/company/:id/review_page" => "employers#review_page", as: "review_page"
   get "/employer/company/:id/analysis_page" => "employers#analysis_page", as: "analysis_page"
-
+  get "/employer" => 'employers#index', as: 'employer_index'
+  get "/employer/new" => 'employers#new', as: 'new_employer'
   delete "/employer_jobs/:id" => "employer_jobs#delete", as: "delete_employer_job"
   delete "/employer_timelines/:id" => "employer_timelines#delete", as: "delete_employer_timeline"
 
-  resources :employer, controller: "employers", only: [:index, :edit, :update]
+
+  post '/user-pre-employer' => 'users#create_pre_employer', as: 'create_pre_employer'
   resources :employer_jobs, controller: "employer_jobs"
   resources :employer_timelines, controller: "employer_timelines"
+  resources :company, controller: "companies", only: [:new, :create]
 
 end

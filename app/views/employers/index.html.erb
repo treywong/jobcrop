@@ -14,6 +14,20 @@
     </blockquote>
     <hr class="my-4">
     <p class="text-light text-center">JobCrop makes it simple for employers to find the right candidate for the right position.</p>
-    <a class="btn btn-primary btn-lg d-block mx-auto" href="#" role="button">Learn more</a>
+    <ul class="list-inline d-block mx-auto">
+      <li class="list-inline-item">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </li>
+      <li class="list-inline-item">
+        <% if signed_in?%>
+          <%=link_to "Become an Employer", new_employer_path, class: 'btn btn-primary btn-lg'%>
+        <% else %>
+          <% if Clearance.configuration.allow_sign_up? %>
+            <%= link_to 'Become an Employer', sign_up_path, class: 'btn btn-primary btn-lg', data: {toggle: 'modal', target: '#signup_employer'} %>
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
   </div>
 </div>
+<%= render partial: "/pre_employer_signup" %>
