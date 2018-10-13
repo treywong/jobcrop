@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: jobcrop_production
-  username: jobcrop
-  password: <%= ENV['JOBCROP_DATABASE_PASSWORD'] %>
+  username: qwerqy
+  password: 
