@@ -1,6 +1,10 @@
 class EmployersController < ApplicationController
+	def index
+	end
+
+
 	def company_page
-			
+
 		@company = Company.find_by_id(params[:id])
 		@follower = Follow.all.where(company_id: params[:id])
 		@timeline = CompanyTimeline.all.where(company_id: params[:id]).last
@@ -32,7 +36,7 @@ class EmployersController < ApplicationController
 
 	def analysis_page
 		# Check topfunky/gruff gem to create the pi chart
-		# Will use gender, age, 
+		# Will use gender, age,
 		@company = Company.find_by_id(params[:id])
 		@follower = Follow.all.where(company_id: @company.id)
 

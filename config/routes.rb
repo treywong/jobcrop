@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   delete "/employer_jobs/:id" => "employer_jobs#delete", as: "delete_employer_job"
   delete "/employer_timelines/:id" => "employer_timelines#delete", as: "delete_employer_timeline"
 
-  resources :employers, controller: "employers", only: [:edit, :update]
+  resources :employer, controller: "employers", only: [:index, :edit, :update]
   resources :employer_jobs, controller: "employer_jobs"
   resources :employer_timelines, controller: "employer_timelines"
 

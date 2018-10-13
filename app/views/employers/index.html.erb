@@ -1,0 +1,19 @@
+<% content_for :navbar_user do %>
+  <% if signed_in? %>
+    <%= render partial: "navbar/user_navbar" %>
+  <% else %>
+    <%= render partial: "navbar/visitor_employer_navbar" %>
+  <% end %>
+<% end %>
+<div class="cover-employer-landing">
+  <div class="jumbotron employer-jumbotron d-flex flex-column justify-content-center">
+    <h1 class="display-4 text-light text-center">Hire the right people with the right talent.</h1>
+    <blockquote class="blockquote">
+      <p class="lead text-light text-center">“It is not titles that honor men, but men that honor titles.”</p>
+      <div class="blockquote-footer text-center"><cite title="Source Title"> Niccolo Machiavelli</cite></div>
+    </blockquote>
+    <hr class="my-4">
+    <p class="text-light text-center">JobCrop makes it simple for employers to find the right candidate for the right position.</p>
+    <a class="btn btn-primary btn-lg d-block mx-auto" href="#" role="button">Learn more</a>
+  </div>
+</div>
