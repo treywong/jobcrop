@@ -53,7 +53,6 @@ gem 'carrierwave-aws'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 
-<<<<<<< HEAD
 # SEARCH ENGINE
 gem 'httparty'
 
@@ -62,13 +61,13 @@ gem 'pry'
 gem 'nokogiri'
 
 gem 'kaminari'
-=======
+
+
 gem 'trix'
 
 gem 'chartkick'
 
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
->>>>>>> d4550015d137a34b83f71ba9ce46ccb82eae7de6
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
