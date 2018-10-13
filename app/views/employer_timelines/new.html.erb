@@ -1,0 +1,11 @@
+
+<%= link_to 'Back', :back %>
+
+<h1>Post your new company update</h1>
+<%= form_for @timeline, url: {controller: "employer_timelines", action: "create", method: "post" } do |form| %>
+	<%= render partial: '/employer_timelines/form', object: form %>
+
+	<div class="submit-field">
+		<%= form.submit %>
+	</div>
+<% end %>

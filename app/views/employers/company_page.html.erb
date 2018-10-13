@@ -1,10 +1,10 @@
 
-<%= image_tag(@company.logo.url) %>
-<h1><%= @company.name %></h1> <!-- will need to add company name -->
-<p><%= @company.background %></p>
+<%= render partial: "employers/employer_navbar" %>
+<h1><%= @company.name %></h1>
+<p><%= sanitize @company.background %></p>
 <p>Followers: <%= @follower.count %>
 
-<p><strong>Industry:</strong> <%= @company.industry %></p> <!-- will need to add company industry -->
+
 <p><strong>Company size:</strong> About <%= @company.size %> people</p>
 <p><strong>Website:</strong> <%= @company.website %></p>
 <p><strong>Phone number:</strong> <%= @company.telephone %></p>
@@ -15,20 +15,14 @@
 <h2>Company Photos</h2>
 
 <!-- Will add company photos -->
-<% @photos.each do |p| %>
-	<%= image_tag(p.url) %>
-<% end %>
-
 
 <hr>
 
-<h2>Company Update</h2>
-
-<!-- Will add company latest update as well as a link for all their updates -->
-
-<% @timeline.each do |t| %>
-	<%= t.title %></h2>
-	<%= image_tag(t.photo.url) %>
-	<p><%= t.description %></p>
-	<br>
+<h2>Latest Update</h2>
+<h3><%= @timeline.title %></h3>
+<% if @timeline.photo != nil %>
+	<%= image_tag(@timeline.photo) %>
 <% end %>
+<p><%= sanitize @timeline.description %></p>
+
+<%= link_to 'Edit your company profile', edit_employer_path(@company.id) %>

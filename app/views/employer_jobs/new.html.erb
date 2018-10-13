@@ -1,3 +1,6 @@
+
+<%= link_to 'Back', :back %>
+
 <h1>Post your job application</h1>
 <%= form_for @job, url: {controller: "employer_jobs", action: "create", method: "post" } do |form| %>
 	<%= render partial: '/employer_jobs/form', object: form %>

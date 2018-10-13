@@ -1,0 +1,12 @@
+
+<%= render partial: "employers/employer_navbar" %>
+<h1><%= @timeline.title %></h1>
+<% if @timeline.photo != nil %>
+	<%= image_tag(@timeline.photo) %>
+<% end %>
+<p><%= sanitize @timeline.description %></p>
+
+<%= link_to 'Edit', edit_employer_timeline_path(@timeline.id) %> |
+<%= link_to 'Delete', delete_employer_timeline_path(@timeline.id), method: :delete, data: {confirm: "Are you sure?" } %> |
+<p>Posted on <%= @timeline.created_at %></p>
+<p>Updated on <%= @timeline.updated_at %></p>
