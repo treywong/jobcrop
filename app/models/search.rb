@@ -113,4 +113,31 @@ class Search < ApplicationRecord
     end
     return jobs
   end
+
+  def self.parsejstore(params)
+    adjusted_params = params.gsub!(/\s+/, '-')
+    document = open("https://www.jobstore.com/my/search-jobs?keyword=#{params}&location=")
+    content = document.read
+    parsed_doc = Nokogiri::HTML(content)
+    jobs = Array.new
+    parsed_doc.css('div.search_result_box').css('div.search_job_ranked').each do |result|
+      image = result.css('div.search_job_logo > div').attribute('style').value.split(' ')[5]
+      if image.include?('background:url')
+        parsed_image = image.split('/').slice(2..-1).join('/').chomp(')')
+      end
+      job = {
+        id: 'jstore',
+        site: 'Jobstore.com',
+        class: 'btn-jobstore',
+        link: result.css('a').attribute('href').value,
+        title: result.css('h2.search_job_title').text,
+        company: result.css('p.search_job_companyname').text,
+        location: result.css('div.search_job_location').text,
+        created_at: result.css('div.search_job_status').text,
+        image: "https://#{parsed_image}"
+      }
+      jobs << job
+    end
+    return jobs
+  end
 end
