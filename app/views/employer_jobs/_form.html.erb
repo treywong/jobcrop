@@ -1,0 +1,25 @@
+<div class="text-field">
+  <p>Job title</p>
+  <%= form.text_field :title %>
+</div>
+
+<div class="text-field">
+  <p>Details</p>
+  <input id="job_detail" type="hidden" value="<%= @job.details %>" name="job[details]">
+  <trix-editor input="job_detail"></trix-editor> <!-- If this doesn't work, might need to ask mentor again -->
+</div>
+
+<div class="text-field">
+  <p>Location</p>
+  <%= form.text_area :location %>
+</div>
+
+<div class="number-field">
+  <p>Salary</p>
+  <%= form.number_field :salary %>
+</div>
+
+<div class="file-field">
+  <p>Photo</p>
+  <%= form.file_field :photos %>
+</div>

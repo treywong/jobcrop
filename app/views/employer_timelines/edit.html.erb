@@ -1,0 +1,11 @@
+
+<%= link_to 'Back', :back %>
+
+<h1>Update your timeline</h1>
+<%= form_for @timeline, url: {controller: "employer_timelines", action: "update", method: "patch" } do |form| %>
+	<%= render partial: '/employer_timelines/form', object: form %>
+
+	<div class="submit-field">
+		<%= form.submit %>
+	</div>
+<% end %>

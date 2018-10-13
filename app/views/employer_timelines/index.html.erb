@@ -1,0 +1,15 @@
+
+<%= render partial: "employers/employer_navbar" %>
+
+<%= link_to 'New Update', new_employer_timeline_path %>
+
+
+<% @timeline.each do |t| %>
+	<a href="<%= employer_timeline_path(t.id) %>"><h2><%= t.title %></h2></a>
+	<% if t.photo != nil %>
+		<%= image_tag(t.photo) %>
+	<% end %>
+	<p><%= sanitize t.description %></p>
+	<p>Posted on <%= t.created_at %></p>
+	<hr>
+<% end %>

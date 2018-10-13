@@ -1,0 +1,28 @@
+
+<%= render partial: "employers/employer_navbar" %>
+<h1><%= @company.name %></h1>
+<p><%= sanitize @company.background %></p>
+<p>Followers: <%= @follower.count %>
+
+
+<p><strong>Company size:</strong> About <%= @company.size %> people</p>
+<p><strong>Website:</strong> <%= @company.website %></p>
+<p><strong>Phone number:</strong> <%= @company.telephone %></p>
+<p><strong>Location:</strong> <%= @company.location %></p>
+
+<hr>
+
+<h2>Company Photos</h2>
+
+<!-- Will add company photos -->
+
+<hr>
+
+<h2>Latest Update</h2>
+<h3><%= @timeline.title %></h3>
+<% if @timeline.photo != nil %>
+	<%= image_tag(@timeline.photo) %>
+<% end %>
+<p><%= sanitize @timeline.description %></p>
+
+<%= link_to 'Edit your company profile', edit_employer_path(@company.id) %>

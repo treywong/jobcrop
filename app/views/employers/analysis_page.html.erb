@@ -1,0 +1,10 @@
+
+<%= render partial: "employers/employer_navbar" %>
+<h1>Analysis Review</h1>
+<h2>Based on your <%= @follower.count %> followers</h2>
+
+<% @database.each_with_index do |data,index| %>
+	<h3><%= @data_title[index] %></h3>
+	<%= pie_chart(data) %>
+	<hr>
+<% end %>

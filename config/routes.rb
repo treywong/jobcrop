@@ -40,4 +40,19 @@ Rails.application.routes.draw do
   # get "/sign_in" => "sessions#new", as: "sign_in"
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
   get "/sign_up" => "users#new", as: "sign_up"
+
+  # For employer
+  get "/employer/company/:id/company_page" => "employers#company_page", as: "company_page"
+  get "/employer/company/:id/job_page" => "employer_jobs#index", as: "job_page"
+  get "/employer/company/:id/timeline_page" => "employer_timelines#index", as: "timeline_page"
+  get "/employer/company/:id/review_page" => "employers#review_page", as: "review_page"
+  get "/employer/company/:id/analysis_page" => "employers#analysis_page", as: "analysis_page"
+
+  delete "/employer_jobs/:id" => "employer_jobs#delete", as: "delete_employer_job"
+  delete "/employer_timelines/:id" => "employer_timelines#delete", as: "delete_employer_timeline"
+
+  resources :employers, controller: "employers", only: [:edit, :update]
+  resources :employer_jobs, controller: "employer_jobs"
+  resources :employer_timelines, controller: "employer_timelines"
+
 end

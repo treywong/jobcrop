@@ -1,0 +1,10 @@
+
+<% if @company.logo != nil %>
+	<%= image_tag(@company.logo) %><br>
+<% end %>
+<%= link_to 'Company Page', company_page_path(@company.id) %> |
+<%= link_to 'Job Page', job_page_path(@company.id) %> |
+<%= link_to 'Timeline Page', timeline_page_path(@company.id) %> |
+<%= link_to 'Review Page', review_page_path(@company.id) %> |
+<%= link_to 'Analysis Page', analysis_page_path(@company.id) %> |
+<br>

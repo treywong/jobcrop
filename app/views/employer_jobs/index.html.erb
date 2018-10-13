@@ -1,0 +1,17 @@
+
+<%= render partial: "employers/employer_navbar" %>
+
+<%= link_to 'New Job', new_employer_job_path %>
+
+<h1><%= @company.name %> Job Vacancy</h1>
+<% @job.each do |j| %>
+	<a href="<%= employer_job_path(j.id) %>"><%= j.title %></h2></a>
+	<p><%= j.location %></p>
+
+	<p>Posted on <%= j.created_at %></p>
+
+	<%= link_to 'Edit', edit_employer_job_path(j.id) %> |
+	<%= link_to 'Delete', delete_employer_job_path(j.id), method: :delete, data: {confirm: "Are you sure?" } %> |
+	<hr>
+<% end %>
+

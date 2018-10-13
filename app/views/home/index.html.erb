@@ -7,3 +7,7 @@
     <%= render partial: 'home/jobs_dashboard' %>
   </div>
 </div>
+
+<% if Employer.find_by(user_id: current_user.id) %>
+	<%= link_to 'Employer Page', company_page_path(@company.id) %>
+<% end %>

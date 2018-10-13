@@ -1,4 +1,4 @@
-module EmployersHelper
+module EmployerJobsHelper
 	def current_employer
 		if session[:user_id]
 			Employer.find_by(user_id: session[:user_id])
