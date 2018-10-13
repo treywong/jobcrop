@@ -25,19 +25,11 @@ Rails.application.routes.draw do
       controller: "passwords",
       only: [:create, :edit, :update]
   end
-  #
-  # # homepage
-  # get "users/home"
-  # root "users#home"
-  #
-  # # userprofile route
-  # get "users/profile"
 
   resources :users, only: [:profile] do
   end
 
   get "users/home"
-  # get "/sign_in" => "sessions#new", as: "sign_in"
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
   get "/sign_up" => "users#new", as: "sign_up"
 
