@@ -84,4 +84,33 @@ class Search < ApplicationRecord
     end
     return jobs
   end
+
+  def self.parsefj(params)
+    adjusted_params = params.gsub!(/\s+/, '-')
+    document = open("https://www.fastjobs.my/malaysia-jobs/#{params}-jobs-search")
+    content = document.read
+    parsed_doc = Nokogiri::HTML(content)
+    jobs = Array.new
+    parsed_doc.css('div.jobs').css('a.adbox').each do |result|
+        array = result.css('div.job-post').css('p.coyinfo').text.split(' ')
+        a = array.index('Posted')
+        created_at = array.slice(a..-1)
+        job = {
+          id: 'fj',
+          site: 'Fastjob.my',
+          class: 'btn-fastjob',
+          link: result.attribute('href').value,
+          title: result.css('div.job-post').css('h2').first.text,
+          company: result.css('div.job-post').css('p.coyinfo > span > strong').first.text,
+          location: result.css('div.job-post').css('ul.job-tag').css('li').first.text,
+          created_at: created_at.join(' '),
+          image: result.css('div.job-post').css('img.img-coylogo').attribute('data-src').value
+        }
+        if job[:image] == "/img/basic/default-logo-company.png"
+          job[:image] = "https://www.fastjobs.my/img/basic/default-logo-company.png"
+        end
+        jobs << job
+    end
+    return jobs
+  end
 end
