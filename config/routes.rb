@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'landing#index'
 
   resources :search, controller: 'search', only: [:create]
+  post '/search/filter' => 'search#filter', as: 'search_filter'
 
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]

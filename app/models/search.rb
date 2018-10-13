@@ -9,6 +9,7 @@ class Search < ApplicationRecord
         link = result.css('a.position-title-link').attribute('href').value.split('')
         link.delete_at(4)
         job = {
+          id: 'js',
           site: 'Jobstreet.my',
           class: 'btn-jobstreet',
           title: result.css('div.position-title.header-text').css('a.position-title-link').text,
@@ -38,6 +39,7 @@ class Search < ApplicationRecord
 
       if result.css('img.lazy').present?
         job = {
+          id: 'gd',
           site: 'Glassdoor.com',
           class: 'btn-glassdoor',
           title: result.css('a.jobLink').text,

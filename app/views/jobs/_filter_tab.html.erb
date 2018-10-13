@@ -1,22 +1,51 @@
 <div class="col-4" >
   <div class="card my-2">
     <div class="card-body">
-      <select class="custom-select my-2 bg-light border-0" id="job_type">
-        <option selected>Job Type</option>
-        <option value="3">All Types</option>
-        <option value="1">Jobs</option>
-        <option value="2">Freelance</option>
-      </select>
-      <select class="custom-select my-2 bg-light border-0" id="date_posted">
-        <option selected>Date Posted</option>
-        <option value="1">Last Day</option>
-        <option value="2">Last Week</option>
-        <option value="3">Last Month</option>
-        <option value="3">All Time</option>
-      </select>
+      <h5 class="card-title">Filter Result</h5>
+      <div class="form-check">
+        <%= radio_button("search", "filter", "all", {class: 'form-check-input'}) %>
+        <%= label_tag "All" %>
+      </div>
+      <div class="form-check">
+        <%= radio_button("search", "filter", "jc", {class: 'form-check-input'}) %>
+        <%= label_tag "JobCrop" %>
+      </div>
+      <div class="form-check">
+        <%= radio_button("search", "filter", "gd", {class: 'form-check-input'}) %>
+        <%= label_tag "Glassdoor" %>
+      </div>
+      <div class="form-check">
+        <%= radio_button("search", "filter", "js", {class: 'form-check-input'}) %>
+        <%= label_tag "Jobstreet" %>
+      </div>
     </div>
   </div>
-  <div class="basket card my-2 p-3 d-flex flex-col align-item-middle">
-    <p class="text-black-50 text-center m-0">This is your basket</p>
-  </div>
 </div>
+
+<script>
+$('input[name="search[filter]"]').on('change', function(){
+  if(this.value == 'all') {
+    $('div.jc').fadeIn();
+    $('div.gd').fadeIn();
+    $('div.js').fadeIn();
+  }
+  else if (this.value == 'jc') {
+    $('div.jc').fadeIn();
+    $('div.gd').fadeOut();
+    $('div.js').fadeOut();
+  }
+  else if (this.value == 'gd') {
+    $('div.gd').fadeIn();
+    $('div.js').fadeOut();
+    $('div.jc').fadeOut();
+  }
+  else if (this.value == 'js') {
+    $('div.js').fadeIn();
+    $('div.jc').fadeOut();
+    $('div.gd').fadeOut();
+  }
+  else if($('.results-index').children().children('div.job-list').attr('style') == 'display: none;') {
+    console.log('no display')
+  }
+})
+</script>

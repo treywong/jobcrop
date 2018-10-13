@@ -1,7 +1,7 @@
 <%@results.each do |r|%>
-  <%r.each do |result|%>
+  <%r.each_with_index do |result, index|%>
   <li>
-    <div class="job-list card my-2">
+    <div id="<%=result[:id]%>-<%=index%>"class="job-list card my-2 <%=result[:id]%>">
       <div class="row">
         <div class="col-2">
           <div class="card-body">
