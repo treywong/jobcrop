@@ -28,7 +28,8 @@ class Search < ApplicationRecord
   end
 
   def self.parsegd(params)
-    document = open("https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword=#{params}&sc.keyword=#{params}&locT=C&locId=3002296&jobType=")
+    adjusted_params = params.gsub!(/\s+/, '+')
+    document = open("https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword=#{adjusted_params}&sc.keyword=#{adjusted_params}&locT=N&locId=170&jobType=")
     content = document.read
     parsed_doc = Nokogiri::HTML(content)
     jobs = Array.new
@@ -45,7 +46,7 @@ class Search < ApplicationRecord
           title: result.css('a.jobLink').text,
           company: company,
           location: result.css('span.loc').text,
-          created_at: '',
+          created_at: result.css('span.minor').text,
           image: result.css('img.lazy').attribute('data-original').value,
           link: "https://glassdoor.com" + result.css('a.jobLink').attribute('href').value
         }
