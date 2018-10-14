@@ -1,0 +1,30 @@
+<div class="preferences-list">
+  <% if @jobhunter.present? %>
+    <p class="font-weight-bold prefTitle">
+      Expectations
+      <% if current_user.own_profile?(@user) %>
+        <%=link_to edit_user_jobhunter_path(@user.id, @jobhunter.id), id: "editPreferences", remote:true do%>
+          <i class="edit fas fa-pen"></i>
+        <% end %>
+      <% end %>
+    </p>
+    <ul class="list-unstyled">
+      <li><p><span class="text-muted">Title expectation: </span><%=@jobhunter.title_expectation%></p></li>
+      <li><p><span class="text-muted">Position expectation: </span><%=@jobhunter.position_expectation%></p></li>
+      <li><p><span class="text-muted">Salary expectation: </span><%=@jobhunter.salary_expectation%></p></li>
+      <li><p><span class="text-muted">Other preferences: </span><%=@jobhunter.preferences%></p></li>
+    </ul>
+  <% else %>
+    <p class="text-muted">Uh Oh! Nothing is here!</p>
+    <%=link_to "Create your preferences", new_user_jobhunter_path(@user.id), remote: true%>
+  <% end %>
+</div>
+
+<script>
+$('#editPreferences').hide();
+$('.prefTitle').on('mouseover', function(){
+  $('#editPreferences').show();
+}).on('mouseleave', function(){
+  $('#editPreferences').hide();
+})
+</script>

@@ -35,6 +35,7 @@ class UsersController < Clearance::UsersController
 		@experiences = @user.experiences
 		@projects = @user.projects
 		@languages = @user.languages
+		@jobhunter = @user.jobhunter
 	end
 
 	def update

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :skills
       resources :languages
       resources :projects
+      resources :jobhunter, controller: "jobhunters", only: [:index, :new, :create, :update, :edit]
     get "/about_me" => 'users#about_me'
     get "/edit_name" => 'users#edit_name'
     get "/edit_about_me" => 'users#edit_about_me'

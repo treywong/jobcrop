@@ -29,6 +29,9 @@
       <li class="nav-item mx-4">
         <%= link_to "About Me", user_about_me_path(@user.id), class: 'nav-link', remote:true %>
       </li>
+      <li class="nav-item mx-4">
+        <%= link_to "Preferences", user_jobhunter_index_path(@user.id), class: 'nav-link', remote:true %>
+      </li>
     </ul>
   </div>
 </div>
