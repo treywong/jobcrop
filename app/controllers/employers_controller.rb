@@ -24,9 +24,10 @@ class EmployersController < ApplicationController
 	end
 
 
-	def company_page
+	def dashboard
+		@employer = current_user.employer
+		@company = @employer.company
 
-		@company = Company.find_by_id(params[:id])
 		@follower = Follow.all.where(company_id: params[:id])
 		@timeline = CompanyTimeline.all.where(company_id: params[:id]).last
 	end

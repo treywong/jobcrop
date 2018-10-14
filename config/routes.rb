@@ -33,13 +33,16 @@ Rails.application.routes.draw do
   get "/sign_up" => "users#new", as: "sign_up"
 
   # For employer
-  get "/employer/company/:id/company_page" => "employers#company_page", as: "company_page"
+  get "/employer/dasboard" => "employers#dashboard", as: "employer_dashboard"
   get "/employer/company/:id/job_page" => "employer_jobs#index", as: "job_page"
   get "/employer/company/:id/timeline_page" => "employer_timelines#index", as: "timeline_page"
   get "/employer/company/:id/review_page" => "employers#review_page", as: "review_page"
   get "/employer/company/:id/analysis_page" => "employers#analysis_page", as: "analysis_page"
-  get "/employer" => 'employers#index', as: 'employer_index'
-  get "/employer/new" => 'employers#new', as: 'new_employer'
+  # get "/employer" => 'employers#index', as: 'employer_index'
+  # get "/employer/new" => 'employers#new', as: 'new_employer'
+  resources :employer, controller: 'employers', only: [:index, :new]
+  resources :company, controller: 'companies', only: [:index, :new, :create]
+
   delete "/employer_jobs/:id" => "employer_jobs#delete", as: "delete_employer_job"
   delete "/employer_timelines/:id" => "employer_timelines#delete", as: "delete_employer_timeline"
 
@@ -47,6 +50,4 @@ Rails.application.routes.draw do
   post '/user-pre-employer' => 'users#create_pre_employer', as: 'create_pre_employer'
   resources :employer_jobs, controller: "employer_jobs"
   resources :employer_timelines, controller: "employer_timelines"
-  resources :company, controller: "companies", only: [:new, :create]
-
 end

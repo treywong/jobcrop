@@ -1,4 +1,12 @@
 class CompaniesController < ApplicationController
+	def index
+		if current_user.employer
+			@employer = current_user.employer
+			@company = @employer.company
+		else
+			redirect_to employer_index_path
+		end
+	end
 	def new
 		@employer = current_user.employer
 	end
