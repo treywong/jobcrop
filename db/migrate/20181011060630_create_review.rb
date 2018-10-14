@@ -4,6 +4,7 @@ class CreateReview < ActiveRecord::Migration[5.2]
       t.references :employer
       t.references :jobhunter
 
+      t.string :title
       t.string :description
       t.integer :rating
 

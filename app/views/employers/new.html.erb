@@ -1,0 +1,22 @@
+<%= render partial: "navbar/employer_navbar" %>
+<div class="cover-employer-create">
+</div>
+<div class="employer-form  d-flex flex-column justify-content-center align-items-center container bg-white pt-4">
+ <%=form_with(scope: :employer, url: user_employer_index_path(@user.id), method: 'POST') do |f| %>
+  <div class="form-group">
+    <h5 class="text-muted">What is your position in the company?</h5>
+    <%=f.text_field :title, class: "form-control"%>
+  </div>
+  <% if @user.registered? %>
+    <button href="#" class="next btn btn-primary d-block mx-auto btn-lg">Next</button>
+  <% else %>
+    <%= f.submit "Next", class: 'btn btn-primary d-block mx-auto btn-lg'%>
+  <% end %>
+ <% end %>
+</div>
+<script>
+$('.next').on('click', function(e){
+  e.preventDefault()
+  $('.employer-form').html("<%= j render 'companies/new'%>")
+})
+</script>

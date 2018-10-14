@@ -1,9 +1,8 @@
 // Place all the styles related to the Landing controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 .cover-landing {
-  background-image: url('annie-spratt-608001-unsplash.jpg');
+  background-image: url('pexels-photo-872957-compressor.jpeg');
   height: 70vh;
   width: 100%;
   background-position: center;
@@ -19,7 +18,6 @@
   top: 50%;
   transform: translate(-50%, -50%);
   padding: 1.5em;
-  border-radius: 25px;
 }
 
 .jobs-landing {
@@ -30,6 +28,14 @@
   color: #1976d2;
 }
 
+.feature-card {
+  height: 300px;
+}
+
+.feature-card-row {
+  min-height: 460px;
+}
+
 .img-container-card {
   height: 180px;
   width: auto;
@@ -38,11 +44,11 @@
 }
 
 #imgPrev1 {
-  background-image: image-url('rawpixel-683571-unsplash.jpg');
+  background-image: image-url('rawpixel-683571-unsplash-compressor.jpg');
 }
 
 #imgPrev2 {
-  background-image: image-url('mimi-thian-737657-unsplash.jpg');
+  background-image: image-url('mimi-thian-737657-unsplash-compressor.jpg');
 }
 
 
@@ -74,7 +80,7 @@
 
 .img-preview-landing {
   height: 50vh;
-  width: 50vw;
+  width: 30vw;
   background-position: center;
   background-size: cover;
 }

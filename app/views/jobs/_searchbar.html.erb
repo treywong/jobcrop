@@ -1,5 +1,8 @@
-<div class="searchbox-container-jobs my-3">
-  <form class="form-inline my-2 my-lg-0">
-    <input class="form-control w-100 border-0 bg-searchbar py-4" type="search" placeholder="Search" aria-label="Search">
-  </form>
-</div>
+<%=form_with(scope: :search, url: search_index_path, class: 'col-8 form-inline') do |f| %>
+  <div class="input-group w-100">
+    <div class="input-group-prepend">
+      <span class="input-group-text border-0 bg-searchbar"><i class="text-secondary fas fa-search"></i></span>
+    </div>
+    <%=f.text_field :result, class:' border-0 bg-searchbar', placeholder: 'Go Hunt!'%>
+  </div>
+<% end %>

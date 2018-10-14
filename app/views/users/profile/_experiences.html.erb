@@ -3,7 +3,9 @@
     <div class="card-body">
       <div class="d-flex flex-row">
         <h5 class="font-weight-bold m-0 mr-auto">Experiences</h5>
+        <% if current_user.own_profile?(@user) %>
         <i class="text-primary fas fa-plus add-experience" style="font-size:23px;"></i>
+        <% end %>
       </div>
     </div>
   </div>

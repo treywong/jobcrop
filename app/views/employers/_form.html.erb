@@ -1,0 +1,35 @@
+<div class="text-field">
+  <p>Company name</p>
+  <%= form.text_field :name %>
+</div>
+
+<div class="text-field">
+  <p>Background</p>
+  <input id="company_background" type="hidden" value="<%= @company.background %>" name="company[background]">
+  <trix-editor input="company_background"></trix-editor> <!-- If this doesn't work, might need to ask mentor again -->
+</div>
+
+<div class="text-field">
+  <p>Website</p>
+  <%= form.text_field :website %>
+</div>
+
+<div class="text-field">
+  <p>Telephone</p>
+  <%= form.text_field :telephone %>
+</div>
+
+<div class="text-field">
+  <p>Location</p>
+  <%= form.text_area :location %>
+</div>
+
+<div class="number-field">
+  <p>Company size</p>
+  <%= form.number_field :size %>
+</div>
+
+<div class="file-field">
+  <p>Logo</p>
+  <%= form.file_field :logo %>
+</div>

@@ -10,8 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require trix
+//= require Chart.bundle
+//= require chartkick
 //= require rails-ujs
 //= require jquery3
+//= require jquery.waypoints.min
+//= require inview.min
 //= require popper
 //= require bootstrap
 //= require moment
@@ -22,4 +27,32 @@
 
 $(document).on("turbolinks:load", function(){
   $('#flash').fadeOut(5000)
+
+  $('.features-landing-row').hide();
+
+  $("div.searchbox-landing a").one('click',function(){
+		$('html, body').animate({
+			scrollTop: $(".features-landing").offset().top
+		}, 1000);
+    var inview = new Waypoint.Inview({
+      element: $('.features-landing')[0],
+      exit: function() {
+        $('.features-landing').hide();
+        $('.features-landing-row').fadeIn();
+      }
+    })
+	});
+
+})
+
+document.addEventListener('ajax:beforeSend', function(event) {
+  $(".spinner").show();
+  $(".job-list").hide();
+  $(".search-intro").hide();
+  $(".no-result-card").hide();
+})
+
+document.addEventListener('ajax:success', function(event) {
+  $(".spinner").hide();
+  $(".job-list").show();
 })

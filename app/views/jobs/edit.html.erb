@@ -1,0 +1,11 @@
+
+<%= link_to 'Back', :back %>
+
+<h1>Edit your job</h1>
+<%= form_for @job, url: {controller: "employer_jobs", action: "update", method: "patch" } do |form| %>
+	<%= render partial: '/employer_jobs/form', object: form %>
+
+	<div class="submit-field">
+		<%= form.submit %>
+	</div>
+<% end %>

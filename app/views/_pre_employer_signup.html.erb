@@ -1,0 +1,40 @@
+<div class="modal" id="signup_employer" tabindex="-1" role="dialog" aria-labelledby="signup" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content p-3 bg-light">
+      <div class="modal-body interchange">
+        <a class="w-100" href="#">
+          <img class="d-block mx-auto" src='assets/btn_googlesignin.png'/>
+          <p class="text-center text-muted small-font">We'll never post anything without your permission.</p>
+        </a>
+        <div class="row align-item-middle">
+          <div class="col"><hr></div>
+          <div class="col-1">
+            <p class="d-block mx-auto text-muted m-0 text-center my-2 small-font">OR</p>
+          </div>
+          <div class="col"><hr></div>
+        </div>
+        <%= form_with scope: :user, url: create_pre_employer_path, method: 'POST', local: true do |form| %>
+        <div class="row form-group">
+          <div class="col">
+            <%= form.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+          </div>
+          <div class="col">
+            <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= form.text_field :email, class: 'form-control', placeholder: 'Email Address' %>
+        </div>
+        <div class="form-group">
+          <%= form.password_field :password, class: 'form-control', placeholder: 'Password' %>
+        </div>
+        <%= form.submit "Create free account", class: 'btn btn-primary w-100'%>
+        <% end %>
+        <hr/>
+        <p class="text-muted">Already have an account? <%=link_to "Sign In", new_user_path, remote: true%>
+      </div>
+
+
+    </div>
+  </div>
+</div>

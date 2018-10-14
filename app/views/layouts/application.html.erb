@@ -18,12 +18,37 @@
     <% elsif content_for?(:navbar_user) %>
       <%= yield(:navbar_user) %>
     <% end %>
-    <div id="flash">
-      <% flash.each do |key, value| -%>
-      <div class="alert alert-<%= key %> text-middle"><%=h value %></div>
-      <% end %>
+    <div class="backdrop">
     </div>
-    <%= yield %>
+      <div id="flash">
+        <% flash.each do |key, value| -%>
+        <div class="alert alert-<%= key %> text-middle"><%=h value %></div>
+        <% end %>
+      </div>
+      <%= yield %>
+
+      <div class="search-window card shadow p-2">
+        <div class="search-window-body card-body">
+          <div class="row h-100">
+            <%= render partial: 'jobs/filter_tab' %>
+            <%= render partial: 'jobs/results_tab' %>
+          </div>
+        </div>
+      </div>
+
+    <script>
+    $('.backdrop').hide();
+    $('#search_result').on('click', function(e) {
+      $('.search-window').addClass('visible');
+      $('.backdrop').show();
+    })
+    $(document).click(function(event) {
+      if (!$(event.target).closest(".search-window, #search_result").length) {
+        $('.search-window').removeClass('visible');
+        $('.backdrop').hide();
+      }
+    });
+    </script>
     <%= render partial: 'footer/footer' %>
   </body>
 </html>

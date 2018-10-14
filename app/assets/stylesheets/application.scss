@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require trix
  *= require_tree .
  *= require_self
  */
@@ -19,13 +20,29 @@
 @import "home";
 @import "jobs";
 @import "users";
+@import "search";
+@import "spinner";
+@import "employers";
 
 body {
   background-color: #fafafa;
+  overflow-x: auto;
+}
+
+.backdrop {
+  position: absolute;
+  background-color: rgba(25, 118, 210, 0.5);
+  height: 100vh;
+  width: 100%;
+  z-index: 90;
 }
 
 .small-font {
   font-size: 12px;
+}
+
+.medium-font {
+  font-size: 14px;
 }
 
 .btn {
@@ -33,7 +50,21 @@ body {
 }
 
 .bg-searchbar {
-  background-color: #ddd;
+  background-color: #eee;
+  padding: 5px 10px 5px 10px;
+  border-radius: 0;
+}
+
+#search_result {
+  width: 90%;
+}
+
+.bg-searchbar:focus {
+  background-color: #eee;
+  outline-style: none!important;
+}
+
+.form-control {
 }
 
 .btn-primary {
@@ -43,4 +74,8 @@ body {
 
 .card {
   border-radius: 0;
+}
+
+.results-tab {
+  overflow-y: auto!important;
 }

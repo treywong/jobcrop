@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def own_profile?(user)
     self.id == user.id
   end
+
+  def registered?
+    self.employer.present?
+  end
 end

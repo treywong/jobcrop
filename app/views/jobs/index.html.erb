@@ -1,15 +1,33 @@
-<% content_for :navbar_user do %>
-  <% if signed_in? %>
-    <%= render partial: "navbar/user_navbar" %>
-  <% else %>
-    <%= render partial: "navbar/visitor_navbar" %>
-  <% end %>
-<% end %>
-
-<div class="container mt-4">
-  <%= render partial: 'jobs/searchbar' %>
-  <div class="row">
-    <%= render partial: 'jobs/filter_tab' %>
-    <%= render partial: 'jobs/results_tab' %>
-  </div>
+<%= render partial: "navbar/employer_navbar" %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-2 bg-white border-right">
+			<%=render partial: 'navbar/employer_sidebar'%>
+		</div>
+		<div class="col-10 py-3 container-fluid">
+      <h5>My Jobs</h5>
+      <hr/>
+      <% @jobs.includes(:company).order(created_at: :desc).each do |job| %>
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <h5 class="card-title text-center"><%= job.title %></h5>
+            </div>
+            <div class="col-4">
+              <div class="card-title text-center"><%= job.company.name %></div>
+            </div>
+            <div class="col-4">
+              <div class="card-title text-center"><%= number_to_currency(job.salary, unit: 'RM') %></div>
+            </div>
+          </div>
+          <hr/>
+          <p class="card-text"><%= sanitize job.details %></p>
+          <hr/>
+          <div class="created_at medium-font text-right"><%= job.created_at.strftime('%Y/%-m/%d') %></div>
+        </div>
+      </div>
+      <% end %>
+		</div>
+	</div>
 </div>

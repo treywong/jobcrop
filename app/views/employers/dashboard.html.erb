@@ -1,0 +1,66 @@
+<%= render partial: "navbar/employer_navbar" %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-2 bg-white border-right">
+			<%=render partial: 'navbar/employer_sidebar'%>
+		</div>
+		<div class="col-10 py-3">
+			<div class="dashboard-tab">
+				<div class="grid-menu">
+					<h4>Dashboard</h4>
+					<hr/>
+					<div class="row">
+						<div class="col-3">
+							<%=link_to company_index_path, class:'nav-link m-0 p-0' do%>
+								<div class="card" style="height:290px;">
+									<%=image_tag(@company.logo_url, style: 'height:225px;')%>
+									<div class="card-body">
+										<h5 class="card-title text-center m-0">My Company</h5>
+									</div>
+								</div>
+							<% end %>
+						</div>
+						<div class="col-3">
+							<%=link_to new_job_path, class:'nav-link m-0 p-0' do%>
+								<div class="card" style="height:290px;">
+									<%=image_tag('/assets/pexels-photo-936081-compressor.jpeg', style: 'height:225px;')%>
+									<div class="card-body">
+										<h5 class="card-title m-0 text-center">Post A Job</h5>
+									</div>
+								</div>
+							<% end %>
+						</div>
+						<div class="col-3">
+							<%=link_to employer_analysis_path, class:'nav-link m-0 p-0' do%>
+								<div class="card" style="height:290px;">
+									<%=image_tag('/assets/pexels-photo-1446319-compressor.jpeg', style: 'height:225px;')%>
+									<div class="card-body">
+										<h5 class="card-title m-0 text-center">Analysis</h5>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class="timeline mt-3">
+					<h4>Timeline</h4>
+					<hr/>
+				</div>
+			</div>
+
+
+			<!-- Will add company photos -->
+
+			<hr>
+
+			<h2>Latest Update</h2>
+			<% if @timeline %>
+				<h3><%= @timeline.title %></h3>
+				<% if @timeline.photo != nil %>
+					<%= image_tag(@timeline.photo) %>
+				<% end %>
+				<p><%= sanitize @timeline.description %></p>
+			<% end %>
+		</div>
+	</div>
+</div>

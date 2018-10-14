@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_11_100940) do
+ActiveRecord::Schema.define(version: 2018_10_14_083532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_10_11_100940) do
 
   create_table "companies", force: :cascade do |t|
     t.bigint "employer_id"
+    t.string "name"
     t.string "website"
     t.string "telephone"
     t.string "background"
@@ -37,7 +38,19 @@ ActiveRecord::Schema.define(version: 2018_10_11_100940) do
     t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "followers_count"
+    t.integer "jobs_count"
     t.index ["employer_id"], name: "index_companies_on_employer_id"
+  end
+
+  create_table "company_timelines", force: :cascade do |t|
+    t.bigint "company_id"
+    t.string "title"
+    t.string "description"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_timelines_on_company_id"
   end
 
   create_table "educations", force: :cascade do |t|
@@ -107,6 +120,7 @@ ActiveRecord::Schema.define(version: 2018_10_11_100940) do
     t.string "salary_expectation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "position_expectation"
     t.index ["user_id"], name: "index_jobhunters_on_user_id"
   end
 
@@ -145,6 +159,7 @@ ActiveRecord::Schema.define(version: 2018_10_11_100940) do
   create_table "reviews", force: :cascade do |t|
     t.bigint "employer_id"
     t.bigint "jobhunter_id"
+    t.string "title"
     t.string "description"
     t.integer "rating"
     t.datetime "created_at", null: false
@@ -196,6 +211,7 @@ ActiveRecord::Schema.define(version: 2018_10_11_100940) do
     t.string "encrypted_password", limit: 128
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128
+    t.string "gender"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

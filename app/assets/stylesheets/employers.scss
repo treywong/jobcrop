@@ -1,3 +1,30 @@
-// Place all the styles related to the employers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.cover-employer-landing {
+  background-image: url('accomplishment-agreement-business-1249158-compressor.jpg');
+  height: 95vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.employer-jumbotron {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5)!important;
+  margin-bottom: 0!important;
+}
+
+.cover-employer-create {
+  background-image: url('pexels-photo-1011329-compressor.jpeg');
+  height: 50vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.employer-form {
+  height: 100vh;
+}

@@ -1,0 +1,15 @@
+<div class="text-field">
+  <p>Title</p>
+  <%= form.text_field :title %>
+</div>
+
+<div class="text-field">
+  <p>Description</p>
+  <input id="timeline_description" type="hidden" value="<%= @timeline.description %>" name="company_timeline[description]">
+  <trix-editor input="timeline_description"></trix-editor> <!-- If this doesn't work, might need to ask mentor again -->
+</div>
+
+<div class="file-field">
+  <p>Photo</p>
+  <%= form.file_field :photo %>
+</div>

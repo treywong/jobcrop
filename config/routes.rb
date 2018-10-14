@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+
   get 'home' => 'home#index'
-  get 'jobs' => 'jobs#index'
   root 'landing#index'
+
+  resources :search, controller: 'search', only: [:create]
+  post '/search/filter' => 'search#filter', as: 'search_filter'
 
   resources :passwords, controller: "passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
-  resources :users, controller: "users", only: [:update, :create, :show] do
+  resources :users, controller: "users", only: [:update, :create, :show, :new] do
       resources :educations
       resources :experiences
       resources :skills
@@ -21,20 +24,29 @@ Rails.application.routes.draw do
     resource :password,
       controller: "passwords",
       only: [:create, :edit, :update]
-  end
-  #
-  # # homepage
-  # get "users/home"
-  # root "users#home"
-  #
-  # # userprofile route
-  # get "users/profile"
 
-  resources :users, only: [:profile] do
+    resources :employer, controller: "employers", only: [:edit, :update, :create]
   end
 
-  get "users/home"
-  # get "/sign_in" => "sessions#new", as: "sign_in"
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
   get "/sign_up" => "users#new", as: "sign_up"
+
+  # For employer
+  get "/employer/dasboard" => "employers#dashboard", as: "employer_dashboard"
+  get "/employer/analysis" => "analysis#index", as: "employer_analysis"
+  get "/employer/jobs" => 'jobs#index', as: 'jobs_index'
+  get "/employer/company/:id/timeline_page" => "employer_timelines#index", as: "timeline_page"
+  get "/employer/company/:id/review_page" => "employers#review_page", as: "review_page"
+  # get "/employer" => 'employers#index', as: 'employer_index'
+  # get "/employer/new" => 'employers#new', as: 'new_employer'
+  resources :employer, controller: 'employers', only: [:index, :new]
+  resources :company, controller: 'companies', only: [:index, :new, :create]
+  resources :jobs, controller: "jobs", only: [:show, :new, :create, :edit]
+
+  delete "/employer_jobs/:id" => "employer_jobs#delete", as: "delete_employer_job"
+  delete "/employer_timelines/:id" => "employer_timelines#delete", as: "delete_employer_timeline"
+
+
+  post '/user-pre-employer' => 'users#create_pre_employer', as: 'create_pre_employer'
+  resources :employer_timelines, controller: "employer_timelines"
 end

@@ -1,0 +1,10 @@
+<%= link_to 'Back', :back %>
+
+<h1>Edit your company profile</h1>
+<%= form_for @company, url: {controller: "employers", action: "update", method: "patch" } do |form| %>
+	<%= render partial: '/employers/form', object: form %>
+
+	<div class="submit-field">
+		<%= form.submit %>
+	</div>
+<% end %>
