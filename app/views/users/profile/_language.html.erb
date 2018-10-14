@@ -1,6 +1,14 @@
 <div class="card language">
   <div class="card-body">
-    <p class="card-title m-0 font-weight-bold">Languages</p>
+    <div id="languageTitle" class="d-flex flex-row">
+      <p class="card-title m-0 font-weight-bold mr-auto">Languages</p>
+      <% if current_user.own_profile?(@user) %>
+        <i class="text-primary fas fa-plus add-language" style="font-size:18px;" id="addLanguage" data-toggle='dropdown'></i>
+        <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby='#addLanguage'>
+            <%= render 'users/add/add_language' %>
+        </div>
+      <% end %>
+    </div>
     <hr/>
     <ul class="languages-card list-unstyled">
       <%@languages.each do |language| %>
@@ -27,3 +35,12 @@
     </ul>
   </div>
 </div>
+
+<script>
+$('.add-language').hide();
+$('#languageTitle').on('mouseover', function(){
+  $('.add-language').show();
+}).on('mouseleave', function(){
+  $('.add-language').hide();
+})
+</script>

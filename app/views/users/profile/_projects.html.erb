@@ -1,6 +1,14 @@
-<div class="card skills my-2">
+<div class="card project my-2">
   <div class="card-body">
-    <p class="card-title m-0 font-weight-bold">Projects</p>
+    <div id="projectTitle" class="d-flex flex-row">
+      <p class="card-title m-0 font-weight-bold mr-auto">Projects</p>
+      <% if current_user.own_profile?(@user) %>
+        <i class="text-primary fas fa-plus add-project" style="font-size:18px;" id="addProject" data-toggle='dropdown'></i>
+        <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby='#addProject'>
+            <%= render 'users/add/add_language' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
@@ -14,3 +22,12 @@
     </div>
   </div>
 <%end%>
+
+<script>
+$('.add-project').hide();
+$('#projectTitle').on('mouseover', function(){
+  $('.add-project').show();
+}).on('mouseleave', function(){
+  $('.add-project').hide();
+})
+</script>
