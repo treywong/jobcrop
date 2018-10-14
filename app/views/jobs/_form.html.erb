@@ -1,0 +1,27 @@
+<div class="row mb-3">
+  <div class="col">
+      <%= form.label "Job Title"%>
+      <%= form.text_field :title, class:'form-control' %>
+  </div>
+
+  <div class="col">
+    <%= form.label "Max Salary"%>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">RM</div>
+      </div>
+      <%= form.number_field :salary, class:'form-control' %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label "Description"%>
+  <input id="job_detail" type="hidden" value="<%= @job.details %>" name="job[details]">
+  <trix-editor input="job_detail" class="form-control"></trix-editor> <!-- If this doesn't work, might need to ask mentor again -->
+</div>
+
+<div class="form-group">
+  <%= form.label "Location"%>
+  <%= form.text_field :location, class: 'form-control col-2' %>
+</div>

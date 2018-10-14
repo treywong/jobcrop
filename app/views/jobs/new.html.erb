@@ -1,0 +1,23 @@
+<%= render partial: "navbar/employer_navbar" %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 bg-white border-right">
+      <%=render partial: 'navbar/employer_sidebar'%>
+    </div>
+    <div class="col-10 py-3">
+      <div class="card">
+        <div class="card-body">
+
+					<h1>Post your job application</h1>
+					<%= form_with(scope: :job, url: jobs_path, method: 'POST', local: true ) do |form| %>
+						<%= render partial: '/jobs/form', object: form %>
+
+						<div class="submit-field">
+							<%= form.submit "Post Job", class: 'btn btn-primary' %>
+						</div>
+					<% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

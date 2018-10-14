@@ -48,6 +48,6 @@ Rails.application.routes.draw do
 
 
   post '/user-pre-employer' => 'users#create_pre_employer', as: 'create_pre_employer'
-  resources :employer_jobs, controller: "employer_jobs"
+  resources :jobs, controller: "jobs", only: [:index, :show, :new, :create, :edit]
   resources :employer_timelines, controller: "employer_timelines"
 end
