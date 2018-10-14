@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<%@projects.each do |project| %>
+<%@projects.limit(3).each do |project| %>
   <div class="card my-2">
     <div class="card-body">
       <p class="card-title font-weight-bold"><%=project.name%></p>

@@ -34,6 +34,7 @@ class UsersController < Clearance::UsersController
 		@user = User.find(params[:id])
 		@experiences = @user.experiences
 		@projects = @user.projects
+		@languages = @user.languages
 	end
 
 	def update

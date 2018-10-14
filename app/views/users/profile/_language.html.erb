@@ -1,0 +1,29 @@
+<div class="card language">
+  <div class="card-body">
+    <p class="card-title m-0 font-weight-bold">Languages</p>
+    <hr/>
+    <ul class="languages-card list-unstyled">
+      <%@languages.each do |language| %>
+        <li>
+          <div class="my-4 language-list">
+            <p class="">
+              <%=language.dialect%>
+            </p>
+            <% if language.native %>
+            <p class="medium-font text-muted">
+              Native
+            </p>
+            <% else %>
+            <p class="medium-font text-muted">
+              Writing: <%=language.writing%>
+            </p>
+            <p class="medium-font text-muted">
+              Speaking: <%=language.speaking%>
+            </p>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
