@@ -1,5 +1,8 @@
 class JobsController < ApplicationController
   def index
+    @employer = current_user.employer
+    @company = Company.find_by(employer_id: @employer.id)
+    @jobs = @company.jobs
   end
 
   def new
@@ -17,11 +20,6 @@ class JobsController < ApplicationController
       flash[:danger] = "Something's wrong! #{@job.erros.full_messages.to_sentence}"
       redirect_back(fallback_location: employer_dashboard_path)
     end
-	end
-
-	def index
-		@company = Company.find_by_id(params[:id])
-		@job = Job.all.where(company_id: params[:id]).order(:created_at).reverse_order  # .page params[:page]
 	end
 
 	def show

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+
   get 'home' => 'home#index'
-  get 'jobs' => 'jobs#index'
   root 'landing#index'
 
   resources :search, controller: 'search', only: [:create]
@@ -28,26 +28,25 @@ Rails.application.routes.draw do
     resources :employer, controller: "employers", only: [:edit, :update, :create]
   end
 
-  get "users/home"
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
   get "/sign_up" => "users#new", as: "sign_up"
 
   # For employer
   get "/employer/dasboard" => "employers#dashboard", as: "employer_dashboard"
-  get "/employer/company/:id/job_page" => "employer_jobs#index", as: "job_page"
+  get "/employer/analysis" => "analysis#index", as: "employer_analysis"
+  get "/employer/jobs" => 'jobs#index', as: 'jobs_index'
   get "/employer/company/:id/timeline_page" => "employer_timelines#index", as: "timeline_page"
   get "/employer/company/:id/review_page" => "employers#review_page", as: "review_page"
-  get "/employer/company/:id/analysis_page" => "employers#analysis_page", as: "analysis_page"
   # get "/employer" => 'employers#index', as: 'employer_index'
   # get "/employer/new" => 'employers#new', as: 'new_employer'
   resources :employer, controller: 'employers', only: [:index, :new]
   resources :company, controller: 'companies', only: [:index, :new, :create]
+  resources :jobs, controller: "jobs", only: [:show, :new, :create, :edit]
 
   delete "/employer_jobs/:id" => "employer_jobs#delete", as: "delete_employer_job"
   delete "/employer_timelines/:id" => "employer_timelines#delete", as: "delete_employer_timeline"
 
 
   post '/user-pre-employer' => 'users#create_pre_employer', as: 'create_pre_employer'
-  resources :jobs, controller: "jobs", only: [:index, :show, :new, :create, :edit]
   resources :employer_timelines, controller: "employer_timelines"
 end

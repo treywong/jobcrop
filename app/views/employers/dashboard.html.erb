@@ -31,12 +31,14 @@
 							<% end %>
 						</div>
 						<div class="col-3">
-							<div class="card" style="height:290px;">
-								<%=image_tag('/assets/pexels-photo-1446319-compressor.jpeg', style: 'height:225px;')%>
-								<div class="card-body">
-									<h5 class="card-title m-0 text-center">Analysis</h5>
+							<%=link_to employer_analysis_path, class:'nav-link m-0 p-0' do%>
+								<div class="card" style="height:290px;">
+									<%=image_tag('/assets/pexels-photo-1446319-compressor.jpeg', style: 'height:225px;')%>
+									<div class="card-body">
+										<h5 class="card-title m-0 text-center">Analysis</h5>
+									</div>
 								</div>
-							</div>
+							<% end %>
 						</div>
 					</div>
 				</div>
