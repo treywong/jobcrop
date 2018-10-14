@@ -32,7 +32,9 @@ class UsersController < Clearance::UsersController
 
 	def show
 		@user = User.find(params[:id])
-		@experiences = Experience.where(user_id: @user.id)
+		@experiences = @user.experiences
+		@projects = @user.projects
+		@languages = @user.languages
 	end
 
 	def update

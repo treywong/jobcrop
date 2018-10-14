@@ -1,0 +1,40 @@
+<%@languages.each do |language| %>
+  <li>
+    <div class="my-4 language-list">
+      <p id="language-title-<%=language.id%>">
+        <%=language.dialect%>
+        <% if current_user.own_profile?(@user) %>
+          <%=link_to edit_user_language_path(@user.id, language.id), id: "editLanguage-#{language.id}", remote:true do%>
+            <i class="edit fas fa-pen"></i>
+          <% end %>
+          <%=link_to user_language_path(@user.id, language.id), id: "removeLanguage-#{language.id}", method: 'DELETE', remote:true, data: {confirm: "Are you sure about removing this language?"} do%>
+            <i class="edit fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </p>
+      <% if language.native == 1 %>
+      <p class="medium-font text-muted">
+        Native
+      </p>
+      <% else %>
+      <p class="medium-font text-muted">
+        Writing: <%=language.writing?%>
+      </p>
+      <p class="medium-font text-muted">
+        Speaking: <%=language.speaking?%>
+      </p>
+      <% end %>
+    </div>
+  </li>
+  <script>
+  $('#editLanguage-<%=language.id%>').hide();
+  $('#removeLanguage-<%=language.id%>').hide();
+  $('#language-title-<%=language.id%>').on('mouseover', function(){
+    $('#editLanguage-<%=language.id%>').show();
+    $('#removeLanguage-<%=language.id%>').show();
+  }).on('mouseleave', function(){
+    $('#editLanguage-<%=language.id%>').hide();
+    $('#removeLanguage-<%=language.id%>').hide();
+  })
+  </script>
+<% end %>

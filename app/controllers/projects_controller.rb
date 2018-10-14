@@ -1,47 +1,60 @@
 class ProjectsController < ApplicationController
 
 	def new
-		@project = Project.new
-	end
-
-	def show
-		@project = Project.find(params[:id])
+		@user = User.find(params[:user_id])
+		@projects = @user.projects
+		respond_to do |format|
+		  format.js
+		end
 	end
 
 	def create
-		@project = Project.new(project_params)
-		@project.user_id = current_user.id
+		@user = User.find(params[:user_id])
+		@project = @user.projects.build(project_params)
+		@projects = @user.projects
 
 		if @project.save
-			flash[:success] = "Added project"
-			redirect_to users_profile_path
+			flash[:success] = "Project added."
+			respond_to do |format|
+			  format.js
+			end
 		else
-			flash[:error] = "can't save, try again"
-			render 'new'
+			flash[:error] = "Something's wrong. #{@project.errors.full_messages.to_sentence}"
+			redirect_back(fallback_location: @user)
 		end
 	end
 
 	def edit
+		@user = User.find(params[:user_id])
 		@project = Project.find(params[:id])
+		respond_to do |format|
+		  format.js
+		end
 	end
 
 	def update
+		@user = User.find(params[:user_id])
 		@project = Project.find(params[:id])
+		@projects = @user.projects
 
 		if @project.update(project_params)
-			flash[:success] = "updated project"
-			redirect_to users_profile_path
+			flash[:success] = "Project updated"
+			respond_to do |format|
+			  format.js
+			end
 		else
-			flash[:error] = "Project not updated, try again."
-			render 'edit'
+			flash[:error] = "Somehing's wrong. #{@project.erros.full_messages.to_sentence}"
 		end
 	end
 
 	def destroy
+		@user = User.find(params[:user_id])
+		@projects = @user.projects
 		@project = Project.find(params[:id])
 		@project.destroy
-
-		redirect_to users_profile_path
+		respond_to do |format|
+		  format.js
+		end
 	end
 
 	private

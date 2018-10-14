@@ -1,35 +1,24 @@
-<div class="card skills my-2">
+<div class="card project my-2">
   <div class="card-body">
-    <p class="card-title m-0 font-weight-bold">Projects</p>
+    <div id="projectTitle" class="d-flex flex-row">
+      <p class="card-title m-0 font-weight-bold mr-auto">Projects</p>
+      <% if current_user.own_profile?(@user) %>
+        <%=link_to new_user_project_path(@user.id), remote:true do %>
+          <i class="text-primary fas fa-plus add-project" style="font-size:18px;" id="addProject"></i>
+        <% end %>
+      <% end %>
+    </div>
   </div>
+</div>
+<div class="projects-list">
+  <%= render partial: 'projects/projects-timeline'%>
 </div>
 
-<div class="card my-2">
-  <div class="card-body">
-    <p class="card-title font-weight-bold">crackBot</p>
-    <p class="card-text text-muted">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-       mollit anim id est laborum.
-    </p>
-  </div>
-</div>
-
-<div class="card my-2">
-  <div class="card-body">
-    <p class="card-title font-weight-bold">airBnB</p>
-    <p class="card-text text-muted">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-       mollit anim id est laborum.
-    </p>
-  </div>
-</div>
+<script>
+$('.add-project').hide();
+$('#projectTitle').on('mouseover', function(){
+  $('.add-project').show();
+}).on('mouseleave', function(){
+  $('.add-project').hide();
+})
+</script>

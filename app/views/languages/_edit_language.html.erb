@@ -1,0 +1,32 @@
+<%= form_with(scope: :language, url: user_language_path(@user.id, @language.id), method: 'PATCH' ) do |f| %>
+  <div class="form-group">
+    <%=f.label "Language"%>
+    <%=f.text_field :dialect, class: 'form-control'%>
+  </div>
+  <div class="form-group">
+    <%=f.label "Native"%>
+    <%=f.check_box :native%>
+  </div>
+  <div class="form-group">
+    <%=f.label "Writing"%>
+    <%= f.select(:writing,
+                  options_for_select([
+                    ['Fluent', 2],
+                    ['Good', 1],
+                    ['Not Good', 0],
+                  ]), {},
+                  {class: 'custom-select w-50 d-block mr-auto'}) %>
+  </div>
+  <div class="form-group">
+    <%=f.label "Speaking"%>
+    <%= f.select(:speaking,
+                  options_for_select([
+                    ['Fluent', 2],
+                    ['Good', 1],
+                    ['Not Good', 0],
+                  ]), {},
+                  {class: 'custom-select w-50 d-block mr-auto'}) %>
+  </div>
+  <%=f.submit "Apply", class: 'btn btn-primary btn-sm'%>
+  <%= link_to "Cancel", user_path(@user), class: 'mx-2' %>
+<% end %>
