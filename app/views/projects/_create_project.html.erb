@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_with(scope: :project, url: user_projects_path(@user.id), method: 'POST' ) do |f| %>
+      <div class="form-group">
+        <%=f.label "Project Name"%>
+        <%=f.text_field :name, class: 'form-control'%>
+      </div>
+      <div class="form-group">
+        <%=f.label "Description"%>
+        <%=f.text_area :description, class: 'form-control', rows: '4'%>
+      </div>
+      <%=f.submit "Add new project", class: 'btn btn-primary btn-sm'%>
+      <%= link_to "Cancel", user_path(@user), class: 'mx-2' %>
+    <% end %>
+  </div>
+</div>

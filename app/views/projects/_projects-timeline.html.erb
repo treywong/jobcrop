@@ -1,0 +1,20 @@
+<%@projects.limit(3).each do |project| %>
+  <div class="card my-2">
+    <div class="card-body project-card-<%=project.id%>">
+      <p class="card-title font-weight-bold">
+        <%=project.name%>
+        <% if current_user.own_profile?(@user) %>
+          <%=link_to edit_user_project_path(@user.id, project.id), id: "editProject-#{project.id}", remote:true do%>
+            <i class="edit fas fa-pen"></i>
+          <% end %>
+          <%=link_to user_project_path(@user.id, project.id), id: "removeProject-#{project.id}", method: 'DELETE', remote:true, data: {confirm: "Are you sure about removing this language?"} do%>
+            <i class="edit fas fa-trash-alt"></i>
+          <% end %>
+        <%end%>
+      </p>
+      <p class="card-text text-muted">
+        <%= sanitize project.description %>
+      </p>
+    </div>
+  </div>
+<%end%>

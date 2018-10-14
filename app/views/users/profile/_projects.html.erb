@@ -3,25 +3,16 @@
     <div id="projectTitle" class="d-flex flex-row">
       <p class="card-title m-0 font-weight-bold mr-auto">Projects</p>
       <% if current_user.own_profile?(@user) %>
-        <i class="text-primary fas fa-plus add-project" style="font-size:18px;" id="addProject" data-toggle='dropdown'></i>
-        <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby='#addProject'>
-            <%= render 'projects/edit_project' %>
-        </div>
+        <%=link_to new_user_project_path(@user.id), remote:true do %>
+          <i class="text-primary fas fa-plus add-project" style="font-size:18px;" id="addProject"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
 </div>
-
-<%@projects.limit(3).each do |project| %>
-  <div class="card my-2">
-    <div class="card-body">
-      <p class="card-title font-weight-bold"><%=project.name%></p>
-      <p class="card-text text-muted">
-        <%= sanitize project.description %>
-      </p>
-    </div>
-  </div>
-<%end%>
+<div class="projects-list">
+  <%= render partial: 'projects/projects-timeline'%>
+</div>
 
 <script>
 $('.add-project').hide();
