@@ -5,7 +5,7 @@
       <% if current_user.own_profile?(@user) %>
         <i class="text-primary fas fa-plus add-project" style="font-size:18px;" id="addProject" data-toggle='dropdown'></i>
         <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby='#addProject'>
-            <%= render 'users/add/add_language' %>
+            <%= render 'projects/edit_project' %>
         </div>
       <% end %>
     </div>

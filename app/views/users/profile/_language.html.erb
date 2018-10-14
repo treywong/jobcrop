@@ -5,33 +5,13 @@
       <% if current_user.own_profile?(@user) %>
         <i class="text-primary fas fa-plus add-language" style="font-size:18px;" id="addLanguage" data-toggle='dropdown'></i>
         <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby='#addLanguage'>
-            <%= render 'users/add/add_language' %>
+            <%= render 'languages/create_language' %>
         </div>
       <% end %>
     </div>
     <hr/>
     <ul class="languages-card list-unstyled">
-      <%@languages.each do |language| %>
-        <li>
-          <div class="my-4 language-list">
-            <p class="">
-              <%=language.dialect%>
-            </p>
-            <% if language.native %>
-            <p class="medium-font text-muted">
-              Native
-            </p>
-            <% else %>
-            <p class="medium-font text-muted">
-              Writing: <%=language.writing%>
-            </p>
-            <p class="medium-font text-muted">
-              Speaking: <%=language.speaking%>
-            </p>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
+      <%=render partial: 'languages/languages-card'%>
     </ul>
   </div>
 </div>

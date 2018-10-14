@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :educations
       resources :experiences
       resources :skills
+      resources :languages
       resources :projects
     get "/about_me" => 'users#about_me'
     get "/edit_name" => 'users#edit_name'
