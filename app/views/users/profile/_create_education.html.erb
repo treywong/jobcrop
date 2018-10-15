@@ -3,7 +3,15 @@
     <p class="card-title font-weight-bold">New Education</p>
     <%= form_with(scope: :education, url: user_educations_path(@user.id), method: 'POST' ) do |f| %>
       <%= f.text_field :institute, placeholder: "Institute", class: 'form-control bg-light border-0 my-2' %>
-      <%= f.text_field :qualification, placeholder: "Qualification", class: 'form-control bg-light border-0 my-2' %>
+      <%= f.select(:qualification, options_for_select([
+        ['Qualification', '0'],
+        ['High School', 'High School'],
+        ['Diploma', 'Diploma'],
+        ['Degree', 'Degree'],
+        ['Bachelors', 'Bachelors'],
+        ['PhD', 'PhD']
+        ]), {},
+        {class: 'custom-select bg-light border-0 text-secondary'}) %>
       <%= f.text_field :location, placeholder: "Location", class: 'form-control bg-light border-0 my-2' %>
       <%= f.text_field :major, placeholder: "Major", class: 'form-control bg-light border-0 my-2' %>
       <div class="form-inline">
