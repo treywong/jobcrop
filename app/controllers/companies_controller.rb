@@ -24,6 +24,7 @@ class CompaniesController < ApplicationController
 
 	def show
 		@company = Company.find(params[:id])
+		@employer = @company.employer
 	end
 
 	def about
