@@ -53,6 +53,8 @@ gem 'carrierwave-aws'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 
+gem 'jquery-slick-rails'
+
 # SEARCH ENGINE
 gem 'httparty'
 
