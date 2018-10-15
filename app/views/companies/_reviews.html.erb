@@ -1,0 +1,10 @@
+<div class="card mb-2">
+  <div class="card-body">
+    <h5 class="card-title font-weight-bold m-0">Reviews</h5>
+  </div>
+</div>
+<%=link_to "Write a review", new_employer_review_path(@company.id), class: 'btn btn-primary w-100 write-review', remote:true%>
+<div class="create-form"></div>
+<ul class="list-unstyled reviews-tab">
+  <%=render partial: 'reviews/reviews-list'%>
+</ul>

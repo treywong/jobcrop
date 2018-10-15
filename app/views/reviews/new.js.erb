@@ -1,0 +1,29 @@
+$('.create-form').html("<%= j render 'reviews/new'%>");
+$('.write-review').fadeOut();
+$('#star-rating li').on('mouseover',function(){
+  let onStar = parseInt($(this).children('i.rate-star').data('value'),10);
+
+  $(this).parent().children('li.star').each(function(s){
+    if (s < onStar) {
+      $(this).children('i.rate-star').removeClass('far').addClass('fas');
+    }
+    else {
+      $(this).children('i.rate-star').removeClass('fas').addClass('far');
+    }
+  })
+
+})
+
+
+$('.rate-star').on('click', function(){
+  let onStar = $(this).data('value');
+  let stars = $(this).parent().children('li.star');
+
+  for (i=0; i < onStar.length; i++) {
+    $(stars[i]).children('i.rate-star').removeClass('far').addClass('fas');
+  }
+
+  $('#rate-text').html('You rated ' + onStar + ' stars');
+
+  $('input[name="review[rating]"]').val(onStar)
+});

@@ -1,0 +1,6 @@
+$('.company-profile-tab').html("<%= j render 'companies/about', companies: @companies%>");
+$('.jobs-carousel').slick({
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 3
+});

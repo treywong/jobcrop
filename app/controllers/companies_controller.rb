@@ -24,6 +24,22 @@ class CompaniesController < ApplicationController
 
 	def show
 		@company = Company.find(params[:id])
+		@employer = @company.employer
+	end
+
+	def about
+		@company = Company.find(params[:company_id])
+		respond_to do |format|
+		  format.js
+		end
+	end
+
+	def reviews
+		@company = Company.find(params[:company_id])
+		@reviews = Review.where(employer_id: @company.employer.id).includes(:jobhunter)
+		respond_to do |format|
+		  format.js
+		end
 	end
 
 	private

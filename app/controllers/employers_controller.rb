@@ -1,5 +1,6 @@
 class EmployersController < ApplicationController
 	def index
+
 	end
 
 	def new
@@ -25,11 +26,20 @@ class EmployersController < ApplicationController
 
 
 	def dashboard
-		@employer = current_user.employer
-		@company = @employer.company
+		if current_user.employer
+			@employer = current_user.employer
+			if @employer.company
+				@company = @employer.company
 
-		@follower = Follow.all.where(company_id: params[:id])
-		@timeline = CompanyTimeline.all.where(company_id: params[:id]).last
+				@follower = Follow.all.where(company_id: params[:id])
+				@timeline = CompanyTimeline.all.where(company_id: params[:id]).last
+			else
+				flash[:warning] = 'Continue creating your Company.'
+				redirect_to employer_index_path
+			end
+		else
+			redirect_to root_path
+		end
 	end
 
 	def edit
