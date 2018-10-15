@@ -17,6 +17,7 @@
 //= require jquery3
 //= require jquery.waypoints.min
 //= require inview.min
+//= require slick.min
 //= require popper
 //= require bootstrap
 //= require moment
@@ -42,6 +43,12 @@ $(document).on("turbolinks:load", function(){
       }
     })
 	});
+
+  $('.jobs-carousel').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3
+  });
 
 })
 
