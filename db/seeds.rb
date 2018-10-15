@@ -10,7 +10,7 @@ user = {}
 user['password'] = 'asdf'
 
 ActiveRecord::Base.transaction do
-	100.times do
+	50.times do
 		user['first_name'] = Faker::Name.first_name
 		user['last_name'] = Faker::Name.last_name
 
@@ -18,7 +18,7 @@ ActiveRecord::Base.transaction do
     	user["email"] = Faker::Internet.email
     	user["gender"] = Faker::Gender.binary_type
     	user["phone"] = Faker::PhoneNumber.cell_phone
-    	user["avatar"] = Faker::Avatar.image
+    	user["remote_avatar_url"] = Faker::Avatar.image
     	user["about_me"] = Faker::Hipster.paragraph
     	user["address"] = Faker::Address.street_address
     	user["state"] = Faker::Address.state
@@ -40,7 +40,7 @@ ActiveRecord::Base.transaction do
 		if (u) % 5 == 0
 			employer["title"] = Faker::Job.title
     		employer["preferences"] = Faker::Hipster.paragraph
-			
+
 			employer['user_id'] = u
 			Employer.create(employer)
 		elsif
@@ -88,7 +88,7 @@ ActiveRecord::Base.transaction do
 	    company["background"] = Faker::Hipster.paragraph
 	    company["location"] = Faker::Address.full_address
 	    company["size"] = rand(50..1000)
-	    company["logo"] = Faker::Company.logo
+	    company["remote_logo_url"] = Faker::Company.logo
 
 	    company['employer_id'] = e
 		Company.create(company)
@@ -128,7 +128,7 @@ follow = {}
 review = {}
 jobhunter_ids = Jobhunter.ids
 ActiveRecord::Base.transaction do
-	jobhunter_ids.each do |j| 
+	jobhunter_ids.each do |j|
 		follow['company_id'] = company_ids.sample
 	    follow['jobhunter_id'] = j
 		Follow.create(follow)

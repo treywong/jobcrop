@@ -22,7 +22,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   end
 
   # Process files as they are uploaded:
-  process scale: [200, 200]
+  # process scale: [200, 200]
   #
   # def scale(width, height)
   #   # do something

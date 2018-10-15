@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_14_083532) do
+ActiveRecord::Schema.define(version: 2018_10_15_060711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2018_10_14_083532) do
     t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "followers_count"
     t.integer "jobs_count"
+    t.integer "jobhunters_count", default: 0
     t.index ["employer_id"], name: "index_companies_on_employer_id"
   end
 
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2018_10_14_083532) do
     t.string "preferences"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "jobhunters_count", default: 0
     t.index ["user_id"], name: "index_employers_on_user_id"
   end
 
