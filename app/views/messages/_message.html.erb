@@ -1,0 +1,16 @@
+
+<!-- partial for message chatting -->
+
+<div class="message">
+	
+	<strong>
+		<%= message.user.email %>	
+	</strong> 
+	says: <%= message.body %>
+	<br>
+	<small>
+		at <%= 1.message.created_at, format: :short %>
+	</small>
+	<hr>
+
+</div>

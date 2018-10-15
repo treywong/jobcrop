@@ -1,0 +1,20 @@
+<!-- messaging chat feature -->
+
+<br>
+<%= link_to '[Home]', root_path %>
+
+
+<h2>Message chatting test page</h2>
+
+<div id="messages">
+	<%= render @message %>
+</div>
+
+<%= form_with url: '#', html: {id: 'new-message'} do |f| %>
+	
+	<%= f.label :body %>
+	<%= f.text_field :body, id: 'message-body' %>
+	<br>
+	<%= f.submit %>
+
+<% end %>

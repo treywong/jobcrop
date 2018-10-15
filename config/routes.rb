@@ -25,7 +25,12 @@ Rails.application.routes.draw do
   # videochat
   get "chats/videochat"
   post "sessions", to: 'sessions#create'
+  
+  #actioncable
   mount ActionCable.server, at: '/cable'
+
+  # messagechat
+  resources :messages, only: [:index,:new,:create]
 
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
