@@ -1,0 +1,68 @@
+<% content_for :navbar_user do %>
+  <% if signed_in? %>
+    <%= render partial: "navbar/user_navbar" %>
+  <% else %>
+    <%= render partial: "navbar/visitor_navbar" %>
+  <% end %>
+<% end %>
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-body">
+      <%=image_tag(@company.logo_url, class:'rounded-circle d-block mx-auto mb-3', style: "width:150px;height:150px;")%>
+      <h5 class="font-weight-bold text-center"><%= @company.name %></h5>
+      <p class="text-center"><%= @company.location %></p>
+      <hr/>
+      <ul class="nav">
+        <li class="nav-item mx-auto">Followers: <%=@company.follows.count%> </li>
+        <li class="nav-item mx-auto">Jobs: <%=@company.jobs.count%> </li>
+        <li class="nav-item mx-auto">Reviews: <%=@company.employer.reviews.count%> </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-9">
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold m-0">Jobs by <%=@company.name%></h5>
+          <hr/>
+          <div class="jobs-carousel">
+            <%@company.jobs.each do |job| %>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class=""><%=job.title%></h5>
+                </div>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">Company Background</h5>
+          <p class="card-text"><%= sanitize @company.background %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">Company Information<h5>
+            <ul class="list-unstyled">
+              <li>
+                <p class="medium-font mb-1">Company Size:</p>
+                <p class="medium-font"><%= @company.size%> employees</p>
+              </li>
+              <li>
+                <p class="medium-font mb-1">Company Website:</p>
+                <p class="medium-font"><%= @company.website%></p>
+              </li>
+              <li>
+                <p class="medium-font mb-1">Office Tel:</p>
+                <p class="medium-font"><%= @company.telephone%></p>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

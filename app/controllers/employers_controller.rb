@@ -4,7 +4,7 @@ class EmployersController < ApplicationController
 
 	def new
 		@user = current_user
-		@employer = current_user.employer
+		@employer = Employer.new
 		if signed_out?
 			redirect_to root_path
 		end

@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   # get "/employer" => 'employers#index', as: 'employer_index'
   # get "/employer/new" => 'employers#new', as: 'new_employer'
   resources :employer, controller: 'employers', only: [:index, :new]
-  resources :company, controller: 'companies', only: [:index, :new, :create]
+  resources :company, controller: 'companies', only: [:index, :new, :create, :show]
   resources :jobs, controller: "jobs", only: [:show, :new, :create, :edit]
 
   delete "/employer_jobs/:id" => "employer_jobs#delete", as: "delete_employer_job"
