@@ -69,6 +69,13 @@
             </ul>
         </div>
       </div>
+      <div class="follow-container mt-2">
+        <% if @company.follows.find_by(jobhunter_id: current_user.jobhunter.id).blank? %>
+          <%=link_to "Follow", company_follow_path(@company.id), method: 'post', class: 'btn btn-primary follow-btn w-100'%>
+        <% else %>
+          <%=link_to "Unfollow", company_follow_path(@company.id), method: 'delete', class: 'btn btn-danger follow-btn w-100'%>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

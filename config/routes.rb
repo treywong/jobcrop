@@ -39,10 +39,10 @@ Rails.application.routes.draw do
   get "/employer/jobs" => 'jobs#index', as: 'jobs_index'
   get "/employer/company/:id/timeline_page" => "employer_timelines#index", as: "timeline_page"
   get "/employer/company/:id/review_page" => "employers#review_page", as: "review_page"
-  # get "/employer" => 'employers#index', as: 'employer_index'
-  # get "/employer/new" => 'employers#new', as: 'new_employer'
   resources :employer, controller: 'employers', only: [:index, :new]
-  resources :company, controller: 'companies', only: [:index, :new, :create, :show]
+  resources :company, controller: 'companies', only: [:index, :new, :create, :show] do
+    resource :follow, controller: "follows", only: [:create, :destroy]
+  end
   resources :jobs, controller: "jobs", only: [:show, :new, :create, :edit]
 
   delete "/employer_jobs/:id" => "employer_jobs#delete", as: "delete_employer_job"
