@@ -1,0 +1,34 @@
+<div class="card mb-2">
+  <div class="card-body">
+    <h5 class="card-title font-weight-bold m-0">Reviews</h5>
+  </div>
+</div>
+<ul class="list-unstyled">
+  <% @reviews.each do |review| %>
+    <li>
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-3 d-flex align-items-center">
+              <%=image_tag(review.jobhunter.user.avatar_url, class: 'rounded-circle d-block mx-auto', style: 'height:100px;')%>
+            </div>
+            <div class="col-9">
+              <p class="font-weight-bold"><%=review.title%></p>
+              <hr/>
+              <p class="text-muted"><%=review.description%></p>
+              <hr/>
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <p class="m-0 text-muted medium-font p-0"><%=review.jobhunter.user.name%></p>
+                </li>
+                <li class="list-inline-item">
+                  <p class="m-0 text-muted rating"><%=review.rating%></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

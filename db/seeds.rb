@@ -135,7 +135,7 @@ ActiveRecord::Base.transaction do
 
 		review["title"] = Faker::FunnyName.name
 	    review["description"] = Faker::Hipster.paragraph
-	    review["rating"] = rand(1..10)
+	    review["rating"] = rand(1..5)
 		review['employer_id'] = employer_ids.sample
 	    review['jobhunter_id'] = j
 		Review.create(review)
