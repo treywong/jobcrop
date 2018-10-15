@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   resources :employer, controller: 'employers', only: [:index, :new]
   resources :company, controller: 'companies', only: [:index, :new, :create, :show] do
     resource :follow, controller: "follows", only: [:create, :destroy]
+    get '/about' => 'companies#about', as: 'about'
+    get '/reviews' => 'companies#reviews', as: 'reviews'
   end
   resources :jobs, controller: "jobs", only: [:show, :new, :create, :edit]
 

@@ -21,33 +21,19 @@
   </div>
   <div class="row mt-2">
     <div class="col-9">
-      <div class="card mb-2 bg-light">
-        <div class="card-body">
-          <h5 class="card-title font-weight-bold m-0">Jobs by <%=@company.name%> <span class="text-muted">(<%=@company.jobs.count%>)</span></h5>
-          <hr/>
-          <div class="jobs-carousel">
-            <%@company.jobs.each do |job| %>
-              <div class="card job-carousel-card">
-                <div class="card-body">
-                  <p class="text-center medium-font"><%=job.title%></p>
-                  <hr/>
-                  <p class="medium-font"><%=truncate(job.location, length: 40)%></p>
-                  <p class="medium-font text-muted"><%=number_to_currency(job.salary, unit: 'RM', precision: 0)%></p>
-                </div>
-                <div class="card-footer">
-                  <p class="m-0 small-font"><%=job.created_at.strftime('%b %e')%></p>
-                </div>
-              </div>
-            <%end%>
-          </div>
+      <div class="card mb-2">
+        <div class="card-body p-2">
+          <ul class="nav nav-fill">
+            <li class="nav-item">
+              <%=link_to "About", company_about_path(@company.id), class: 'nav-link', remote:true%>
+            </li>
+            <li class="nav-item">
+              <%=link_to "Reviews", company_reviews_path(@company.id), class: 'nav-link', remote:true%>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="card my-2">
-        <div class="card-body">
-          <h5 class="card-title font-weight-bold">Company Background</h5>
-          <p class="card-text"><%= sanitize @company.background %></p>
-        </div>
-      </div>
+      
     </div>
     <div class="col-3">
       <div class="card">

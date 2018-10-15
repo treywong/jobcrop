@@ -26,6 +26,18 @@ class CompaniesController < ApplicationController
 		@company = Company.find(params[:id])
 	end
 
+	def about
+		respond_to do |format|
+		  format.js
+		end
+	end
+
+	def reviews
+		respond_to do |format|
+		  format.js
+		end
+	end
+	
 	private
 
 	def company_params
