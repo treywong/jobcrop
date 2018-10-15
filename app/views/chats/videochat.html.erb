@@ -1,0 +1,20 @@
+<h1>Action Cable Signaling Server</h1>
+
+<%= link_to 'Home', root_path %>
+
+<div>Random User ID:
+  <span id="current-user"><%= @random_number %></span>
+</div>
+
+<div id="remote-video-container"></div>
+<video id="local-video" autoplay></video>
+
+<hr />
+
+<button onclick="handleJoinSession()">
+  Join Room
+</button>
+
+<button onclick="handleLeaveSession()">
+  Leave Room
+</button>
