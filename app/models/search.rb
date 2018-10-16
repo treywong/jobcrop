@@ -1,4 +1,25 @@
 class Search < ApplicationRecord
+
+  def self.parsejc(params)
+    jobs = Array.new
+    jobcrop = Job.search_by_title(params)
+    jobcrop.each do |j|
+      job = {
+        id: 'jc',
+        site: 'Jobcrop',
+        class: 'btn-jobcrop',
+        title: j.title,
+        company: j.company.name,
+        location: j.location,
+        created_at: j.created_at.strftime('%b %e'),
+        image: j.company.logo_url,
+        link: ''
+      }
+      jobs << job
+    end
+    return jobs
+  end
+
   def self.parsejs(params)
     document = open("http://www.jobstreet.com.my/en/job-search/job-vacancy.php?key=#{params}")
     content = document.read

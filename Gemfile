@@ -64,6 +64,8 @@ gem 'nokogiri'
 
 gem 'kaminari'
 
+gem 'pg_search'
+
 
 gem 'trix'
 
