@@ -17,7 +17,7 @@
 //= require jquery3
 //= require jquery.waypoints.min
 //= require inview.min
-//= require slick.min
+//= require jquery.slick
 //= require popper
 //= require bootstrap
 //= require moment
