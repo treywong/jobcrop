@@ -1,10 +1,9 @@
 class AnalysisController < ApplicationController
-  def index
-		# Check topfunky/gruff gem to create the pi chart
-		# Will use gender, age,
-    @employer = current_user.employer
-    @company = @employer.company
+    def index
+	    @employer = current_user.employer
+	    @company = @employer.company
 		@follower = Follow.all.where(company_id: @company.id)
+		@job = Job.all.where(company_id: @company.id)
 
 		@jobhunter_data = []
 		@user_data = []
@@ -18,6 +17,18 @@ class AnalysisController < ApplicationController
 
 			@education = Education.find_by(user_id: @user.id)
 			@education_data << @education
+		end
+
+		@booking_data = []
+		job_exist = []
+		@job.each do |j|
+			if job_exist.exclude?(j.id) do
+				@booking = Booking.all.where(job_id: j.id)
+				job_exist << j.id
+				@booking.each do |b|
+					@booking_data << b
+				end
+			end
 		end
 
 		@database = []
@@ -72,20 +83,11 @@ class AnalysisController < ApplicationController
 		position_database = {}
 		salary_database = {}
 		@jobhunter_data.each do |j|
-
 			# title
-			if title_database[j.title_expectation] == nil
-				title_database[j.title_expectation] = 1
-			else
-				title_database[j.title_expectation] += 1
-			end
+			database_generate(title_database, j.title_expectation)
 
 			# position
-			if position_database[j.position_expectation] == nil
-				position_database[j.position_expectation] = 1
-			else
-				position_database[j.position_expectation] += 1
-			end
+			database_generate(position_database, j.position_expectation)
 
 			#salary
 			if j.salary_expectation % 1000 == 0
@@ -103,5 +105,17 @@ class AnalysisController < ApplicationController
 		@database << title_database
 		@database << position_database
 		@database << salary_database
-  end
+
+
+
+    end
+
+    private
+    def database_generate(database, data)
+    	if database[data] == nil
+			database[data] = 1
+		else
+			database[data] += 1
+		end
+    end
 end

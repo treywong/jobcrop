@@ -116,7 +116,7 @@ ActiveRecord::Base.transaction do
 		3.times do
 			timeline["title"] = Faker::ChuckNorris.fact # Just for laughs
 	    	timeline["description"] = Faker::Hipster.paragraph
-	    	timeline["photo"] = Faker::Avatar.image("50x50")
+	    	timeline["photo"] = Faker::Avatar.image
 
 	    	timeline['company_id'] = c
 			CompanyTimeline.create(timeline)
