@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_090454) do
+ActiveRecord::Schema.define(version: 2018_10_15_145416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 2018_10_10_090454) do
     t.datetime "updated_at", null: false
     t.index ["job_id"], name: "index_bookings_on_job_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "author_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id", "receiver_id"], name: "index_conversations_on_author_id_and_receiver_id", unique: true
+    t.index ["author_id"], name: "index_conversations_on_author_id"
+    t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
   end
 
   create_table "educations", force: :cascade do |t|
@@ -43,20 +53,21 @@ ActiveRecord::Schema.define(version: 2018_10_10_090454) do
   end
 
   create_table "experiences", force: :cascade do |t|
-    t.string "job_title"
-    t.string "company_name"
+    t.string "position"
+    t.string "company"
     t.string "location"
     t.string "specialization"
     t.string "role"
     t.string "country"
-    t.integer "monthly_salary"
+    t.integer "salary"
     t.string "position_level"
-    t.date "started_at"
-    t.date "ended_at"
-    t.text "job_description"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "currently_working", default: 0
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
@@ -71,6 +82,24 @@ ActiveRecord::Schema.define(version: 2018_10_10_090454) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "personal_messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_personal_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_personal_messages_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -93,12 +122,13 @@ ActiveRecord::Schema.define(version: 2018_10_10_090454) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "fullname"
-    t.string "role"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "role", default: "jobhunter"
     t.string "email"
+    t.string "phone"
+    t.date "birthday"
     t.string "password"
-    t.string "password_digest"
     t.string "detail"
     t.string "image"
     t.string "checklist", array: true
@@ -120,4 +150,6 @@ ActiveRecord::Schema.define(version: 2018_10_10_090454) do
   add_foreign_key "bookings", "jobs"
   add_foreign_key "bookings", "users"
   add_foreign_key "jobs", "users"
+  add_foreign_key "personal_messages", "conversations"
+  add_foreign_key "personal_messages", "users"
 end

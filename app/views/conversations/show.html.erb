@@ -1,0 +1,18 @@
+<!-- renders existing message and form to create new message -->
+
+<!-- conversation show page with receiver, >first_name-->
+<h1>Chatting with <%= @conversation.with(current_user).first_name %></h1>
+
+<div id="conversation-main">
+  <div id="conversation-body">
+    <%= render @conversation.personal_messages %>
+  </div>
+
+  <%= form_with url: sending_message_path(@conversation.receiver_id), model: PersonalMessage.new do |f| %>
+    <%= hidden_field_tag 'conversation_id', @conversation.id %>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+
+    <%= f.submit %>
+  <% end %>
+</div>

@@ -1,4 +1,4 @@
 class ApplicationController < ActionController::Base
   include Clearance::Controller
-  protect_from_forgery unless: -> { request.format.json? }
+  before_action :require_login
 end

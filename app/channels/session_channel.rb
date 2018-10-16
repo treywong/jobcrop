@@ -1,3 +1,4 @@
+# skype
 class SessionChannel < ApplicationCable::Channel
   def subscribed
     stream_from "session_channel"

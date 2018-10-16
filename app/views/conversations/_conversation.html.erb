@@ -1,0 +1,18 @@
+<!-- list of all convos done -->
+<div>
+  <%= link_to 'Home', root_path %>
+  <br>
+  <%= link_to 'send a message', new_personal_message_path %>
+  <br>
+
+
+  Chatting with <%= conversation.with(current_user).name %>
+  <br>
+  <em><%= conversation.personal_messages.last.body.truncate(50) %></em>
+  <br>
+  <!-- show convo link -->
+  <%= link_to 'View conversation', conversation_path(@conversation.id) %> 
+  <hr>
+
+
+</div>

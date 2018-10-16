@@ -27,6 +27,12 @@ Rails.application.routes.draw do
   post "sessions", to: 'sessions#create'
   mount ActionCable.server, at: '/cable'
 
+  # messagechatting
+  resources :personal_messages
+  resources :conversations, only: [:index, :show]
+  resources :users, only: [:index]
+  
+  post "/personal_messages/:receiver_id/new" => "personal_messages#create", as: "sending_message"
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
