@@ -30,7 +30,7 @@
               </div>
               <div class="col-3">
                 <div class="card-body">
-                  <button class="btn btn-primary">Apply Now</button>
+                  <%=link_to "Apply Now", company_job_path(obj.company.id, obj.id), class: 'btn btn-primary'%>
                   <br/>
                   <br/>
                   <p class=" m-0 mt-2 text-center text-muted"><%=obj.updated_at.strftime('%b %e')%></p>
@@ -57,7 +57,7 @@
               </div>
               <div class="col-3">
                 <div class="card-body px-2">
-                  <button class="btn btn-primary">View Company</button>
+                  <%=link_to "View Company", company_path(obj.id), target: '_blank', class: 'btn btn-primary'%>
                   <br/>
                   <br/>
                   <p class=" m-0 mt-2 text-center text-muted"><%=obj.updated_at.strftime('%b %e')%></p>

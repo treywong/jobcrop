@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'bookings/create'
   get 'home' => 'home#index'
   root 'landing#index'
 
@@ -46,8 +47,10 @@ Rails.application.routes.draw do
     resource :follow, controller: "follows", only: [:create, :destroy]
     get '/about' => 'companies#about', as: 'about'
     get '/reviews' => 'companies#reviews', as: 'reviews'
+    resources :jobs, controller: "jobs", only: [:show, :new, :create, :edit] do
+      resources :booking, controller: 'bookings', only: [:new, :create, :show]
+    end
   end
-  resources :jobs, controller: "jobs", only: [:show, :new, :create, :edit]
 
   delete "/employer_jobs/:id" => "employer_jobs#delete", as: "delete_employer_job"
   delete "/employer_timelines/:id" => "employer_timelines#delete", as: "delete_employer_timeline"

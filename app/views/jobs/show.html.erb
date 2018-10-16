@@ -1,17 +1,88 @@
-
-<%= render partial: "employers/employer_navbar" %>
-<h1><%= @job.title %></h1>
-<p><%= sanitize @job.details %></p>
-
-<p><strong>Location:</strong> <%= @job.location %> </p> 
-<p><strong>Salary:</strong> $ <%= @job.salary %></p>
-
-<!-- Insert job photos -->
-<% if @job.photos != nil %>
-	<%= image_tag(@job.photos) %>
+<% content_for :navbar_user do %>
+    <%= render partial: "navbar/user_navbar" %>
 <% end %>
+<div class="container mt-3">
+	<div class="row">
+		<div class="col-8">
+			<h3 class="font-weight-bold"><%= @job.title %></h3>
+			<div class="d-flex flex-row">
+				<p class="medium-font text-muted">Posted at: <%= @job.created_at.strftime('%b %e')%></p>
+				<p class="font-weight-bold text-primary ml-auto"><%= number_to_currency(@job.salary, unit: 'RM', precision: 0) %></p>
+			</div>
+			<hr/>
+			<h5 class="font-weight-bold">Job Description</h5>
+			<p><%= sanitize @job.details %></p>
+			<hr/>
+			<h5 class="font-weight-bold">Job Details</h5>
+			<div class="row">
+				<div class="col-3">
+					<p>Location: </p>
+					<p>Company: </p>
+					<p>Company Website: </p>
+				</div>
+				<div class="col-8">
+					<p><%= @job.location %> </p>
+					<p><%= @company.name %></p>
+					<p><%= @company.website %></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-4 side-tab-job">
+			<div class="card mb-2">
+				<div class="card-body">
+					<div class="d-flex flex-row align-items-center">
+						<div class="company-name">
+							<p class="font-weight-bold m-0"><%=@company.name%></p>
+						</div>
+						<div class="company-logo ml-auto">
+							<%=link_to company_path(@company.id), target:'_blank' do %>
+								<%=image_tag(@company.logo_url, class: 'rounded-circle', style: 'height:40px;')%>
+							<% end %>
+						</div>
+					</div>
+					<hr/>
+					<p class="m-0 font-weight-bold">Interested in this job?</p>
+          <% if current_user.jobhunter.bookings.find_by(job_id: @job.id).present? %>
+            <a class="btn btn-secondary text-light" disabled>Applied</a>
+          <% else %>
+            <a id="book-<%=@job.id%>" class="btn btn-primary">Apply for an Interview</a>
+          <% end %>
+        </div>
+			</div>
+			<div id="booking-<%=@job.id%>"class="card my-2">
+				<div class="card-body">
+					<p class="m-0 card-title font-weight-bold">
+						Application for:
+					</p>
+					<p>
+						<%=@job.title%>
+					</p>
+          <hr/>
+          <%=form_with(scope: :booking, url: company_job_booking_index_path(@company.id, @job.id), method: 'POST') do |f| %>
+            <div class="form-group">
+              <%=f.label "Choose a date for the interview:", class: 'medium-font font-weight-bold'%>
+              <%=f.date_field :session, order: [:day, :month, :year], class: 'form-control bg-light border-0 my-2'%>
+            </div>
+            <div class="form-group">
+              <%=f.label "Upload your resume/CV:", class: 'medium-font font-weight-bold'%>
+              <%= f.file_field :files, class: 'form-control-file' %>
+            </div>
+            <div class="form-group">
+              <%=f.label "Additional Info:", class: 'medium-font font-weight-bold'%>
+              <%= f.text_field :details, class: 'form-control' %>
+            </div>
+            <%= f.submit 'Send your application', class: 'btn btn-primary'%>
+            <%= link_to "Cancel", company_job_path(@company.id, @job.id), class: 'mx-2' %>
+          <% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-<%= link_to 'Edit', edit_employer_job_path(@job.id) %> |
-<%= link_to 'Delete', delete_employer_job_path(@job.id), method: :delete, data: {confirm: "Are you sure?" } %> |
-<p>Posted on <%= @job.created_at %></p>
-<p>Updated on <%= @job.updated_at %></p>
+<script>
+  $('#booking-<%=@job.id%>').hide();
+  $('#book-<%=@job.id%>').on('click', function(){
+    $('#booking-<%=@job.id%>').show();
+  })
+</script>
