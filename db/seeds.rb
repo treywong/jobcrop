@@ -92,7 +92,7 @@ ActiveRecord::Base.transaction do
 		company["name"] = Faker::Company.name
 	    company["website"] = Faker::Internet.url
 	    company["telephone"] = Faker::PhoneNumber.phone_number
-	    company["background"] = Faker::Lorem.paragraph(10)
+	    company["background"] = Faker::Lorem.paragraph(50)
 	    company["location"] = Faker::Address.city
 	    company["size"] = rand(0..1000)
 	    company["remote_logo_url"] = Faker::Company.logo
@@ -110,7 +110,7 @@ ActiveRecord::Base.transaction do
 		job["title"] = Faker::Job.title
 		job["field"] = Faker::Job.field
 	    job["salary"] = rand(1000..5000)
-	    job["details"] = Faker::Lorem.paragraph(20)
+	    job["details"] = Faker::Lorem.paragraph(30)
 	    job["address"] = Faker::Address.street_address
     	job["state"] = Faker::Address.state
     	job["zipcode"] = Faker::Address.zip_code
