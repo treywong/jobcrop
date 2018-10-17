@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+  get 'live_chat/index'
   get 'bookings/create'
   get 'home' => 'home#index'
   get '/side' => 'home#side'
@@ -32,6 +34,9 @@ Rails.application.routes.draw do
 
     resources :employer, controller: "employers", only: [:edit, :update, :create]
   end
+
+  resources :conversation, controller: "conversations", only: [:index, :show]
+  resources :personal_messages, only: [:new, :create]
 
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
   get "/sign_up" => "users#new", as: "sign_up"

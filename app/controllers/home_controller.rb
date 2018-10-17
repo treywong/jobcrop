@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
   before_action :require_login
   def index
+    if current_user.employer
+      redirect_to employer_dashboard_path
+    end
     @jobs = Job.all.includes(:company),
     @companies = Company.all.includes(:employer)
     @employers = Employer.order(jobhunters_count: :desc)

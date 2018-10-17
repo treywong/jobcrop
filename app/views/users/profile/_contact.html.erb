@@ -35,7 +35,17 @@
           </p>
         </div>
       </li>
+      <li>
+        <%=link_to "Message", new_personal_message_path(receiver_id: @user), class: 'btn btn-primary', remote:true %>
+      </li>
     </ul>
+  </div>
+</div>
+
+<div class="modal fade" id="newMessage" tabindex="-1" role="dialog" aria-labelledby="newMessage" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    </div>
   </div>
 </div>
 

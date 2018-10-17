@@ -1,0 +1,9 @@
+<li class="">
+  <%= link_to conversation_path(conversation), class: 'nav-link p-0', remote:true do %>
+  <div class="card-body">
+    <p class="font-weight-bold m-0"><%= conversation.with(current_user).name %></p>
+    <em class="text-muted"><%= conversation.personal_messages.last.body.truncate(50) %></em>
+    <br>
+  </div>
+  <% end %>
+</li>

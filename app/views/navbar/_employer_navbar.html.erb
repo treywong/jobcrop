@@ -14,7 +14,9 @@
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <i class="fas fa-bell nav-link" style="font-size:22px;"></i>
+          <%=link_to conversation_index_path do %>
+          <i class="fas fa-envelope nav-link" style="font-size:22px;"></i>
+          <% end %>
         </li>
         <li class="nav-item">
           <div class="dropdown">
@@ -35,7 +37,11 @@
           <%=link_to "Dashboard", employer_dashboard_path, class:'nav-link'%>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-secondary" href="#">Post Jobs for free</a>
+          <% if current_user.employer.nil? %>
+            <%=link_to "Post Jobs for free", employer_index_path, class:'btn btn-outline-primary'%>
+          <% else %>
+            <%=link_to "Post Jobs for free", new_company_job_path(current_user.employer.company.id), class: 'btn btn-outline-primary' %>
+          <% end %>
         </li>
       </ul>
     </div>

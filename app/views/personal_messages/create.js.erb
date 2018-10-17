@@ -1,0 +1,3 @@
+$('.chatroom').html("<%= j render 'conversations/show', personal_message: PersonalMessage.new %>")
+var element = document.getElementById("conversation-body");
+element.scrollTop = element.scrollHeight;

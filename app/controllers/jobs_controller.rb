@@ -6,8 +6,12 @@ class JobsController < ApplicationController
   end
 
   def new
-		@job = Job.new
-    @company = Company.find(params[:company_id])
+    if current_user.employer
+  		@job = Job.new
+      @company = Company.find(params[:company_id])
+    else
+      redirect_to employer_index_path
+    end
 	end
 
 	def create
@@ -24,8 +28,13 @@ class JobsController < ApplicationController
 	end
 
 	def show
+    if current_user.jobhunter
 		@job = Job.find_by_id(params[:id])
 		@company = Company.find_by(id: @job.company_id)
+    else
+      flash[:warning] = "Only for Jobhunters."
+      redirect_to root_path
+    end
 	end
 
 	def edit
