@@ -4,6 +4,7 @@
     <hr/>
     <div class="jobs-carousel">
       <%@company.jobs.each do |job| %>
+        <%=link_to company_job_path(job.company.id, job.id), class: 'nav-link p-0', target: '_blank' do %>
         <div class="card job-carousel-card">
           <div class="card-body">
             <p class="text-center medium-font"><%=job.title%></p>
@@ -15,6 +16,7 @@
             <p class="m-0 small-font"><%=job.created_at.strftime('%b %e')%></p>
           </div>
         </div>
+        <% end %>
       <%end%>
     </div>
   </div>
