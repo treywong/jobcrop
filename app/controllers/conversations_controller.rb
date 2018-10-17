@@ -4,6 +4,7 @@ class ConversationsController < ApplicationController
 	
 	def index
 		# lists all convo the current user participated in
+		# @conversation = Conversation.all
 		@conversation = Conversation.participating(current_user)
 	end
 
@@ -13,6 +14,7 @@ class ConversationsController < ApplicationController
 	end
 
 	def show
+
 	end
 
 	private

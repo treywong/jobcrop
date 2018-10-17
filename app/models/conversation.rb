@@ -10,7 +10,7 @@ class Conversation < ApplicationRecord
 
 	# participant either author or receiver
 	scope :participating, -> (user) do
-  		find_by("(conversations.author_id = ? OR conversations.receiver_id = ?)", user.id, user.id)
+  		where("(conversations.author_id = ? OR conversations.receiver_id = ?)", user.id, user.id)
 	end
 
 	# returns a conversation for two users

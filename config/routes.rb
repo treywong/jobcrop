@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   # videochat
   get "chats/videochat"
   post "sessions", to: 'sessions#create'
+
+  # actioncable mounted
   mount ActionCable.server, at: '/cable'
 
   # messagechatting

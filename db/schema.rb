@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_10_15_145416) do
     t.integer "receiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id", "receiver_id"], name: "index_conversations_on_author_id_and_receiver_id", unique: true
+    t.index ["author_id", "receiver_id"], name: "index_conversations_on_author_id_and_receiver_id"
     t.index ["author_id"], name: "index_conversations_on_author_id"
     t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
   end
@@ -53,21 +53,20 @@ ActiveRecord::Schema.define(version: 2018_10_15_145416) do
   end
 
   create_table "experiences", force: :cascade do |t|
-    t.string "position"
-    t.string "company"
+    t.string "job_title"
+    t.string "company_name"
     t.string "location"
     t.string "specialization"
     t.string "role"
     t.string "country"
-    t.integer "salary"
+    t.integer "monthly_salary"
     t.string "position_level"
-    t.date "start_date"
-    t.date "end_date"
-    t.text "description"
+    t.date "started_at"
+    t.date "ended_at"
+    t.text "job_description"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "currently_working", default: 0
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
@@ -82,14 +81,6 @@ ActiveRecord::Schema.define(version: 2018_10_15_145416) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_jobs_on_user_id"
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.bigint "user_id"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "personal_messages", force: :cascade do |t|
@@ -122,13 +113,12 @@ ActiveRecord::Schema.define(version: 2018_10_15_145416) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "role", default: "jobhunter"
+    t.string "username"
+    t.string "fullname"
+    t.string "role"
     t.string "email"
-    t.string "phone"
-    t.date "birthday"
     t.string "password"
+    t.string "password_digest"
     t.string "detail"
     t.string "image"
     t.string "checklist", array: true

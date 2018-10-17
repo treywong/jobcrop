@@ -1,4 +1,6 @@
 <!-- receiver name -->
+<%= link_to 'Home', root_path %>
+
 <h1>New message to <%= @receiver.email %></h1>
 
 <%= form_for @personal_message, url: sending_message_path(@receiver.id), method: 'post' do |f| %>

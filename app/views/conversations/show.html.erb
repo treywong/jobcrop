@@ -1,7 +1,9 @@
 <!-- renders existing message and form to create new message -->
 
 <!-- conversation show page with receiver, >first_name-->
-<h1>Chatting with <%= @conversation.with(current_user).first_name %></h1>
+<%= link_to 'Home', root_path %>
+
+<h1>Chatting with <%= @conversation.with(current_user).email %></h1>
 
 <div id="conversation-main">
   <div id="conversation-body">
