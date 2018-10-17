@@ -10,7 +10,7 @@ user = {}
 user['password'] = 'asdf'
 
 ActiveRecord::Base.transaction do
-	50.times do
+	100.times do
 		user['first_name'] = Faker::Name.first_name
 		user['last_name'] = Faker::Name.last_name
 
@@ -44,7 +44,7 @@ ActiveRecord::Base.transaction do
 			employer['user_id'] = u
 			Employer.create(employer)
 		elsif
-			jobhunter["preferences"] = Faker::Hipster.paragraph
+			jobhunter["preferences"] = Faker::Lorem.paragraph(5)
     		jobhunter["title_expectation"] = Faker::Job.title
     		jobhunter["salary_expectation"] = rand(1000..5000)
     		jobhunter["position_expectation"] = Faker::Job.position
@@ -55,23 +55,23 @@ ActiveRecord::Base.transaction do
 
 		education["institute"] = Faker::Educator.university
 	    education["qualification"] = Faker::Job.education_level
-	    education["location"] = Faker::Address.full_address
+	    education["location"] = Faker::Address.city
 	    education["major"] = Faker::Educator.subject
-	    education["description"] = Faker::Hipster.paragraph
+	    education["description"] = Faker::Lorem.paragraph(4)
 	    # education["graduation_year"] = Faker::
-	    education["currently_studying"] = ["yes","no"].sample
+	    education["currently_studying"] = rand(0..1)
 
 	    education['user_id'] = u
 		Education.create(education)
 
 		experience["title"] = Faker::Job.title
 	    experience["company"] = Faker::Company.name
-	    experience["location"] = Faker::Address.full_address
+	    experience["location"] = Faker::Address.city
 	    experience["salary"] = rand(1000..5000)
 	    # experience["start_date"] = Faker::
 	    # experience["end_date"] = Faker::
-	    experience["description"] = Faker::Hipster.paragraph
-	    experience["currently_working"] = ["yes","no"].sample
+	    experience["description"] = Faker::Lorem.paragraph(2)
+	    experience["currently_working"] = rand(0..1)
 
 	    experience['user_id'] = u
 		Experience.create(experience)
@@ -85,9 +85,9 @@ ActiveRecord::Base.transaction do
 		company["name"] = Faker::Company.name
 	    company["website"] = Faker::Internet.url
 	    company["telephone"] = Faker::PhoneNumber.phone_number
-	    company["background"] = Faker::Hipster.paragraph
-	    company["location"] = Faker::Address.full_address
-	    company["size"] = rand(50..1000)
+	    company["background"] = Faker::Lorem.paragraph(10)
+	    company["location"] = Faker::Address.city
+	    company["size"] = rand(0..1000)
 	    company["remote_logo_url"] = Faker::Company.logo
 
 	    company['employer_id'] = e
@@ -102,8 +102,8 @@ ActiveRecord::Base.transaction do
 	1000.times do
 		job["title"] = Faker::Job.title
 	    job["salary"] = rand(1000..5000)
-	    job["details"] = Faker::DumbAndDumber.quote # Just for laughs
-	    job["location"] = Faker::Address.full_address
+	    job["details"] = Faker::Lorem.paragraph(5)
+	    job["location"] = Faker::Address.city
 	    job["photos"] = Faker::Avatar.image
 
 	    job['company_id'] = company_ids.sample
@@ -111,18 +111,18 @@ ActiveRecord::Base.transaction do
 	end
 end
 
-ActiveRecord::Base.transaction do
-	company_ids.each do |c|
-		3.times do
-			timeline["title"] = Faker::ChuckNorris.fact # Just for laughs
-	    	timeline["description"] = Faker::Hipster.paragraph
-	    	timeline["photo"] = Faker::Avatar.image("50x50")
-
-	    	timeline['company_id'] = c
-			CompanyTimeline.create(timeline)
-		end
-	end
-end
+# ActiveRecord::Base.transaction do
+# 	company_ids.each do |c|
+# 		3.times do
+# 			timeline["title"] = Faker::ChuckNorris.fact # Just for laughs
+# 	    	timeline["description"] = Faker::Hipster.paragraph
+# 	    	timeline["photo"] = Faker::Avatar.image("50x50")
+#
+# 	    	timeline['company_id'] = c
+# 			CompanyTimeline.create(timeline)
+# 		end
+# 	end
+# end
 
 follow = {}
 review = {}
@@ -133,8 +133,8 @@ ActiveRecord::Base.transaction do
 	    follow['jobhunter_id'] = j
 		Follow.create(follow)
 
-		review["title"] = Faker::FunnyName.name
-	    review["description"] = Faker::Hipster.paragraph
+		review["title"] = Faker::Company.bs
+	    review["description"] = Faker::Lorem.paragraph(5)
 	    review["rating"] = rand(1..5)
 		review['employer_id'] = employer_ids.sample
 	    review['jobhunter_id'] = j
