@@ -9,6 +9,8 @@
 user = {}
 user['password'] = 'asdf'
 
+language = {}
+
 ActiveRecord::Base.transaction do
 	50.times do
 		user['first_name'] = Faker::Name.first_name
@@ -26,6 +28,11 @@ ActiveRecord::Base.transaction do
     	user["country"] = Faker::Address.country
 
 		User.create(user)
+
+		language["dialect"] = Faker::Nation.language
+		language["user_id"] = User.last.id
+
+		Language.create(language)
 	end
 end
 
@@ -99,11 +106,15 @@ job = {}
 timeline = {}
 company_ids = Company.ids
 ActiveRecord::Base.transaction do
-	1000.times do
+	500.times do
 		job["title"] = Faker::Job.title
+		job["field"] = Faker::Job.field
 	    job["salary"] = rand(1000..5000)
 	    job["details"] = Faker::DumbAndDumber.quote # Just for laughs
-	    job["location"] = Faker::Address.full_address
+	    job["address"] = Faker::Address.street_address
+    	job["state"] = Faker::Address.state
+    	job["zipcode"] = Faker::Address.zip_code
+    	job["country"] = Faker::Address.country
 	    job["photos"] = Faker::Avatar.image
 
 	    job['company_id'] = company_ids.sample
@@ -126,6 +137,8 @@ end
 
 follow = {}
 review = {}
+booking = {}
+job_ids = Job.ids
 jobhunter_ids = Jobhunter.ids
 ActiveRecord::Base.transaction do
 	jobhunter_ids.each do |j|
@@ -137,7 +150,14 @@ ActiveRecord::Base.transaction do
 	    review["description"] = Faker::Hipster.paragraph
 	    review["rating"] = rand(1..5)
 		review['employer_id'] = employer_ids.sample
+		review["posted_at"] = Faker::Time.between(1.year.ago, DateTime.now)
 	    review['jobhunter_id'] = j
 		Review.create(review)
+
+		booking["jobhunter_id"] = j
+		booking["job_id"] = job_ids.sample
+		Booking.create(booking)
 	end
+
+
 end

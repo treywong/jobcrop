@@ -57,6 +57,7 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    as-duration (0.1.1)
     autoprefixer-rails (9.1.4)
       execjs
     aws-eventstream (1.0.1)
@@ -133,6 +134,8 @@ GEM
       thor (~> 0.14)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (4.0.2)
+      activesupport (>= 4.2)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
     i18n (1.1.0)
@@ -280,6 +283,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
+  as-duration
   aws-sdk-rails
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
@@ -294,6 +298,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   faker!
   figaro
+  groupdate
   httparty
   jbuilder (~> 2.5)
   jquery-rails

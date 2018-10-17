@@ -64,6 +64,9 @@ gem 'nokogiri'
 
 gem 'kaminari'
 
+gem 'groupdate'
+
+gem 'as-duration'
 
 gem 'trix'
 
