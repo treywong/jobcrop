@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Spinner from "./Spinner"
-import SearchResultCard from "./SearchResultCard"
 import SearchIntro from './SearchIntro'
 class SearchWindowResult extends React.Component {
   constructor(props) {
@@ -28,7 +27,6 @@ class SearchWindowResult extends React.Component {
                       <div className="col-2">
                         <div className="card-body">
                           <img src={image} className="d-block mx-auto" style={{width:'55px', height:'55px'}}/>
-                          <p className="my-2 border p-1 font-weight-bold reviews text-center small-font">120 <i className="far fa-smile"></i></p>
                         </div>
                       </div>
                       <div className="col-6">
@@ -70,7 +68,6 @@ class SearchWindowResult extends React.Component {
                       <div className="col-2">
                         <div className="card-body">
                           <img src={image} className="d-block mx-auto" style={{width:'55px', height:'55px'}}/>
-                          <p className="my-2 border p-1 font-weight-bold reviews text-center small-font">120 <i className="far fa-smile"></i></p>
                         </div>
                       </div>
                       <div className="col-6">
