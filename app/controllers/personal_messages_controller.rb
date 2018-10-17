@@ -3,7 +3,9 @@ class PersonalMessagesController < ApplicationController
 
   def new
     @personal_message = current_user.personal_messages.build
-    redirect_to conversation_path(@conversation) and return if @conversation
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
@@ -16,6 +18,7 @@ class PersonalMessagesController < ApplicationController
 
     flash[:success] = "Your message was sent!"
     respond_to do |format|
+      format.html {redirect_to conversation_index_path}
       format.js
     end
   end

@@ -1,0 +1,10 @@
+<div class="p-3 bg-light">
+  <h5 class="text-muted text-center">New message to <%= @receiver.name %></h5>
+  <hr/>
+  <%= form_for @personal_message do |f| %>
+    <%= hidden_field_tag 'receiver_id', @receiver.id %>
+    <%= f.text_area :body, class: 'form-control mb-2' %>
+
+    <%= f.submit "Send", class:'btn btn-primary d-block ml-auto' %>
+  <% end %>
+</div>
