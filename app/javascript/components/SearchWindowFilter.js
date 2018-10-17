@@ -15,7 +15,7 @@ class SearchWindowFilter extends React.Component {
   render () {
     return (
       <div className="col-4" >
-        <div className="card my-2 bg-primary text-white">
+        <div className="card my-2 border-primary">
           <div className="card-body">
             <h5 className="card-title font-weight-bold">Filter Result</h5>
             <div className="form-check">

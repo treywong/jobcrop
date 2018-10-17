@@ -42,7 +42,7 @@ class SearchWindow extends React.Component {
     return (
       <div className="search-window card shadow p-2">
         <div className="search-window-body card-body">
-          <h4 className="text-center font-weight-bold">Hunt Engine</h4>
+          <h4 className="text-center font-weight-bold">Hunt Engine <span className="medium-font font-weight-normal">Powered by <i class="fab fa-react"></i></span></h4>
           <HuntEngine onSearch={this.handleSearch.bind(this)} onConfirmation={this.handleConfirmation.bind(this)} onIntro={this.handleIntro.bind(this)}/>
           <div className="row h-100">
             <SearchWindowFilter onFilter={this.handleFilter.bind(this)}/>
