@@ -4,6 +4,6 @@
       <img src="/assets/jobcrop_logo.png" width="30" height="30" alt="">
       <span class="medium-font">For Employers</span>
     <% end %>
-      <%= render partial: 'jobs/searchbar' %>
+      <%= react_component("SearchWindowExtender", {}, class: 'col-8') %>
   </div>
 </nav>
