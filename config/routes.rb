@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'bookings/create'
   get 'home' => 'home#index'
+  get '/side' => 'home#side'
   root 'landing#index'
 
   resources :search, controller: 'search', only: [:create]

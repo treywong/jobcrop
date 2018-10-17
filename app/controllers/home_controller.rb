@@ -13,4 +13,7 @@ class HomeController < ApplicationController
   		@company = Company.find_by(employer_id: @employer.id)
   	end
   end
+
+  def side
+  end
 end

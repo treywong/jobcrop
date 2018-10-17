@@ -10,6 +10,7 @@ class JobhuntersController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     respond_to do |format|
+      format.html
       format.js
     end
   end
@@ -19,7 +20,9 @@ class JobhuntersController < ApplicationController
     @jobhunter = @user.build_jobhunter(jobhunter_params)
     if @jobhunter.save
       flash[:success] = "Preferences created."
+      redirect_to root_path
       respond_to do |format|
+        format.html
         format.js
       end
     else

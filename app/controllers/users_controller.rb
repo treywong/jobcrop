@@ -4,7 +4,7 @@ class UsersController < Clearance::UsersController
 		if @user.save
 			flash[:success] = "Welcome #{@user.name}!"
 			sign_in @user
-			redirect_to home_path
+			redirect_to side_path
 		else
 			flash[:danger] = "Something is wrong. #{@user.errors.full_messages.to_sentence}"
 			redirect_back(fallback_location: root_path)
@@ -16,7 +16,7 @@ class UsersController < Clearance::UsersController
 		if @user.save
 			flash[:success] = "Welcome #{@user.name}!"
 			sign_in @user
-			redirect_to
+			redirect_to new_employer_path
 		else
 			flash[:danger] = "Something is wrong. #{@user.errors.full_messages.to_sentence}"
 			redirect_back(fallback_location: root_path)
