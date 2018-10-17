@@ -1,3 +1,4 @@
+
 <%= render partial: "navbar/employer_navbar" %>
 <div class="container-fluid">
 	<div class="row">
@@ -5,9 +6,9 @@
 			<%=render partial: 'navbar/employer_sidebar'%>
 		</div>
 		<div class="col-10 py-3 container-fluid">
-			<h5>Analysis</h5>
+			<h5>Applicant Analysis</h5>
 			<hr/>
-			<p>Followers: <%= @follower.count %></p>
+			<p>Applicants: <%= @jobhunter_data.count %></p>
 
 			<div class="row">
 				<% @database.each_with_index do |data,index| %>
@@ -15,7 +16,7 @@
 						<div class="card">
 							<div class="card-body">
 								<p class="card-title"><%= @data_title[index] %></h3>
-								<%= pie_chart(data) %>
+								<%= pie_chart(data, messages: {empty: "No data"} ) %>
 							</div>
 						</div>
 					</div>
