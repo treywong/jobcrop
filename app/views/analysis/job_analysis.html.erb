@@ -6,7 +6,9 @@
 			<%=render partial: 'navbar/employer_sidebar'%>
 		</div>
 		<div class="col-10 py-3 container-fluid">
-			<h5>Job Analysis</h5>
+			<div class="border-bottom mb-3">
+				<h3 class="text-center font-weight-bold text-secondary">Jobs Analysis</h3>
+			</div>
 
 			<div class="row">
 				<%= bar_chart @job_field_database, xtitle: "Number of jobs", ytitle: "Job Fields", title: "#{@company.name} Job Field Analysis", width: "100%", height: "1000px", messages: {empty: "No data"} %>
