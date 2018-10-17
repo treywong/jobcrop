@@ -4,9 +4,13 @@ class CreateJob < ActiveRecord::Migration[5.2]
       t.references :company
 
       t.string :title
+      t.string :field
       t.integer :salary
       t.string :details
-      t.string :location
+      t.string :address
+      t.string :state
+      t.string :zipcode
+      t.string :country
       t.string :photos
 
       t.timestamps

@@ -66,6 +66,9 @@ gem 'kaminari'
 
 gem 'pg_search'
 
+gem 'groupdate'
+
+gem 'as-duration'
 
 gem 'trix'
 

@@ -9,6 +9,8 @@
 user = {}
 user['password'] = 'asdf'
 
+language = {}
+
 ActiveRecord::Base.transaction do
 	100.times do
 		user['first_name'] = Faker::Name.first_name
@@ -26,6 +28,11 @@ ActiveRecord::Base.transaction do
     	user["country"] = Faker::Address.country
 
 		User.create(user)
+
+		language["dialect"] = Faker::Nation.language
+		language["user_id"] = User.last.id
+
+		Language.create(language)
 	end
 end
 
@@ -85,7 +92,7 @@ ActiveRecord::Base.transaction do
 		company["name"] = Faker::Company.name
 	    company["website"] = Faker::Internet.url
 	    company["telephone"] = Faker::PhoneNumber.phone_number
-	    company["background"] = Faker::Lorem.paragraph(10)
+	    company["background"] = Faker::Lorem.paragraph(50)
 	    company["location"] = Faker::Address.city
 	    company["size"] = rand(0..1000)
 	    company["remote_logo_url"] = Faker::Company.logo
@@ -99,11 +106,15 @@ job = {}
 timeline = {}
 company_ids = Company.ids
 ActiveRecord::Base.transaction do
-	1000.times do
+	500.times do
 		job["title"] = Faker::Job.title
+		job["field"] = Faker::Job.field
 	    job["salary"] = rand(1000..5000)
-	    job["details"] = Faker::Lorem.paragraph(5)
-	    job["location"] = Faker::Address.city
+	    job["details"] = Faker::Lorem.paragraph(30)
+	    job["address"] = Faker::Address.street_address
+    	job["state"] = Faker::Address.state
+    	job["zipcode"] = Faker::Address.zip_code
+    	job["country"] = Faker::Address.country
 	    job["photos"] = Faker::Avatar.image
 
 	    job['company_id'] = company_ids.sample
@@ -126,6 +137,8 @@ end
 
 follow = {}
 review = {}
+booking = {}
+job_ids = Job.ids
 jobhunter_ids = Jobhunter.ids
 ActiveRecord::Base.transaction do
 	jobhunter_ids.each do |j|
@@ -137,7 +150,14 @@ ActiveRecord::Base.transaction do
 	    review["description"] = Faker::Lorem.paragraph(5)
 	    review["rating"] = rand(1..5)
 		review['employer_id'] = employer_ids.sample
+		review["posted_at"] = Faker::Time.between(1.year.ago, DateTime.now)
 	    review['jobhunter_id'] = j
 		Review.create(review)
+
+		booking["jobhunter_id"] = j
+		booking["job_id"] = job_ids.sample
+		Booking.create(booking)
 	end
+
+
 end

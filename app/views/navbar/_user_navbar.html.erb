@@ -38,7 +38,11 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-primary" href="#">Post Jobs for free</a>
+          <% if current_user.employer.nil? %>
+            <%=link_to "Post Jobs for free", employer_index_path, class:'btn btn-outline-primary'%>
+          <% else %>
+            <%=link_to "Post Jobs for free", new_company_job_path(current_user.employer.company.id), class: 'btn btn-outline-primary' %>
+          <% end %>
         </li>
       </ul>
     </div>
