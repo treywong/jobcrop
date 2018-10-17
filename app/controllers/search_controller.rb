@@ -13,8 +13,6 @@ class SearchController < ApplicationController
                   resultjstore = Search.parsejstore(params[:search][:result]),
                 ]
     @a = @results.map {|r| r.any?}
-    respond_to do |format|
-      format.js
-    end
+    render json: @results
   end
 end

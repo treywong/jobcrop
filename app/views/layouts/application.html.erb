@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
@@ -27,19 +28,11 @@
       </div>
       <%= yield %>
 
-      <div class="search-window card shadow p-2">
-        <div class="search-window-body card-body">
-          <h4 class="text-center font-weight-bold">Hunt Engine</h4>
-          <div class="row h-100">
-            <%= render partial: 'jobs/filter_tab' %>
-            <%= render partial: 'jobs/results_tab' %>
-          </div>
-        </div>
-      </div>
+      <%= react_component("SearchWindow", { results: @results })%>
 
     <script>
     $('.backdrop').hide();
-    $('#search_result').on('click', function(e) {
+    $('#trigger_search').on('click', function(e) {
       $('.search-window').addClass('visible');
       $('.backdrop').show();
     })

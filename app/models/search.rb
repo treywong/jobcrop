@@ -2,18 +2,18 @@ class Search < ApplicationRecord
 
   def self.parsejc(params)
     jobs = Array.new
-    jobcrop = Job.search_by_title(params)
+    jobcrop = Job.includes(:company).search_by_title(params)
     jobcrop.each do |j|
       job = {
         id: 'jc',
         site: 'Jobcrop',
-        class: 'btn-jobcrop',
+        cssclass: 'btn-jobcrop',
         title: j.title,
         company: j.company.name,
         location: j.location,
         created_at: j.created_at.strftime('%b %e'),
         image: j.company.logo_url,
-        link: ''
+        link: "/company/#{j.company.id}/jobs/#{j.id}"
       }
       jobs << job
     end
@@ -32,7 +32,7 @@ class Search < ApplicationRecord
         job = {
           id: 'js',
           site: 'Jobstreet.my',
-          class: 'btn-jobstreet',
+          cssclass: 'btn-jobstreet',
           title: result.css('div.position-title.header-text').css('a.position-title-link').text,
           company: result.css('h3.company-name').css('a.company-name').text,
           location: result.css('li.job-location').text,
@@ -63,7 +63,7 @@ class Search < ApplicationRecord
         job = {
           id: 'gd',
           site: 'Glassdoor.com',
-          class: 'btn-glassdoor',
+          cssclass: 'btn-glassdoor',
           title: result.css('a.jobLink').text,
           company: company,
           location: result.css('span.loc').text,
@@ -92,7 +92,7 @@ class Search < ApplicationRecord
         job = {
           id: 'i',
           site: 'Indeed.com.my',
-          class: 'btn-indeed',
+          cssclass: 'btn-indeed',
           title: result.css('h2.jobtitle').css('a').text,
           company: result.css('span.company').text,
           location: result.css('div.location').text,
@@ -119,7 +119,7 @@ class Search < ApplicationRecord
         job = {
           id: 'fj',
           site: 'Fastjob.my',
-          class: 'btn-fastjob',
+          cssclass: 'btn-fastjob',
           link: result.attribute('href').value,
           title: result.css('div.job-post').css('h2').first.text,
           company: result.css('div.job-post').css('p.coyinfo > span > strong').first.text,
@@ -149,7 +149,7 @@ class Search < ApplicationRecord
       job = {
         id: 'jstore',
         site: 'Jobstore.com',
-        class: 'btn-jobstore',
+        cssclass: 'btn-jobstore',
         link: result.css('a').attribute('href').value,
         title: result.css('h2.search_job_title').text,
         company: result.css('p.search_job_companyname').text,
