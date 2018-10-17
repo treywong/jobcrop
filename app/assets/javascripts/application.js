@@ -15,6 +15,7 @@
 //= require chartkick
 //= require rails-ujs
 //= require jquery3
+//= require conversations
 //= require jquery.waypoints.min
 //= require inview.min
 //= require jquery.slick
@@ -49,7 +50,6 @@ $(document).on("turbolinks:load", function(){
     slidesToShow: 3,
     slidesToScroll: 3
   });
-
 })
 
 document.addEventListener('ajax:beforeSend', function(event) {
@@ -62,4 +62,6 @@ document.addEventListener('ajax:beforeSend', function(event) {
 document.addEventListener('ajax:success', function(event) {
   $(".spinner").hide();
   $(".job-list").show();
+  var element = document.getElementById("conversation-body");
+  element.scrollTop = element.scrollHeight;
 })

@@ -8,7 +8,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @personal_message = PersonalMessage.new
+    @new_message = PersonalMessage.new
   end
 
   private

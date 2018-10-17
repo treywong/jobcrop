@@ -2,8 +2,8 @@ class PersonalMessagesController < ApplicationController
   before_action :find_conversation!
 
   def new
-    redirect_to conversation_path(@conversation) and return if @conversation
     @personal_message = current_user.personal_messages.build
+    redirect_to conversation_path(@conversation) and return if @conversation
   end
 
   def create
@@ -12,9 +12,12 @@ class PersonalMessagesController < ApplicationController
     @personal_message = current_user.personal_messages.build(personal_message_params)
     @personal_message.conversation_id = @conversation.id
     @personal_message.save!
+    @new_message = PersonalMessage.new
 
     flash[:success] = "Your message was sent!"
-    redirect_to conversation_path(@conversation)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

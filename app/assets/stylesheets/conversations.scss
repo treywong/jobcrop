@@ -1,3 +1,19 @@
-// Place all the styles related to the conversations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.chat-contacts {
+  position: fixed;
+  bottom: 1%;
+  right: 1%;
+}
+
+.conversation-container {
+  height: 100vh;
+}
+
+.contact-list {
+  overflow-y: auto;
+}
+
+#conversation-body {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-bottom: 2em;
+}

@@ -5,14 +5,17 @@
     <%= render partial: "navbar/visitor_navbar" %>
   <% end %>
 <% end %>
-<h1>Users</h1>
-
-<div class="d-flex-flex-row flex-wrap">
-  <%= render 'conversations/users', locals: @users %>
-</div>
-
-<h1>Your conversations</h1>
-
-<div id="conversations">
-  <%= render @conversations %>
+<div class="container  p-0 conversation-container card">
+  <nav class="navbar navbar-light card bg-light">
+    <span class="navbar-text">Your Messages</span>
+  </nav>
+   <div class="row p-3">
+     <div class="col-4 contact-list">
+       <ul id="conversations" class="list-unstyled">
+         <%= render @conversations %>
+       </ul>
+     </div>
+     <div class="col-8 chatroom">
+     </div>
+   </div>
 </div>

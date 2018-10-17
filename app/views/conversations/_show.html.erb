@@ -1,0 +1,17 @@
+<div class="border p-2">
+  <div id="conversation-main">
+    <div id="conversation-body">
+      <%= render @conversation.personal_messages %>
+    </div>
+  </div>
+</div>
+<div class="border p-2 mt-4 bg-light">
+  <%= form_for @new_message, remote: true do |f| %>
+    <%= hidden_field_tag 'conversation_id', @conversation.id %>
+    <div class="form-group">
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
+
+    <%= f.submit class:'btn btn-primary d-block ml-auto ' %>
+  <% end %>
+</div>
