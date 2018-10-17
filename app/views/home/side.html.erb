@@ -5,15 +5,17 @@
     <% end %>
   </div>
 </nav>
-<div class="container side-container d-flex flex-fill align-items-center">
-  <div class="w-100">
-    <h5 class="text-center">Choose A Side</h5>
-    <div class="row">
-      <div class="col-6">
-        <%=link_to "Jobhunter", new_user_jobhunter_path(current_user.id), class: 'btn btn-primary w-100 btn-lg'%>
-      </div>
-      <div class="col-6">
-        <%=link_to "Employer", new_employer_path, class: 'btn btn-danger w-100 btn-lg'%>
+<div class="side-container-bg">
+  <div class="container side-container d-flex flex-fill align-items-center">
+    <div class="w-100 choose-container p-5">
+      <h4 class="font-weight-bold text-white text-center mb-4">Choose A Side</h4>
+      <div class="row">
+        <div class="col-6">
+          <%=link_to "Jobhunter", new_user_jobhunter_path(current_user.id), class: 'btn btn-primary w-100 btn-lg'%>
+        </div>
+        <div class="col-6">
+          <%=link_to "Employer", new_employer_path, class: 'btn btn-danger w-100 btn-lg'%>
+        </div>
       </div>
     </div>
   </div>

@@ -5,8 +5,10 @@
     <% end %>
   </div>
 </nav>
+<div class="new-employer-cover"></div>
 <div class="container side-container d-flex flex-fill align-items-center">
   <div class="w-100">
+    <h2 class="text-center font-weight-bold text-muted mb-4">Jobhunter Application</h2>
     <%=form_with(scope: :jobhunter, url: user_jobhunter_index_path(@user.id), method: 'POST', local:true) do |f| %>
       <div class="form-group">
         <%=f.label "What work title are you expecting to get?", class: 'text-muted font-weight-bold'%>

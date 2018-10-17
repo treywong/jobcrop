@@ -9,6 +9,21 @@
   border-color: #f57c00!important;
 }
 
+.choose-container {
+  background-color: rgba(0,0,0,0.3)
+}
+
 .side-container {
   height: 100vh;
+}
+
+.side-container-bg {
+  background-image: url('pexels-photo-1036808-compressor.jpeg');
+}
+
+.new-employer-cover {
+  background-image: url('pexels-photo-1153213-compressor.jpeg');
+  height: 30vh;
+  background-position: center;
+  background-size: cover;
 }
