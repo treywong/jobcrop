@@ -12,6 +12,10 @@ class User < ApplicationRecord
   has_one :employer, dependent: :destroy
   has_one :jobhunter, dependent: :destroy
 
+  has_many :authored_conversations, class_name: 'Conversation', foreign_key: 'author_id'
+  has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
+  has_many :personal_messages, dependent: :destroy
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true, if: :email

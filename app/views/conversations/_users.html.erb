@@ -1,0 +1,7 @@
+<% @users.each do |user| %>
+<div class="card">
+  <div class="card-body">
+    <%= user.name %> | <%= link_to 'send a message', new_personal_message_path(receiver_id: user) %>
+  </div>
+</div>
+<% end %>

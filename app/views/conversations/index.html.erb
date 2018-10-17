@@ -1,0 +1,18 @@
+<% content_for :navbar_user do %>
+  <% if signed_in? %>
+    <%= render partial: "navbar/user_navbar" %>
+  <% else %>
+    <%= render partial: "navbar/visitor_navbar" %>
+  <% end %>
+<% end %>
+<h1>Users</h1>
+
+<div class="d-flex-flex-row flex-wrap">
+  <%= render 'conversations/users', locals: @users %>
+</div>
+
+<h1>Your conversations</h1>
+
+<div id="conversations">
+  <%= render @conversations %>
+</div>
