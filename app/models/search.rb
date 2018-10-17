@@ -13,7 +13,7 @@ class Search < ApplicationRecord
         location: j.location,
         created_at: j.created_at.strftime('%b %e'),
         image: j.company.logo_url,
-        link: ''
+        link: "/company/#{j.company.id}/jobs/#{j.id}"
       }
       jobs << job
     end
