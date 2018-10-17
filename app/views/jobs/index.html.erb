@@ -5,20 +5,21 @@
 			<%=render partial: 'navbar/employer_sidebar'%>
 		</div>
 		<div class="col-10 py-3 container-fluid">
-      <h5>My Jobs</h5>
-      <hr/>
+			<div class="border-bottom mb-3">
+				<h3 class="text-center font-weight-bold text-secondary">My Jobs</h3>
+			</div>
       <% @jobs.includes(:company).order(created_at: :desc).each do |job| %>
       <div class="card my-2">
         <div class="card-body">
           <div class="row">
             <div class="col-4">
-              <h5 class="card-title text-center"><%= job.title %></h5>
+              <h5 class="card-title text-center font-weight-bold text-primary"><%= job.title %></h5>
             </div>
             <div class="col-4">
-              <div class="card-title text-center"><%= job.company.name %></div>
+              <div class="card-title text-center text-warning"><%= job.company.name %></div>
             </div>
             <div class="col-4">
-              <div class="card-title text-center"><%= number_to_currency(job.salary, unit: 'RM') %></div>
+              <div class="card-title text-center font-weight-bold text-secondary"><%= number_to_currency(job.salary, unit: 'RM') %></div>
             </div>
           </div>
           <hr/>

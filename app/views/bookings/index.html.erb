@@ -1,0 +1,36 @@
+<%= render partial: "navbar/employer_navbar" %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-2 bg-white border-right">
+			<%=render partial: 'navbar/employer_sidebar'%>
+		</div>
+		<div class="col-10 py-3 container-fluid">
+			<div class="border-bottom mb-3">
+				<h3 class="text-center font-weight-bold text-secondary">My Applicants</h3>
+			</div>
+      <% @jobs.order(created_at: :desc).each do |job| %>
+				<% job.bookings.each do |booking| %>
+		      <div class="card my-2">
+		        <div class="card-body">
+		          <div class="row">
+		            <div class="col-2">
+									<%=image_tag(booking.jobhunter.user.avatar_url, style:'height:100px;', class:'m-auto d-block')%>
+		            </div>
+		            <div class="col-8">
+									<h5 class="card-title font-weight-bold text-primary"><%= booking.jobhunter.user.name %></h5>
+									<p class="mb-2 card-subtitle text-muted">Applied for <span class="font-weight-bold"><%=booking.job.title%></span></p>
+									<p class="m-0 card-text">Session requested: <%=booking.session%></p>
+									<p class="m-0 card-text">Note: <%=booking.details%></p>
+									<p class="m-0 card-text">Applied on: <%=booking.created_at%></p>
+		            </div>
+								<div class="col-2">
+									<%=link_to "View Applicant", user_path(booking.jobhunter.user.id), class: 'd-block my-auto btn btn-primary', target: '_blank'%>
+								</div>
+		          </div>
+		        </div>
+		      </div>
+				<% end %>
+      <% end %>
+		</div>
+	</div>
+</div>

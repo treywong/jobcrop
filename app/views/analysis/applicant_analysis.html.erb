@@ -6,9 +6,10 @@
 			<%=render partial: 'navbar/employer_sidebar'%>
 		</div>
 		<div class="col-10 py-3 container-fluid">
-			<h5>Applicant Analysis</h5>
-			<hr/>
-			<p>Applicants: <%= @jobhunter_data.count %></p>
+			<div class="border-bottom mb-3">
+				<h3 class="text-center font-weight-bold text-secondary">Applicant Analysis</h3>
+			</div>
+			<h5 class=""><span class="font-weight-bold">Applicants:</span> <%= @jobhunter_data.count %></h5>
 
 			<div class="row">
 				<% @database.each_with_index do |data,index| %>
