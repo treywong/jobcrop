@@ -138,9 +138,13 @@ ActiveRecord::Schema.define(version: 2018_10_17_065231) do
   create_table "jobs", force: :cascade do |t|
     t.bigint "company_id"
     t.string "title"
+    t.string "field"
     t.integer "salary"
     t.string "details"
-    t.string "location"
+    t.string "address"
+    t.string "state"
+    t.string "zipcode"
+    t.string "country"
     t.string "photos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -183,6 +187,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_065231) do
     t.string "title"
     t.string "description"
     t.integer "rating"
+    t.datetime "posted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employer_id"], name: "index_reviews_on_employer_id"

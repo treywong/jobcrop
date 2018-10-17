@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
   # For employer
   get "/employer/dasboard" => "employers#dashboard", as: "employer_dashboard"
-  get "/employer/analysis" => "analysis#index", as: "employer_analysis"
+  # get "/employer/analysis" => "analysis#index", as: "employer_analysis"
   get "/employer/jobs" => 'jobs#index', as: 'jobs_index'
   get "/employer/company/:id/timeline_page" => "employer_timelines#index", as: "timeline_page"
   get "/employer/company/:id/review_page" => "employers#review_page", as: "review_page"
@@ -58,6 +58,7 @@ Rails.application.routes.draw do
       resources :booking, controller: 'bookings', only: [:new, :create, :show]
     end
   end
+  resources :booking, controller: 'bookings', only: [:index]
 
   delete "/employer_jobs/:id" => "employer_jobs#delete", as: "delete_employer_job"
   delete "/employer_timelines/:id" => "employer_timelines#delete", as: "delete_employer_timeline"
@@ -65,4 +66,15 @@ Rails.application.routes.draw do
 
   post '/user-pre-employer' => 'users#create_pre_employer', as: 'create_pre_employer'
   resources :employer_timelines, controller: "employer_timelines"
+
+
+
+
+
+
+
+  get "/employer/review_analysis" => "analysis#review_analysis", as: "employer_review_analysis"
+  get "/employer/job_analysis" => "analysis#job_analysis", as: "employer_job_analysis"
+  get "/employer/applicant_analysis" => "analysis#applicant_analysis", as: "employer_applicant_analysis"
+  get "/employer/follower_analysis" => "analysis#follower_analysis", as: "employer_follower_analysis"
 end

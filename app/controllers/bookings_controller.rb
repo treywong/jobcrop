@@ -1,4 +1,9 @@
 class BookingsController < ApplicationController
+  def index
+    @company = Company.find(current_user.employer.company.id)
+    @jobs = Job.includes(:bookings).where(company_id: @company.id)
+  end
+
   def create
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:job_id])

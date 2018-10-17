@@ -1,0 +1,21 @@
+
+<%= render partial: "navbar/employer_navbar" %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-2 bg-white border-right">
+			<%=render partial: 'navbar/employer_sidebar'%>
+		</div>
+		<div class="col-10 py-3 container-fluid">
+			<div class="border-bottom mb-3">
+				<h3 class="text-center font-weight-bold text-secondary">Reviews Analysis</h3>
+			</div>
+
+			<div class="row">
+				<%= column_chart Review.all.where(employer_id: @employer.id).group_by_month(:posted_at).count, xtitle: "Monthly Period", ytitle: "Number of Reviews", title: "Number of Reviews of #{@company.name} per Month", messages: {empty: "No data"} %>
+			</div>
+			<div class="row">
+				<%= column_chart Review.all.where(employer_id: @employer.id).group_by_month(:posted_at).average(:rating), xtitle: "Monthly Period", ytitle: "Overall Rating", title: "Overall Review Ratings of #{@company.name} per Month", messages: {empty: "No data"} %>
+			</div>
+		</div>
+	</div>
+</div>
