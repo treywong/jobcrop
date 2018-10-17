@@ -10,4 +10,8 @@ module EmployersHelper
 			Company.find_by(employer_id: current_employer.id)
 		end
 	end
+
+	def employer?
+		current_user.employer.present?
+	end
 end

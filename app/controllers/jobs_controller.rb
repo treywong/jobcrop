@@ -24,8 +24,13 @@ class JobsController < ApplicationController
 	end
 
 	def show
+    if current_user.jobhunter
 		@job = Job.find_by_id(params[:id])
 		@company = Company.find_by(id: @job.company_id)
+    else
+      flash[:warning] = "Only for Jobhunters."
+      redirect_to root_path
+    end
 	end
 
 	def edit
