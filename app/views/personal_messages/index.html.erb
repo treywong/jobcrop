@@ -1,0 +1,9 @@
+<!-- index of all personal messages --> 
+
+<!-- name of receiver -->
+<h1>inbox with <%= @conversation.with(current_user).email %></h1>
+
+<!-- convos with receiver listed here -->
+<% @conversation.each do |conversation| %>
+	<%= conversation.find_by(id: params[:receiver_id]) %>
+<% end %>

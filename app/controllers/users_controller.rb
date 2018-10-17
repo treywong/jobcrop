@@ -2,6 +2,7 @@ class UsersController < Clearance::UsersController
 	
 	def home
 		@users = User.all
+		
 	end
 
 	def profile

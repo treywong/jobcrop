@@ -1,6 +1,11 @@
  class PersonalMessagesController < ApplicationController
 	# before_action :find_conversation!
+	# def index
+	# 	@receiver = User.find_by(id: params[:receiver_id])
+	# 	@conversation = Conversation
+	# end
 	
+
 	def new
   		@personal_message = current_user.personal_messages.build
   		@user = User.all
@@ -18,6 +23,7 @@
 	    flash[:success] = "Your message was sent!"
 	    redirect_to conversation_path(@conversation)
   	end
+
 
   	private
 

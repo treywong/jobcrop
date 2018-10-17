@@ -6,6 +6,10 @@ class ConversationsController < ApplicationController
 		# lists all convo the current user participated in
 		# @conversation = Conversation.all
 		@conversation = Conversation.participating(current_user)
+		respond_to do |format|
+	    	format.html
+	    	format.js
+  		end
 	end
 
 	def new

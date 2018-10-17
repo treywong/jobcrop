@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   
   post "/personal_messages/:receiver_id/new" => "personal_messages#create", as: "sending_message"
 
+  get "/conversation/:receiver_id/personal_messages/index" => "personal_messages#index", as: "inbox"
+
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "users#new", as: "sign_up"
