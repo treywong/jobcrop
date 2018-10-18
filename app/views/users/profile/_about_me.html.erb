@@ -31,7 +31,7 @@
           <div id="location-<%=@user.id%>" class="my-4">
             <p class="">
               <% if @user.address %>
-                <%=@user.location%>
+                <p class="m-0 text-muted">Address: </p><%=@user.location%>
               <% else %>
                 <span class="text-muted">No Address.</span>
               <% end %>
@@ -47,7 +47,7 @@
           <div id="birthday-<%=@user.id%>">
             <p class="">
             <% if @user.birthday %>
-              <%=@user.birthday%>
+              <p class="m-0 text-muted">Birthday: </p><%=@user.birthday%>
             <% else %>
               <span class="text-muted">No Birthday.</span>
             <% end %>
