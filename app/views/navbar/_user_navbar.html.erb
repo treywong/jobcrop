@@ -9,9 +9,34 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      <%= react_component("SearchWindowExtender", {}, class: 'col-8') %>
+      <%= react_component("SearchWindowExtender", {}, class: 'col-7') %>
 
       <ul class="navbar-nav ml-auto">
+        <% if current_user.jobhunter %>
+        <li class="nav-item">
+          <div class="dropdown">
+            <i class="fas fa-crop-alt nav-link" id="appliedJobs" style="font-size:22px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+            <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="appliedJobs" style='width:400px;'>
+              <div class="card bg-light">
+                <div class="card-body">
+                  <p class="m-0 text-muted font-weight-bold text-center">Your Applied Jobs</p>
+                </div>
+              </div>
+              <ul class="list-group">
+                <%current_user.jobhunter.bookings.includes(:job).each do |booking|%>
+                  <%=link_to company_job_path(booking.job.company.id, booking.job.id), class:'nav-link p-0 text-dark' do%>
+                  <li class="list-group-item">
+                      <p class="">Applied for: <span class="font-weight-bold"><%=booking.job.title%></span></p>
+                      <p class="text-muted">Company: <%=booking.job.company.name%></p>
+                      <p class="text-muted">Applied on: <%=booking.created_at%></p>
+                  </li>
+                  <% end%>
+                <%end%>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <% end %>
         <li class="nav-item">
           <%=link_to conversation_index_path do %>
           <i class="fas fa-envelope nav-link" style="font-size:22px;"></i>
