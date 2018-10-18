@@ -4,6 +4,7 @@
   <%= f.text_field :location, placeholder: "Location", class: 'form-control bg-light border-0 my-2' %>
   <%= f.text_field :major, placeholder: "Major", class: 'form-control bg-light border-0 my-2' %>
   <div class="form-inline">
+    <p class="m-0 text-muted mr-2">Graduation Year: </p>
     <%= f.date_field :graduation_year, class: 'form-control bg-light border-0 my-2' %>
     <p class="m-0 mx-2 text-muted">Currently studying?</p>
     <%= f.check_box :currently_studying %>
