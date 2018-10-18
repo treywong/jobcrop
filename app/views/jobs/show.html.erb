@@ -49,6 +49,7 @@
           <% end %>
         </div>
 			</div>
+      <%=link_to "Message", new_personal_message_path(receiver_id: @job.company.employer), class: 'btn btn-warning my-2 d-block mx-auto', remote:true %>
 			<div id="booking-<%=@job.id%>"class="card my-2">
 				<div class="card-body">
 					<p class="m-0 card-title font-weight-bold">
@@ -78,6 +79,13 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="modal fade" id="newMessage" tabindex="-1" role="dialog" aria-labelledby="newMessage" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    </div>
+  </div>
 </div>
 
 <script>
