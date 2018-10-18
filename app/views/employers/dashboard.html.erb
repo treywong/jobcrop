@@ -43,24 +43,28 @@
 					</div>
 				</div>
 				<div class="timeline mt-3">
-					<h4>Timeline</h4>
+					<h4>Reviews <span class="text-muted">(<%=@company.employer.reviews.count%>)</span></h4>
 					<hr/>
+					<ul class="list-group reviews-timeline">
+						<%@company.employer.reviews.includes(:jobhunter).limit(6).order(created_at: :desc).each do |review|%>
+							<%=link_to user_path(review.jobhunter.user.id), class:'nav-link p-0 text-dark', target: '_blank' do %>
+								<li class="list-group-item">
+									<div class="row">
+				            <div class="col-2">
+											<%=image_tag(review.jobhunter.user.avatar_url, style:'height:100px;', class:'m-auto d-block')%>
+				            </div>
+				            <div class="col-8">
+											<h5 class="card-title font-weight-bold text-primary"><%= review.jobhunter.user.name %></h5>
+											<p class="mb-2 card-subtitle text-muted">Rated: <span class="font-weight-bold"><%=review.rating%> stars</span></p>
+											<p class="m-0 card-text"><%=review.description%></p>
+				            </div>
+				          </div>
+								</li>
+							<% end %>
+						<% end %>
+					</ul>
 				</div>
 			</div>
-
-
-			<!-- Will add company photos -->
-
-			<hr>
-
-			<h2>Latest Update</h2>
-			<% if @timeline %>
-				<h3><%= @timeline.title %></h3>
-				<% if @timeline.photo != nil %>
-					<%= image_tag(@timeline.photo) %>
-				<% end %>
-				<p><%= sanitize @timeline.description %></p>
-			<% end %>
 		</div>
 	</div>
 </div>

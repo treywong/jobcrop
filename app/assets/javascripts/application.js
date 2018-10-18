@@ -28,7 +28,7 @@
 
 
 $(document).on("turbolinks:load", function(){
-  $('#flash').fadeOut(5000)
+  $('#flash').fadeOut(10000)
 
   $('.features-landing-row').hide();
 
