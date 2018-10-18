@@ -32,4 +32,12 @@ class User < ApplicationRecord
   def registered?
     self.employer.present?
   end
+
+  def location
+    	"#{self.address} #{self.state} #{self.country} #{self.zipcode}"
+ 	end
+
+  def profile_complete?
+    self.educations.present? && self.experiences.present? && self.location && self.birthday
+  end
 end

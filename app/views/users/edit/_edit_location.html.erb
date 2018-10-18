@@ -1,0 +1,10 @@
+<%= form_with scope: :user, url: user_path(@user.id), method: 'PATCH' do |form| %>
+  <div class="form-inline">
+    <%= form.text_field :address, class: 'form-control bg-light border-0 mr-2', placeholder: "Address" %>
+    <%= form.text_field :zipcode, class: 'form-control bg-light border-0 mr-2', placeholder: "Zipcode" %>
+    <%= form.text_field :state, class: 'form-control bg-light border-0 mr-2', placeholder: "State" %>
+    <%= form.text_field :country, class: 'form-control bg-light border-0 mr-2', placeholder: "Country" %>
+    <%= form.submit "Apply", class: 'btn btn-sm btn-outline-primary' %>
+    <%= link_to "Cancel", user_path(@user), class: 'mx-2 small-font' %>
+  </div>
+<% end %>

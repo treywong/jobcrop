@@ -22,11 +22,43 @@
     </div>
   </div>
 
-  <script>
-    $('.about-me').children().children('#editDetail').hide();
-    $('.about-me').on('mouseover', function(){
-      $(this).children().children('#editDetail').show();
-    }).on('mouseleave', function(){
-      $(this).children().children('#editDetail').hide();
-    });
-  </script>
+  <div class="card details">
+    <div class="card-body">
+      <p class="card-title m-0 font-weight-bold">Additional Information</p>
+      <hr/>
+      <ul class="contact-details list-unstyled">
+        <li>
+          <div id="location-<%=@user.id%>" class="my-4">
+            <p class="">
+              <% if @user.address %>
+                <%=@user.location%>
+              <% else %>
+                <span class="text-muted">No Address.</span>
+              <% end %>
+              <% if current_user.own_profile?(@user) %>
+                <%=link_to user_edit_location_path(@user.id), id: "editLocation", remote:true do%>
+                  <i class="edit fas fa-pen"></i>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+        </li>
+        <li>
+          <div id="birthday-<%=@user.id%>">
+            <p class="">
+            <% if @user.birthday %>
+              <%=@user.birthday%>
+            <% else %>
+              <span class="text-muted">No Birthday.</span>
+            <% end %>
+            <% if current_user.own_profile?(@user) %>
+              <%=link_to user_edit_birthday_path(@user.id), id: "editBirthday", remote:true do%>
+                <i class="edit fas fa-pen"></i>
+              <% end %>
+            <% end %>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>

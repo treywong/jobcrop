@@ -88,6 +88,20 @@ class UsersController < Clearance::UsersController
 		end
 	end
 
+	def edit_location
+		@user = User.find(params[:user_id])
+		respond_to do |format|
+		  format.js
+		end
+	end
+
+	def edit_birthday
+		@user = User.find(params[:user_id])
+		respond_to do |format|
+		  format.js
+		end
+	end
+
 	def add_skill
 		@user = User.find(params[:user_id])
 		skills = (params[:user][:skill_list]).split(',').collect{|x| x.strip || x}

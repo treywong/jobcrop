@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get "/edit_about_me" => 'users#edit_about_me'
     get "/edit_email" => 'users#edit_email'
     get "/edit_phone" => 'users#edit_phone'
+    get "/edit_birthday" => 'users#edit_birthday'
+    get "/edit_location" => 'users#edit_location'
     patch "/add_skill" => 'users#add_skill'
     delete "/remove_skill/:id" => 'users#remove_skill', as: 'remove_skill'
 

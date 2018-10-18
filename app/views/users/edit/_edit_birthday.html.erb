@@ -1,0 +1,7 @@
+<%= form_with scope: :user, url: user_path(@user.id), method: 'PATCH' do |form| %>
+  <div class="form-inline">
+    <%= form.date_field :birthday, class: 'form-control bg-light border-0 mr-2' %>
+    <%= form.submit "Apply", class: 'btn btn-sm btn-outline-primary' %>
+    <%= link_to "Cancel", user_path(@user), class: 'mx-2 small-font' %>
+  </div>
+<% end %>
