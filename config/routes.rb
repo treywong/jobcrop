@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/side' => 'home#side'
   root 'landing#index'
 
+  mount ActionCable.server => '/cable'
+
   resources :search, controller: 'search', only: [:create]
   get '/search' => 'search#create', as: 'search'
   post '/search/filter' => 'search#filter', as: 'search_filter'

@@ -23,6 +23,7 @@
 //= require moment
 //= require activestorage
 //= require turbolinks
+//= require cable
 //= require_tree .
 
 

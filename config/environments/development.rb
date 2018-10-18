@@ -63,4 +63,6 @@ Rails.application.configure do
 
   # Configure the mailer to create full URLs in emails:
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  config.webpacker.check_yarn_integrity = false
 end
