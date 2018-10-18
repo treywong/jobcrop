@@ -31,9 +31,7 @@ class SearchWindowResult extends React.Component {
                       </div>
                       <div className="col-6">
                         <div className="card-body pl-0">
-                          <a href="" target="_blank">
-                            <h5 className="text-primary card-title mb-1"><strong>{title}</strong></h5>
-                          </a>
+                          <h5 className="text-primary card-title mb-1"><strong>{title}</strong></h5>
                           <p className="my-1 small-font">{company}</p>
                           <p className="my-1 text-muted small-font">{location}</p>
                         </div>
