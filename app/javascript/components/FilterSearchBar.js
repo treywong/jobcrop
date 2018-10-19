@@ -19,10 +19,11 @@ class FilterSearchBar extends React.Component {
     return (
       <React.Fragment>
         <div>
-          <label htmlFor="filter">Filter by Poet: </label>
           <input type="text" id="filter"
             value={this.state.filter}
-            onChange={this.handleChange.bind(this)}/>
+            onChange={this.handleChange.bind(this)}
+            placeHolder="Filter by Title.."
+            className="form-control my-3"/>
         </div>
       </React.Fragment>
     );
