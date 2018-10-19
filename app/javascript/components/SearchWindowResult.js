@@ -11,8 +11,7 @@ class SearchWindowResult extends React.Component {
   }
 
   render () {
-    let results = this.props.results.flat()
-    console.log(results)
+    let results = this.props.fResults.flat()
     let filteredResults = results.filter(result => result.id == this.props.filterResults)
     if (this.props.filterResults == "") {
       return (

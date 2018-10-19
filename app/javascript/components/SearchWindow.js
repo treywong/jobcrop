@@ -8,19 +8,28 @@ class SearchWindow extends React.Component {
     super(props)
     this.state = {
       results: [],
+      fResults: [],
       resultsIndex: '',
       searchTag: [],
       confirmation: '',
       intro: 1,
-      filter: ''
+      filter: '',
+      searchFilter: ''
     }
+  }
+
+  componentWillMount() {
+    this.setState({
+      fResults: this.state.results
+    })
   }
 
   handleSearch(data) {
     var r = this.state.results.slice();
     r.push(data)
     this.setState({
-      results: r
+      results: r,
+      fResults: r
     })
   }
 
@@ -54,6 +63,7 @@ class SearchWindow extends React.Component {
     if(bool === true){
       this.setState({
         results: [],
+        fResults: [],
         searchTag: []
       })
     }
@@ -72,10 +82,22 @@ class SearchWindow extends React.Component {
     })
   }
 
+  handleSearchFilter(search) {
+  let fResults = this.state.results.flat(2)
+  fResults = fResults.filter((result) => {
+    let resultTitle = result.title.toLowerCase()
+    return resultTitle.indexOf(
+      search.toLowerCase()) !== -1
+  })
+  this.setState({
+    fResults
+  })
+  }
+
   render () {
     let results = this.state.results
     let count = results.flat().length
-    console.log(results)
+    console.log(this.state.fResults)
     return (
       <div className="search-window card shadow border-0">
         <h4 className="py-3 bg-primary text-center font-weight-bold text-light">Hunt Engine <span className="medium-font font-weight-normal">Powered by <i className="fab fa-react"></i></span></h4>
@@ -85,8 +107,14 @@ class SearchWindow extends React.Component {
             <SearchWindowFilter onFilter={this.handleFilter.bind(this)}
                                 searchTags={this.state.searchTag}
                                 onRemoveSearch={this.handleRemoveSearch.bind(this)}
-                                onSingleDrop={this.handleSingleDrop.bind(this)}/>
-                              <SearchWindowResult results={this.state.results} resultsCount={count} confirmation={this.state.confirmation} intro={this.state.intro} filterResults={this.state.filter}/>
+                                onSingleDrop={this.handleSingleDrop.bind(this)}
+                                onSearchFilter={this.handleSearchFilter.bind(this)}/>
+            <SearchWindowResult results={this.state.results}
+                                resultsCount={count}
+                                confirmation={this.state.confirmation}
+                                intro={this.state.intro}
+                                filterResults={this.state.filter}
+                                fResults={this.state.fResults}/>
           </div>
         </div>
       </div>
