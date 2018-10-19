@@ -1,0 +1,14 @@
+<% company = Company.find(current_user.employer.company.id)
+    jobs = Job.includes(:bookings).where(company_id: @company.id)
+
+    new_applicant = 0
+    jobs.order(created_at: :desc).each do |job|
+    	job.bookings.each do |booking|
+    		if booking.created_at.strftime("%B %d %Y") == DateTime.now.strftime("%B %d %Y")
+    			new_applicant += 1
+    		end
+    	end
+    end
+
+    return new_applicant
+%>

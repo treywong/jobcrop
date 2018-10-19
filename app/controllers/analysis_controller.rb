@@ -36,7 +36,6 @@ class AnalysisController < ApplicationController
 		end
 
 		@database = []
-		@data_title = ['Gender','Age','Language','Highest qualification','Position-expected','Salary-expected']
 
 		# gender
 		gender_database = {}
@@ -47,7 +46,7 @@ class AnalysisController < ApplicationController
 				gender_database[u.gender] += 1
 			end
 		end
-		@database << gender_database
+		@database << {data: gender_database, title: 'Gender' }
 
 		# age
 		age_database = {}
@@ -66,7 +65,7 @@ class AnalysisController < ApplicationController
 				age_database[age_range] += 1
 			end
 		end
-		@database << age_database
+		@database << {data: age_database, title: 'Age' }
 
 		# language
 		language_database = {}
@@ -77,7 +76,7 @@ class AnalysisController < ApplicationController
 				language_database[l.dialect] += 1
 			end
 		end
-		@database << language_database
+		@database << {data: language_database, title: 'Language Spoken' }
 
 		# education
 		education_database = {}
@@ -88,7 +87,7 @@ class AnalysisController < ApplicationController
 				education_database[e.qualification] += 1
 			end
 		end
-		@database << education_database
+		@database << {data: education_database, title: 'Highest Qualification' }
 
 		# Position and salary expectation
 		position_database = {}
@@ -106,8 +105,8 @@ class AnalysisController < ApplicationController
 			end
 			j.database_generate(salary_database, salary_range)
 		end
-		@database << position_database
-		@database << salary_database
+		@database << {data: position_database, title: 'Position Expected' }
+		@database << {data: salary_database, title: 'Salary Expected' }
 
     end
 
@@ -142,7 +141,6 @@ class AnalysisController < ApplicationController
 
 
     	@database = []
-		@data_title = ['Gender','Age','Language','Highest qualification','Position-expected','Salary-expected']
 
 		# gender
 		gender_database = {}
@@ -153,7 +151,7 @@ class AnalysisController < ApplicationController
 				gender_database[u.gender] += 1
 			end
 		end
-		@database << gender_database
+		@database << {data: gender_database, title: 'Gender' }
 
 		# age
 		age_database = {}
@@ -172,7 +170,7 @@ class AnalysisController < ApplicationController
 				age_database[age_range] += 1
 			end
 		end
-		@database << age_database
+		@database << {data: age_database, title: 'Age' }
 
 		# language
 		language_database = {}
@@ -183,7 +181,7 @@ class AnalysisController < ApplicationController
 				language_database[l.dialect] += 1
 			end
 		end
-		@database << language_database
+		@database << {data: language_database, title: 'Language Spoken' }
 
 		# education
 		education_database = {}
@@ -194,7 +192,7 @@ class AnalysisController < ApplicationController
 				education_database[e.qualification] += 1
 			end
 		end
-		@database << education_database
+		@database << {data: education_database, title: 'Highest Qualification' }
 
 		# Position and salary expectation
 		position_database = {}
@@ -211,8 +209,8 @@ class AnalysisController < ApplicationController
 			end
 			j.database_generate(salary_database, salary_range)
 		end
-		@database << position_database
-		@database << salary_database
+		@database << {data: position_database, title: 'Position Expected' }
+		@database << {data: salary_database, title: 'Salary Expected' }
 	end
 
     def review_analysis

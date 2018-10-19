@@ -17,7 +17,13 @@
 									<%=image_tag(booking.jobhunter.user.avatar_url, style:'height:100px;', class:'m-auto d-block')%>
 		            </div>
 		            <div class="col-8">
-									<h5 class="card-title font-weight-bold text-primary"><%= booking.jobhunter.user.name %></h5>
+		            				<% if booking.created_at.strftime("%B %d %Y") == DateTime.now.strftime("%B %d %Y") %>
+										<p class="text-danger">New</p>
+									<% end %>
+									<h5 class="card-title font-weight-bold text-primary">
+										<%= booking.jobhunter.user.name %>
+									</h5>
+										
 									<p class="mb-2 card-subtitle text-muted">Applied for <span class="font-weight-bold"><%=booking.job.title%></span></p>
 									<p class="m-0 card-text">Session requested: <%=booking.session%></p>
 									<p class="m-0 card-text">Note: <%=booking.details%></p>
