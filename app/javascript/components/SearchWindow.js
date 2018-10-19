@@ -14,7 +14,8 @@ class SearchWindow extends React.Component {
       confirmation: '',
       intro: 1,
       filter: '',
-      searchFilter: ''
+      searchFilter: '',
+      select: 'title'
     }
   }
 
@@ -83,15 +84,42 @@ class SearchWindow extends React.Component {
   }
 
   handleSearchFilter(search) {
-  let fResults = this.state.results.flat(2)
-  fResults = fResults.filter((result) => {
-    let resultTitle = result.title.toLowerCase()
-    return resultTitle.indexOf(
-      search.toLowerCase()) !== -1
-  })
-  this.setState({
-    fResults
-  })
+    let fResults = this.state.results.flat(2)
+    let selectFilter = this.state.select
+    if (selectFilter == "title") {
+      fResults = fResults.filter((result) => {
+        let resultTitle = result.title.toLowerCase()
+        return resultTitle.indexOf(
+          search.toLowerCase()) !== -1
+        })
+        this.setState({
+          fResults
+        })
+    } else if (selectFilter == "company") {
+      fResults = fResults.filter((result) => {
+      let resultTitle = result.company.toLowerCase()
+      return resultTitle.indexOf(
+        search.toLowerCase()) !== -1
+      })
+      this.setState({
+        fResults
+      })
+    } else if (selectFilter == "location") {
+      fResults = fResults.filter((result) => {
+      let resultTitle = result.location.toLowerCase()
+      return resultTitle.indexOf(
+        search.toLowerCase()) !== -1
+      })
+      this.setState({
+        fResults
+      })
+    }
+  }
+
+  handleSelect(select) {
+    this.setState({
+      select: select
+    })
   }
 
   render () {
@@ -108,7 +136,8 @@ class SearchWindow extends React.Component {
                                 searchTags={this.state.searchTag}
                                 onRemoveSearch={this.handleRemoveSearch.bind(this)}
                                 onSingleDrop={this.handleSingleDrop.bind(this)}
-                                onSearchFilter={this.handleSearchFilter.bind(this)}/>
+                                onSearchFilter={this.handleSearchFilter.bind(this)}
+                                onSelect={this.handleSelect.bind(this)}/>
             <SearchWindowResult results={this.state.results}
                                 resultsCount={count}
                                 confirmation={this.state.confirmation}

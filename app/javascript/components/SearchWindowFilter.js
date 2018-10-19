@@ -18,13 +18,17 @@ class SearchWindowFilter extends React.Component {
     this.props.onSearchFilter(search)
   }
 
+  handleSelect(select) {
+    this.props.onSelect(select)
+  }
+
   render () {
     return (
       <div className="col-4" >
         <div className="card mb-4 border-0 bg-light">
           <div className="card-body">
             <h5 className="card-title font-weight-bold text-dark">Filter Result</h5>
-            <FilterSearchBar onFilter={this.handleFilter.bind(this)}/>
+            <FilterSearchBar onFilter={this.handleFilter.bind(this)} onSelect={this.handleSelect.bind(this)}/>
             <p className="m-0 text-dark font-weight-bold">Filter by Site: </p>
             <div className="form-check">
               <input className="form-check-input" type="radio" name="search[filter]" id="search_filter_all" value="" onChange={this.handleChange.bind(this)}/>
