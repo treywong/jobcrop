@@ -1,3 +1,4 @@
+
 <div class="sidebar-sticky">
   <ul class="nav flex-column my-2">
     <li class="nav-item">
@@ -6,8 +7,8 @@
     <li class="nav-item">
       <%=link_to "My Jobs", jobs_index_path, class: 'nav-link'%>
     </li>
-    <li class="nav-item">
-      <%=link_to "My Applicants", booking_index_path, class: 'nav-link'%>
+    <li class="nav-item nav-link">
+      <%=link_to "My Applicants", booking_index_path %> <a style="font-size: 10px; color: white; background-color: red; border-radius: 3px; padding: 4px"><%= render partial: '/navbar/new_applicant_count' %></a>
     </li>
     <li class="nav-item">
       <div class="btn-group">

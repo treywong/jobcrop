@@ -79,4 +79,6 @@ Rails.application.routes.draw do
   get "/employer/job_analysis" => "analysis#job_analysis", as: "employer_job_analysis"
   get "/employer/applicant_analysis" => "analysis#applicant_analysis", as: "employer_applicant_analysis"
   get "/employer/follower_analysis" => "analysis#follower_analysis", as: "employer_follower_analysis"
+
+  get "/ssss" => "conversations#something", as: "something"
 end

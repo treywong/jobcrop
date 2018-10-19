@@ -11,12 +11,11 @@
 			<h5 class=""><span class="font-weight-bold">Followers:</span> <%= @follower.count %></h5>
 
 			<div class="row">
-				<% @database.each_with_index do |data,index| %>
+				<% @database.each do |d| %>
 					<div class="col-3 mb-3">
 						<div class="card">
 							<div class="card-body">
-								<p class="card-title"><%= @data_title[index] %></h3>
-								<%= pie_chart(data, messages: {empty: "No data"} ) %>
+								<%= pie_chart(d[:data], title: d[:title], messages: {empty: "No data"}) %>
 							</div>
 						</div>
 					</div>
