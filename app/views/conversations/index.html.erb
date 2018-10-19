@@ -6,16 +6,25 @@
   <% end %>
 <% end %>
 <div class="container  p-0 conversation-container card">
-  <nav class="navbar navbar-light card bg-light">
-    <span class="navbar-text">Your Messages</span>
+  <nav class="navbar navbar-light card bg-primary">
+    <span class="navbar-text text-light font-weight-bold">Your Messages</span>
   </nav>
    <div class="row h-100">
      <div class="col-4 pr-0 border-right h-100 contact-list">
+       <nav class="navbar navbar-light card bg-secondary">
+         <span class="navbar-text text-light font-weight-bold">Inbox</span>
+       </nav>
        <ul id="conversations" class="list-unstyled">
          <%= render @conversations %>
        </ul>
      </div>
-     <div class="col-8 pl-0 d-flex flex-column chatroom">
+     <div class="col-8 pl-0">
+       <nav class="navbar navbar-light card bg-secondary">
+         <span class="navbar-text text-light font-weight-bold">Conversation</span>
+       </nav>
+       <div class="chatroom pl-0 d-flex flex-column">
+         <p class="text-center mt-5 text-muted">Nothing here.</p>
+       </div>
      </div>
    </div>
 </div>

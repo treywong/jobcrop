@@ -12,7 +12,7 @@ class SearchController < ApplicationController
                   resultfj = Search.parsefj(params[:search][:result]),
                   resultjstore = Search.parsejstore(params[:search][:result]),
                 ]
-    @results.flatten
+    @results.flatten!
     render json: @results
   end
 end
