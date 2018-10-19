@@ -21,7 +21,7 @@ class HuntEngine extends React.Component {
 
         this.props.onConfirmation(this.state.fetchInProgress)
         this.props.onIntro(this.state.intro)
-
+        this.props.onSearchTag(this.state.search)
         $.ajax({
           url: "/search",
           method: 'POST',
@@ -58,7 +58,7 @@ class HuntEngine extends React.Component {
           <div className="input-group w-100">
               <input type="text"
                      className="border-0 bg-searchbar py-2 mb-3 w-100"
-                     placeholder="Go Hunt!"
+                     placeholder="Hunt a Job..."
                      id="search_result"
                      value={this.state.search}
                      onChange={this.handleChange.bind(this)}

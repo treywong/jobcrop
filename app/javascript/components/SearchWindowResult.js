@@ -11,7 +11,8 @@ class SearchWindowResult extends React.Component {
   }
 
   render () {
-    let results = this.props.results
+    let results = this.props.results.flat()
+    console.log(results)
     let filteredResults = results.filter(result => result.id == this.props.filterResults)
     if (this.props.filterResults == "") {
       return (
@@ -20,34 +21,34 @@ class SearchWindowResult extends React.Component {
           {this.props.confirmation && <Spinner />}
           <ul className="list-unstyled results-index">
             {results.map(({id, site, cssclass, title, company, location, created_at, image, link}, index) => {
-              return (
-                <li key={index}>
-                  <div id=""className="job-list card my-2 ">
-                    <div className="row">
-                      <div className="col-2">
-                        <div className="card-body">
-                          <img src={image} className="d-block mx-auto" style={{width:'55px', height:'55px'}}/>
+                return (
+                  <li key={index}>
+                    <div id=""className="job-list card my-2 ">
+                      <div className="row">
+                        <div className="col-2">
+                          <div className="card-body">
+                            <img src={image} className="d-block mx-auto" style={{width:'55px', height:'55px'}}/>
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-6">
-                        <div className="card-body pl-0">
-                          <h5 className="text-primary card-title mb-1"><strong>{title}</strong></h5>
-                          <p className="my-1 small-font">{company}</p>
-                          <p className="my-1 text-muted small-font">{location}</p>
+                        <div className="col-6">
+                          <div className="card-body pl-0">
+                            <h5 className="text-primary card-title mb-1"><strong>{title}</strong></h5>
+                            <p className="my-1 small-font">{company}</p>
+                            <p className="my-1 text-muted small-font">{location}</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-4">
-                        <div className="card-body">
-                          <a href={link} target="_blank" className={this.state.class + cssclass}>Apply at {site}</a>
-                          <br/>
-                          <br/>
-                          <p className=" m-0 mt-2 text-center text-muted">{created_at}</p>
+                        <div className="col-4">
+                          <div className="card-body">
+                            <a href={link} target="_blank" className={this.state.class + cssclass}>Apply at {site}</a>
+                            <br/>
+                            <br/>
+                            <p className=" m-0 mt-2 text-center text-muted">{created_at}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              )
+                  </li>
+                )
             })}
           </ul>
         </div>

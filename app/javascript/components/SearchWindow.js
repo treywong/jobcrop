@@ -8,6 +8,8 @@ class SearchWindow extends React.Component {
     super(props)
     this.state = {
       results: [],
+      resultsIndex: '',
+      searchTag: [],
       confirmation: '',
       intro: 1,
       filter: ''
@@ -15,8 +17,10 @@ class SearchWindow extends React.Component {
   }
 
   handleSearch(data) {
+    var r = this.state.results.slice();
+    r.push(data)
     this.setState({
-      results: data.flat()
+      results: r
     })
   }
 
@@ -38,15 +42,51 @@ class SearchWindow extends React.Component {
     })
   }
 
+  handleSearchTag(s) {
+    var st = this.state.searchTag
+    st.push(s)
+    this.setState({
+      searchTag: st
+    })
+  }
+
+  handleRemoveSearch(bool) {
+    if(bool === true){
+      this.setState({
+        results: [],
+        searchTag: []
+      })
+    }
+  }
+
+  handleSingleDrop(tag) {
+    let r = this.state.results
+    let s = this.state.searchTag
+    let index = s.indexOf(tag)
+    r.splice(index, 1)
+    s.splice(index, 1)
+    r.flat(2)
+    this.setState({
+      results: r,
+      searchTag: s
+    })
+  }
+
   render () {
+    let results = this.state.results
+    let count = results.flat().length
+    console.log(results)
     return (
-      <div className="search-window card shadow p-2">
+      <div className="search-window card shadow border-0">
+        <h4 className="py-3 bg-primary text-center font-weight-bold text-light">Hunt Engine <span className="medium-font font-weight-normal">Powered by <i className="fab fa-react"></i></span></h4>
         <div className="search-window-body card-body">
-          <h4 className="text-center font-weight-bold">Hunt Engine <span className="medium-font font-weight-normal">Powered by <i className="fab fa-react"></i></span></h4>
-          <HuntEngine onSearch={this.handleSearch.bind(this)} onConfirmation={this.handleConfirmation.bind(this)} onIntro={this.handleIntro.bind(this)}/>
+          <HuntEngine onSearch={this.handleSearch.bind(this)} onConfirmation={this.handleConfirmation.bind(this)} onIntro={this.handleIntro.bind(this)} onSearchTag={this.handleSearchTag.bind(this)}/>
           <div className="row h-100">
-            <SearchWindowFilter onFilter={this.handleFilter.bind(this)}/>
-            <SearchWindowResult results={this.state.results} resultsCount={this.state.results.length} confirmation={this.state.confirmation} intro={this.state.intro} filterResults={this.state.filter}/>
+            <SearchWindowFilter onFilter={this.handleFilter.bind(this)}
+                                searchTags={this.state.searchTag}
+                                onRemoveSearch={this.handleRemoveSearch.bind(this)}
+                                onSingleDrop={this.handleSingleDrop.bind(this)}/>
+                              <SearchWindowResult results={this.state.results} resultsCount={count} confirmation={this.state.confirmation} intro={this.state.intro} filterResults={this.state.filter}/>
           </div>
         </div>
       </div>
